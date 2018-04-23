@@ -1,0 +1,35 @@
+.btnClaim_container {
+  min-height: 50vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.btnClaim {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #79593F;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.btnClaim:hover {background-color: #796D63}
+
+.btnClaim:active {
+  background-color: #796D63;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.claim_modal_head {
+  background-color: #C69267;
+  color: #fff;
+}
