@@ -15,5 +15,4 @@ class User extends CI_Controller {
         $this->load->view("Main/user/main");
         $this->load->view("Main/footer");
     }
-
 }
