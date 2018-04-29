@@ -15,11 +15,6 @@ class Users_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function add($input) {
-        $this->db->insert("user", $input);
-        return $this->db->insert_id();
-    }
-    
     public function get_where($where) {
         $this->db->select("user.*");
         $this->db->from("user");
@@ -28,6 +23,64 @@ class Users_model extends CI_Model {
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+    
+    public function add($input) {
+        $required = array(
+            "username",
+            "email",
+            "country",
+            "bank_name",
+            "bank_acount_number",
+            "password"
+        );
+
+        $error = false;
+
+        foreach ($required as $field) {
+            if (empty($_POST[$field])) {
+                $error = true;
+                $error_message = "Please do not leave " . $field . " empty";
+            }
+        }
+
+        if ($error) {
+            die(json_encode(array(
+                "status" => false,
+                "message" => $error_message
+            )));
+        } else {
+            $this->db->select('*');
+            $this->db->from('user');
+            $this->db->where('username =', $input['username']);
+
+            $query = $this->db->get();
+
+            $admin = $query->result_array();
+
+            if (count($admin) > 0) {
+                die(json_encode(array(
+                    "status" => false,
+                    "message" => "Username already exists"
+                )));
+            } else {
+                $this->db->insert("user", $input);
+
+                if ($this->db->affected_rows() == 0) {
+                    die(json_encode(array(
+                        "status" => false,
+                        "message" => "Insert Error"
+                    )));
+                } else {
+                    return $this->db->insert_id();
+                }
+            }
+        }
+    }
+    
+    public function update_where($where, $data) {
+        $this->db->where($where);
+        $this->db->update("user", $data);
     }
     
 }
