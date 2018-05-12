@@ -21,7 +21,7 @@
                                 <li class="border-bottom padding-top-10">
                                     <a href="#" class="sidebar-header">Receive Coins</a>
                                 </li>
-                                <li class="sidebar-header padding-top-10">
+                                <li class="padding-top-10">
                                     <a href="#" class="sidebar-header">Refund</a>
                                 </li>
                             </ul>

@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="<?= base_url() ?>css/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?= base_url() ?>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -70,7 +70,7 @@
                                 <a href="<?= base_url() ?>wallet" class="dropdown-toggle">Wallet</a>
                             </li>
                             <li class="dropdown user user-menu">
-                                <a href="<?= base_url() ?>user" class="dropdown-toggle">Account</a>
+                                <a href="<?= base_url() ?>userList/current_user/" class="dropdown-toggle">Account</a>
                             </li>
                         </ul>
                     </div>

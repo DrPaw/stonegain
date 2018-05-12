@@ -61,19 +61,19 @@
                     <div class="navbar-custom-menu col-xs-6">
                         <ul class="nav navbar-nav float-right">
                             <li class="dropdown messages-menu">
-                                <a href="<?= base_url() ?>User" class="dropdown-toggle">Login</a>
+                                <a href="<?= base_url() ?>Access/login" class="dropdown-toggle">Login</a>
                             </li>
                             <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle">Sign Up</a>
+                                <a href="<?= base_url() ?>Access/register" class="dropdown-toggle">Sign Up</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
                 
-                <nav class="navbar navbar-static-top sub-header">
+                <nav class="navbar sub-header">
                     <div class="navbar-custom-menu col-xs-6">
                         <!-- Logo -->
-                        <a href="index2.html" class="logo">
+                        <a href="<?= base_url() ?>Main" class="logo">
                             <!-- logo for regular state and mobile devices -->
                             <span class="logo-lg"><b>Stonegain</b></span>
                         </a>
@@ -120,8 +120,8 @@
                       <div class="mySlides fade"></div>
 
                       <!-- Next and previous buttons -->
-                      <a class="prev padding-top-95" onclick="plusSlides(-1)">&#10094;</a>
-                      <a class="next padding-top-95" onclick="plusSlides(1)">&#10095;</a>
+                      <a class="prev-front padding-top-95" onclick="plusSlides(-1)">&#10094;</a>
+                      <a class="next-front padding-top-95" onclick="plusSlides(1)">&#10095;</a>
                     </div>
                     <br>
 

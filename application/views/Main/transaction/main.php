@@ -21,7 +21,7 @@
                     <div class="line-padding-15 col-lg-10 col-md-10 col-xs-10 col-sm-10">
                         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border margin-bottom">
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10">Avalable : 0 BTC</div>
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 font-size-large">Avalable : 0 BTC</div>
                                 <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0 BTC</div>
                                 <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Asseta : 0 BTC</div>
                                 <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0 BTC</div>
