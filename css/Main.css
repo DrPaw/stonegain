@@ -241,3 +241,198 @@ body{
 .social img{
     width: 5%;
 }
+
+.margin-left-230{
+    margin-left: 230px;
+}
+
+.backgroundcolor-admin{
+    background-color: #ecf0f5;
+}
+
+.sub-header{
+    background-color: #7eafad;
+}
+
+.padding15{
+    padding: 15px;
+}
+
+.float-right{
+    float: right;
+}
+
+.dropdown-toggle{
+    color: #fff;
+}
+
+.col-padding-0{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.title{
+    font-size: -webkit-xxx-large;
+    padding-top: 50px;
+}
+
+.line-padding-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.sub-border{
+    border: 1px solid #c7c7c7;
+}
+
+.sub-padding{
+    padding: 20px;
+}
+
+.col-padding-10{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col-padding-5{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.label-height{
+    height: 45px;
+}
+
+.input-border{
+    border-radius: 10px;
+}
+
+.font-size-xlarge{
+    font-size: x-large;
+}
+
+.font-size-medium{
+    font-size: medium;
+}
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+
+.padding-left-10{
+    padding-left: 10px;
+}
+
+.padding-top-10{
+    padding-top: 10px;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #cccc;
+}
+
+.font-color-user{
+    color: #bf983b;
+}
+
+.font-size-14{
+    font-size: 14px;
+}
+
+.sub-height{
+    height: 266px;
+}
+
+.no-history{
+    text-align: center;
+    padding-top: 100px;
+}
+
+.sidebar-height{
+    height: 180px;
+}
+
+.sidebar-header{
+    padding-top: 35px;
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+.border-right{
+    border-right: 1px solid #ccc;
+}
+
+.padding-top-50{
+    padding-top: 50px !important;
+}
+
+.no-record{
+    text-align: center;
+    padding-bottom: 150px !important;
+}
+
+.data-table{
+    margin-top: 20px;
+}
+
+.font-size-large{
+    font-size: large;
+}
+
+.col-padding-50{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.search-bar{
+    background-color: #64a09b;
+    color: #fff;
+}
+
+.line-padding-10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sub-border-gray{
+    border: 1px solid #ccc;
+}
+
+.border-bottom-black{
+    border-bottom: 3px solid #000;
+}
+
+.quick-seller{
+    font-style: italic;
+    background-color: #76d88b;
+    border-radius: 8px;
+    max-width: 100px;
+    color: #fff;
+}
+
+.verification{
+    background-color: #f1bd2d;
+    border-radius: 8px;
+    max-width: 260px;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.line-padding-0{
+    padding-top: 0pc;
+    padding-bottom: 0px;
+}
+ 
+.margintop-55{
+    margin-top: 55px;
+}
+
+/* Add padding to container elements */
+.container1 {
+    padding: 16px;
+    background-color: aliceblue;
+}
