@@ -436,3 +436,39 @@ body{
     padding: 16px;
     background-color: aliceblue;
 }
+
+#slideshow {
+  overflow: hidden;
+  height: 200px;
+  width: 949px;
+  margin: 0 200px 0 200px;
+}
+
+.slide-wrapper {
+  -webkit-animation: slide 18s ease infinite;
+}
+
+.slide {
+  float: left;
+  height: 200px;
+  width: 1349px;
+}
+
+.slide-number {
+  color: #000;
+  text-align: left;
+  font-size: 3em;
+  color: #fff;
+  padding-top: 20px;
+}
+
+.slide-word{
+   padding-top: 25px;
+   text-align: left;
+}
+
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -1349px;}
+  50% {margin-left: -1349px;}
+}
