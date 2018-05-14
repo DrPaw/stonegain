@@ -1,0 +1,235 @@
+html{
+    width: 100%;
+    height: 100%;
+    background-color:#fbc795;
+}
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100%;
+}
+
+
+.about_box .close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    width: 4%;
+}
+
+.about_box{
+    padding: 2% 5% 5%;
+    min-height: 35%;
+    width: 80%;
+    margin: 0;
+    position: absolute;
+    top: 31%;
+    left: 50%;
+    z-index:6;
+    transform: translate(-50%, -50%);
+    background-color: #fafafa;
+}
+.about_box .about_prizes{
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    width: 38%;
+}
+.about_box p{
+    margin-top: 10%;
+    font-size: 1.5em;
+}
+
+.machine_wrapper{
+    width: 100%;
+}
+
+.machine_wrapper img{
+    width: 100%;
+}
+
+#machine_front{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.home_text{
+    right:0;
+    top: 8%;
+    width: 100%;
+    padding: 10%;
+}
+
+.home_text .title_img{
+    width: 100%;
+}
+
+.home_text .subtitle_img{
+    width: 100%;
+    margin-top: 3%;
+}
+
+.home_buttons_wrapper{
+    width: 100%;
+    text-align: center;
+}
+
+.home_buttons_wrapper .home_buttons{
+    width: 45%;
+    margin-top: 4%;
+}
+#start_btn{
+    margin-right: 5%;
+} 
+
+#zoomTarget{
+    position: absolute;
+    height: 37%;
+    width: 73%;
+    top: 37%;
+    background: transparent;
+    left: 13%;
+}
+
+#prizeTarget{
+    position: absolute;
+    height: 30%;
+    width: 33%;
+    top: 64%;
+    background: transparent;
+    left: 9%;
+}
+
+#claw_img{
+
+    position:absolute;
+    
+    z-index:3;
+}
+#mystery_ball{
+    position:absolute;
+    z-index: 1;
+    width: 5%;
+    left: 24%;
+    bottom: 26%;
+}
+.prizes{
+    position: absolute;
+    z-index: 1;
+    width: 48% !important;
+    left: 35%;
+    bottom: 28%;
+}
+#claw_wrapper{
+    position: absolute;
+    z-index: 2;
+    width: 11%;
+    top: 43.3%;
+    left: 18%;
+    height: 55%;
+}
+#game_button_before, #game_button_after{
+    position: absolute;
+    width: 9%;
+    top: 72%;
+    left: 46.5%;
+    cursor: pointer;
+    z-index: 3;
+}
+#game_button_after{
+    top: 72.5%;
+}
+.overlay{
+    background-color: rgba(0,0,0,0.4);
+    position:absolute;
+    width: 200vw;
+    height: 150vh;
+    left: -100vw;
+    top: -50vh;
+    z-index: 5;
+}
+.instructions{
+    z-index: 6;
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+#instruction_arrow_1{
+    position: absolute;
+    z-index: 6;
+    top: 54%;
+    left: 54%;
+    width: 4%;
+}
+#instruction_arrow_2{
+    position: absolute;
+    z-index: 6;
+    top: 67%;
+    left: 50%;
+    width: 4%;
+}
+#instructions_1{
+    top: 57%;
+    left: 23%;
+}
+
+
+#instructions_2{
+    top: 62%;
+    left: 55%;
+}
+.congratulations_content{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    color: white;
+    padding-top: 43%;
+    top: 0;
+    z-index: 7;
+    font-size: 4em;
+    font-weight: lighter;
+}
+
+.congratulations_content label{
+    font-weight: lighter;
+}
+
+.congratulations_content input{
+    width: 60%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+}
+
+.congratulations{
+    width: 50%;
+    margin-top: 2%;
+}
+
+.ball_image{
+    width: 20%;
+    transform: translate(0,-100vh);
+}
+
+.submit{
+    width: 45%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+#thankyou p{
+    font-size: 0.5em;
+}
+
+.social img{
+    width: 10%;
+}

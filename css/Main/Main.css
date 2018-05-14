@@ -1,0 +1,438 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100%;
+}
+
+.page_1_content{
+    width: 1200px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about_box .close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    width: 4%;
+}
+
+.about_box{
+    padding: 2% 5% 5%;
+    height: 80%;
+    width: 60%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index:6;
+    transform: translate(-50%, -50%);
+    background-color: #fafafa;
+}
+.about_box .about_prizes{
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    width: 38%;
+}
+.about_box p{
+    margin-top: 10%;
+}
+
+.machine_wrapper{
+    width: 51%;
+}
+
+.machine_wrapper img{
+    width: 100%;
+}
+
+#machine_front{
+    width: 51%;
+    position: absolute;
+    z-index: 2;
+}
+
+.home_text{
+    position: absolute;
+    right:0;
+    top: 8%;
+    width: 55%;
+}
+
+.home_text .title_img{
+    width: 100%;
+}
+
+.home_text .subtitle_img{
+    width: 100%;
+    margin-top: 3%;
+}
+
+.home_buttons_wrapper{
+    width: 100%;
+    text-align: center;
+}
+
+.home_buttons_wrapper .home_buttons{
+    width: 45%;
+    display: block;
+    margin-left: 27.5%;
+}
+.home_buttons.start{
+    margin-top: 10%;
+}
+
+.home_buttons.about{
+    margin-top: 5%;
+}
+
+#zoomTarget{
+    position: absolute;
+    height: 65%;
+    width: 25%;
+    top: 5%;
+    background: transparent;
+    left: 13%;
+}
+
+#prizeTarget{
+    position: absolute;
+    height: 44%;
+    width: 25%;
+    top: 53%;
+    background: transparent;
+    left: 9%;
+}
+
+#claw_img{
+
+    position:absolute;
+    
+    z-index:3;
+}
+#mystery_ball{
+    position:absolute;
+    z-index: 1;
+    width: 5%;
+    left: 11.5%;
+    bottom: 35%;
+}
+.prizes{
+    position: absolute;
+    z-index: 1;
+    width: 24% !important;
+    left: 18%;
+    bottom: 47%;
+}
+#claw_wrapper{
+    position: absolute;
+    z-index:2;
+    width: 6%;
+    top: 8%;
+    left: 10%;
+    height: 55%;
+}
+#game_button_before, #game_button_after{
+    position: absolute;
+    width: 6%;
+    top: 54%;
+    left: 22.5%;
+    cursor: pointer;
+    z-index: 3;
+}
+#game_button_after{
+    top: 54.5%;
+}
+.overlay{
+    background-color: rgba(0,0,0,0.4);
+    position:absolute;
+    width: 200vw;
+    height: 150vh;
+    left: -100vw;
+    top: -50vh;
+    z-index: 5;
+}
+.instructions{
+    z-index: 6;
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#instruction_arrow_1{
+    position: absolute;
+    z-index: 6;
+    top: 22%;
+    left: 30%;
+    width: 4%;
+}
+#instruction_arrow_2{
+    position: absolute;
+    z-index: 6;
+    top: 45%;
+    left: 19%;
+    width: 3%;
+}
+#instructions_1{
+    top: 30%;
+    left: 12%;
+}
+
+
+#instructions_2{
+    top: 34%;
+    left: 22%;
+}
+.congratulations_content{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    color: white;
+    font-size: 4em;
+    font-weight: lighter;
+}
+
+.congratulations_content label{
+    font-weight: lighter;
+}
+
+.congratulations_content input{
+    width: 60%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+}
+
+.congratulations{
+    width: 50%;
+    margin-top: 2%;
+}
+
+.ball_image{
+    width: 20%;
+    transform: translate(0,-100vh);
+}
+
+.submit{
+    width: 20%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+#thankyou p{
+    font-size: 0.3em;
+}
+
+.social img{
+    width: 5%;
+}
+
+.margin-left-230{
+    margin-left: 230px;
+}
+
+.backgroundcolor-admin{
+    background-color: #ecf0f5;
+}
+
+.sub-header{
+    background-color: #7eafad;
+}
+
+.padding15{
+    padding: 15px;
+}
+
+.float-right{
+    float: right;
+}
+
+.dropdown-toggle{
+    color: #fff;
+}
+
+.col-padding-0{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.title{
+    font-size: -webkit-xxx-large;
+    padding-top: 50px;
+}
+
+.line-padding-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.sub-border{
+    border: 1px solid #c7c7c7;
+}
+
+.sub-padding{
+    padding: 20px;
+}
+
+.col-padding-10{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col-padding-5{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.label-height{
+    height: 45px;
+}
+
+.input-border{
+    border-radius: 10px;
+}
+
+.font-size-xlarge{
+    font-size: x-large;
+}
+
+.font-size-medium{
+    font-size: medium;
+}
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+
+.padding-left-10{
+    padding-left: 10px;
+}
+
+.padding-top-10{
+    padding-top: 10px;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #cccc;
+}
+
+.font-color-user{
+    color: #bf983b;
+}
+
+.font-size-14{
+    font-size: 14px;
+}
+
+.sub-height{
+    height: 266px;
+}
+
+.no-history{
+    text-align: center;
+    padding-top: 100px;
+}
+
+.sidebar-height{
+    height: 180px;
+}
+
+.sidebar-header{
+    padding-top: 35px;
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+.border-right{
+    border-right: 1px solid #ccc;
+}
+
+.padding-top-50{
+    padding-top: 50px !important;
+}
+
+.no-record{
+    text-align: center;
+    padding-bottom: 150px !important;
+}
+
+.data-table{
+    margin-top: 20px;
+}
+
+.font-size-large{
+    font-size: large;
+}
+
+.col-padding-50{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.search-bar{
+    background-color: #64a09b;
+    color: #fff;
+}
+
+.line-padding-10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sub-border-gray{
+    border: 1px solid #ccc;
+}
+
+.border-bottom-black{
+    border-bottom: 3px solid #000;
+}
+
+.quick-seller{
+    font-style: italic;
+    background-color: #76d88b;
+    border-radius: 8px;
+    max-width: 100px;
+    color: #fff;
+}
+
+.verification{
+    background-color: #f1bd2d;
+    border-radius: 8px;
+    max-width: 260px;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.line-padding-0{
+    padding-top: 0pc;
+    padding-bottom: 0px;
+}
+ 
+.margintop-55{
+    margin-top: 55px;
+}
+
+/* Add padding to container elements */
+.container1 {
+    padding: 16px;
+    background-color: aliceblue;
+}

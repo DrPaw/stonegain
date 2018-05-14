@@ -1,0 +1,498 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100%;
+}
+
+.page_1_content{
+    width: 1200px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about_box .close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    width: 4%;
+}
+
+.about_box{
+    padding: 2% 5% 5%;
+    height: 80%;
+    width: 60%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index:6;
+    transform: translate(-50%, -50%);
+    background-color: #fafafa;
+}
+.about_box .about_prizes{
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    width: 38%;
+}
+.about_box p{
+    margin-top: 10%;
+}
+
+.machine_wrapper{
+    width: 51%;
+}
+
+.machine_wrapper img{
+    width: 100%;
+}
+
+#machine_front{
+    width: 51%;
+    position: absolute;
+    z-index: 2;
+}
+
+.home_text{
+    position: absolute;
+    right:0;
+    top: 8%;
+    width: 55%;
+}
+
+.home_text .title_img{
+    width: 100%;
+}
+
+.home_text .subtitle_img{
+    width: 100%;
+    margin-top: 3%;
+}
+
+.home_buttons_wrapper{
+    width: 100%;
+    text-align: center;
+}
+
+.home_buttons_wrapper .home_buttons{
+    width: 45%;
+    display: block;
+    margin-left: 27.5%;
+}
+.home_buttons.start{
+    margin-top: 10%;
+}
+
+.home_buttons.about{
+    margin-top: 5%;
+}
+
+#zoomTarget{
+    position: absolute;
+    height: 65%;
+    width: 25%;
+    top: 5%;
+    background: transparent;
+    left: 13%;
+}
+
+#prizeTarget{
+    position: absolute;
+    height: 44%;
+    width: 25%;
+    top: 53%;
+    background: transparent;
+    left: 9%;
+}
+
+#claw_img{
+
+    position:absolute;
+    
+    z-index:3;
+}
+#mystery_ball{
+    position:absolute;
+    z-index: 1;
+    width: 5%;
+    left: 11.5%;
+    bottom: 35%;
+}
+.prizes{
+    position: absolute;
+    z-index: 1;
+    width: 24% !important;
+    left: 18%;
+    bottom: 47%;
+}
+#claw_wrapper{
+    position: absolute;
+    z-index:2;
+    width: 6%;
+    top: 8%;
+    left: 10%;
+    height: 55%;
+}
+#game_button_before, #game_button_after{
+    position: absolute;
+    width: 6%;
+    top: 54%;
+    left: 22.5%;
+    cursor: pointer;
+    z-index: 3;
+}
+#game_button_after{
+    top: 54.5%;
+}
+.overlay{
+    background-color: rgba(0,0,0,0.4);
+    position:absolute;
+    width: 200vw;
+    height: 150vh;
+    left: -100vw;
+    top: -50vh;
+    z-index: 5;
+}
+.instructions{
+    z-index: 6;
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#instruction_arrow_1{
+    position: absolute;
+    z-index: 6;
+    top: 22%;
+    left: 30%;
+    width: 4%;
+}
+#instruction_arrow_2{
+    position: absolute;
+    z-index: 6;
+    top: 45%;
+    left: 19%;
+    width: 3%;
+}
+#instructions_1{
+    top: 30%;
+    left: 12%;
+}
+
+
+#instructions_2{
+    top: 34%;
+    left: 22%;
+}
+.congratulations_content{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    color: white;
+    font-size: 4em;
+    font-weight: lighter;
+}
+
+.congratulations_content label{
+    font-weight: lighter;
+}
+
+.congratulations_content input{
+    width: 60%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+}
+
+.congratulations{
+    width: 50%;
+    margin-top: 2%;
+}
+
+.ball_image{
+    width: 20%;
+    transform: translate(0,-100vh);
+}
+
+.submit{
+    width: 20%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+#thankyou p{
+    font-size: 0.3em;
+}
+
+.social img{
+    width: 5%;
+}
+
+.title{
+    min-height: 185px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding-top: 65px;
+    font-size: -webkit-xxx-large;
+}
+
+.padding-left-10{
+    padding-left: 10px;
+}
+
+.margin-bottom-10{
+    margin-bottom:10px;
+}
+
+.font-size-xlarge{
+    font-size: x-large;
+}
+
+.label-height{
+    height: 45px;
+}
+
+.col-padding-10{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar-height{
+    height: 135px;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #cccccc;
+}
+
+.padding-top-10{
+    padding-top: 10px;
+}
+
+.padding-top-50{
+    padding-top: 50px;
+}
+
+.border-right{
+    border-right: 1px solid #cccccc;
+}
+
+.sidebar-header{
+    font-size: 17px;
+    color: #000000;
+}
+
+.sub-border{
+    border: 1px solid #000000;
+    padding: 0px;
+}
+
+.table-height{
+    height: 250px;
+}
+
+.padding10{
+    padding: 10px;
+}
+
+.sub-padding{
+    padding: 20px;
+}
+
+.sub-height{
+    height: 250px;
+}
+
+.col-padding-5{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.sub-border-gray{
+    border: 1px solid #cccccc;
+}
+
+.col-padding-0{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.line-padding-0{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.line-padding-10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.line-padding-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.float-right{
+    float: right;
+}
+
+.no-record{
+    text-align: center;
+}
+
+.sub-header{
+   background-color: #5a7d72 !important;
+}
+
+a {
+    color: #eef1f5;
+}
+
+.font-color-user{
+    color: #ca9047;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+
+.search-bar{
+    background-color: #6fa297;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.data-table{
+   margin-top: 35px; 
+}
+
+.background-color{
+    background-color: #585454 !important;
+    min-height: 220px;
+}
+
+.padding-top-95{
+    padding-top: 95px !important;
+}
+
+.no-history{
+    text-align: center;
+    padding-top: 85px;
+}
+
+.quick-seller{
+    border-radius: 8px;
+    color: white;
+    background-color: #3bb74a;
+    width: 95px;
+}
+
+.quick-seller{
+    border-radius: 8px;
+    color: white;
+    background-color: #3bb74a;
+    width: 95px;
+    margin-bottom: 5px;
+}
+
+.verification {
+    border-radius: 8px;
+    color: white;
+    background-color: #d0a838;
+    width: 200px;
+}
+
+.col-padding-50{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  background: #f1f1f1f1;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  padding: 80px;
+  text-align: center;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -30px;
+  padding: 16px;
+  color: #888;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  position: absolute;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+  text-align: center;
+  padding: 20px;
+  background: #ddd;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Add an italic font style to all quotes */
+q {font-style: italic;}
+
+/* Add a blue color to the author */
+.author {color: cornflowerblue;}

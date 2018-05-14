@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase    /stonegain/
+RewriteCond $1 !^(index\.php|images|files|css|js|fonts|robots\.txt)
+RewriteRule ^(.*)$ /stonegain/index.php/$1 [L]

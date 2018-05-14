@@ -1,23 +1,26 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+class Access extends BaseController
+{
 
-class Access extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-    public function login() {
+    public function login()
+    {
         $data = array();
 
         if ($_POST) {
 
-
             $sql = "SELECT user.* FROM user "
-                    . "WHERE username = ? AND password = SHA2(CONCAT(salt, ?),512);";
+                . "WHERE username = ? AND password = SHA2(CONCAT(salt, ?),512);";
 
             $user = $this->db->query($sql, array(
-                        $this->input->post('username'),
-                        $this->input->post('password')
-                    ))->result_array();
+                $this->input->post('username'),
+                $this->input->post('password'),
+            ))->result_array();
 
             if (count($user)) {
                 if (count($user)) {
@@ -30,17 +33,14 @@ class Access extends CI_Controller {
                     if ($result[0]['active'] == '1') {
 
                         $session_data = array(
-                           'user_id' => $result[0]['user_id'],
-                           'username' => $result[0]['username']
-                            );
+                            'user_id' => $result[0]['user_id'],
+                            'username' => $result[0]['username'],
+                        );
                         $user_id = $result[0]['user_id'];
 
-                        $this->session->set_userdata($session_data);
+                        $this->session->set_userdata("user", $session_data);
 
-                        if ($result[0]["completed"] == 1) {
-
-                            redirect("userList/current_user/$user_id", "refresh");
-                        } 
+                        redirect("main", "refresh");
                     } else {
                         redirect("access/not_approved", "refresh");
                     }
@@ -52,12 +52,13 @@ class Access extends CI_Controller {
             }
         }
 
-        $this->load->view('Main/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('access/login');
-        $this->load->view('Main/footer');
+        $this->load->view('footer');
     }
 
-    public function register() {
+    public function register()
+    {
 
         $data = array();
 
@@ -68,8 +69,8 @@ class Access extends CI_Controller {
             $sql = "SELECT * FROM user WHERE username = ?";
 
             $user = $this->db->query($sql, array(
-                        $this->input->post('username')
-                    ))->result_array();
+                $this->input->post('username'),
+            ))->result_array();
 
             if (!empty($user)) {
                 $data["error"] = "username already exists";
@@ -103,18 +104,20 @@ class Access extends CI_Controller {
             }
         }
 
-        $this->load->view('Main/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('access/register');
-        $this->load->view('Main/footer');
+        $this->load->view('footer');
     }
 
-    public function logout() {
-// 
+    public function logout()
+    {
+//
         $this->session->sess_destroy();
         redirect('Main');
     }
 
-    public function not_approved() {
+    public function not_approved()
+    {
         $this->load->view('access/not_approved');
     }
 

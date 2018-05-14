@@ -39,7 +39,7 @@ class UserList extends CI_Controller {
 
         $this->page_data["user"] = $user[0];
 
-        $this->load->view("Main/header", $this->page_data);
+        $this->load->view("header", $this->page_data);
         $this->load->view("Main/user/details");
         $this->load->view("Main/footer");
     }

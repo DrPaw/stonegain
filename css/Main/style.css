@@ -104,7 +104,7 @@ h4,
 h5,
 h6,
 a {
-    margin: 0 0 10px;
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
 a {
@@ -3098,7 +3098,6 @@ table.main-table {
 table.main-table th,
 tr1,
 td {
-    border: 1px solid #d6d4d4;
     color: #333;
     font-family: Montserrat;
     font-size: 15px;
@@ -4087,7 +4086,7 @@ a .confirm-middle {
     padding-bottom: 95px;
 }
 .about-top-area {
-    margin-top: 95px;
+    margin-top: 55px;
 }
 .abt-image {
     overflow: hidden;
@@ -4137,7 +4136,7 @@ a .confirm-middle {
     margin-top: 30px;
 }
 .abt-middle-content {
-    margin-top: 90px;
+    margin-top: 55px;
 }
 /*----------------------------------------*/
 /* 36. counter up
