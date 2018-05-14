@@ -40,8 +40,8 @@ class UserList extends CI_Controller {
         $this->page_data["user"] = $user[0];
 
         $this->load->view("header", $this->page_data);
-        $this->load->view("Main/user/details");
-        $this->load->view("Main/footer");
+        $this->load->view("main/user/details");
+        $this->load->view("footer");
     }
     
     public function add() {
@@ -206,9 +206,7 @@ class UserList extends CI_Controller {
 
         $this->page_data["user"] = $user[0];
 
-        $this->load->view("Main/header", $this->page_data);
-        $this->load->view("Main/user/details");
-        $this->load->view("Main/footer"); 
+        redirect("userlist/current_user/".$user_id, "refresh");
     }
     
     public function hash($password) {

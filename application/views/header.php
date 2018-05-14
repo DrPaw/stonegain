@@ -74,7 +74,7 @@
                                     <a href="<?=base_url()?>wallet" class="dropdown-toggle">Wallet</a>
                                 </li>
                                 <li class="dropdown user user-menu">
-                                    <a href="<?=base_url()?>userList/current_user/" class="dropdown-toggle">Account</a>
+                                    <a href="<?=base_url()?>userList/current_user/<?= $this->session->userdata("user")["user_id"] ?>" class="dropdown-toggle">Account</a>
                                 </li>
                             </ul>
                         </div>
