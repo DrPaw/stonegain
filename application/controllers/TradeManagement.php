@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TradeManagement extends CI_Controller {
+class TradeManagement extends BaseController {
 
     public function __construct() {
         parent::__construct();
@@ -11,9 +11,9 @@ class TradeManagement extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view("header", $this->page_data);
+        $this->load->view("main/header", $this->page_data);
         $this->load->view("Main/trademanagement");
-        $this->load->view("footer");
+        $this->load->view("main/footer");
     }
 
 }

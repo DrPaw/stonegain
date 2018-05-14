@@ -52,9 +52,9 @@ class Access extends BaseController
             }
         }
 
-        $this->load->view('header', $data);
+        $this->load->view('main/header', $data);
         $this->load->view('access/login');
-        $this->load->view('footer');
+        $this->load->view('main/footer');
     }
 
     public function register()
@@ -104,9 +104,9 @@ class Access extends BaseController
             }
         }
 
-        $this->load->view('header', $data);
+        $this->load->view('main/header', $data);
         $this->load->view('access/register');
-        $this->load->view('footer');
+        $this->load->view('main/footer');
     }
 
     public function logout()

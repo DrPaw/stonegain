@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserList extends CI_Controller {
+class UserList extends BaseController {
 
     public function __construct() {
         parent::__construct();
@@ -39,9 +39,9 @@ class UserList extends CI_Controller {
 
         $this->page_data["user"] = $user[0];
 
-        $this->load->view("header", $this->page_data);
+        $this->load->view("main/header", $this->page_data);
         $this->load->view("main/user/details");
-        $this->load->view("footer");
+        $this->load->view("main/footer");
     }
     
     public function add() {
