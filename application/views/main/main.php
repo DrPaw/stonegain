@@ -1,29 +1,14 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header col-lg-12 col-md-12 col-xs-12 col-sm-12 background-color">
-                    <!-- Slideshow container -->
-                    <div class="slideshow-container">
-
-                      <!-- Full-width images with number and caption text -->
-                      <div class="mySlides fade col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                        <div class="text font-size-xlarge">STRENGTH IN NUMBERS</div>
+                    <div id="slideshow">
+                        <div class="slide-wrapper">
+                            <div class="slide">
+                                <h3 class="slide-number">STRENGTH IN <span style="color: #98eae7">NUMBERS</span></h3>
+                                <div class="slide-word">Magic Internet Money</div>
+                                <div class="slide-word">You can't go wrong with the classic</div>
+                            </div>
+                        </div>
                       </div>
-
-                      <div class="mySlides fade"></div>
-
-                      <div class="mySlides fade"></div>
-
-                      <!-- Next and previous buttons -->
-                      <a class="prev-front padding-top-95" onclick="plusSlides(-1)">&#10094;</a>
-                      <a class="next-front padding-top-95" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
-                    <br>
-
-                    <!-- The dots/circles -->
-                    <div style="text-align:center; margin-top:125px">
-                      <span class="dot" onclick="currentSlide(1)"></span>
-                      <span class="dot" onclick="currentSlide(2)"></span>
-                      <span class="dot" onclick="currentSlide(3)"></span>
-                    </div>
                 </section>
 
                 <!-- Main content -->

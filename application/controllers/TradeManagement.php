@@ -16,4 +16,10 @@ class TradeManagement extends BaseController {
         $this->load->view("main/footer");
     }
 
+    public function sell() {
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("Main/trademanagement");
+        $this->load->view("main/footer");
+    }
+
 }
