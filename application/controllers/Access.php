@@ -6,6 +6,8 @@ class Access extends BaseController
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model("Email_model");
     }
 
     public function login()
@@ -25,12 +27,10 @@ class Access extends BaseController
             if (count($user)) {
                 if (count($user)) {
                     $result = $user;
-                    $result[0]["active"] = 1;
-                    $result[0]["completed"] = 1;
                 }
 
                 if ($result[0]['deleted'] == '0') {
-                    if ($result[0]['active'] == '1') {
+                    if ($result[0]['verified'] == '1') {
 
                         $session_data = array(
                             'user_id' => $result[0]['user_id'],
@@ -42,7 +42,7 @@ class Access extends BaseController
 
                         redirect("main", "refresh");
                     } else {
-                        redirect("access/not_approved", "refresh");
+                        $data['error'] = 'Account has not been verified. Please verify your email to proceed.';
                     }
                 } else {
                     $data['error'] = 'Account deactivated';
@@ -85,6 +85,8 @@ class Access extends BaseController
             if (!$error) {
                 $hash = $this->hash($this->input->post("password"));
 
+                $code = rand(11111111, 99999999);
+
                 $data = array(
                     "username" => $this->input->post("username"),
                     "email" => $this->input->post("email"),
@@ -96,9 +98,12 @@ class Access extends BaseController
                     "referral_link" => $this->input->post("referral_link"),
                     "password" => $hash["password"],
                     "salt" => $hash["salt"],
+                    "code" => $code
                 );
 
                 $this->db->insert("user", $data);
+
+                $this->Email_model->verification_email($this->input->post("email"), $this->input->post("username"), $code);
 
                 redirect("Main", "refresh");
             }

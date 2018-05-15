@@ -8,6 +8,8 @@ class Main extends BaseController {
         parent::__construct();
         
         $this->page_data = array();
+
+        $this->load->model("Users_model");
     }
     
     public function index() {
@@ -38,6 +40,45 @@ class Main extends BaseController {
         $this->load->view("main/header");
         $this->load->view("main/faq");
         $this->load->view("main/footer");
+    }
+
+    function privacy(){
+        $this->load->view("main/header");
+        $this->load->view("main/privacy");
+        $this->load->view("main/footer");
+    }
+
+    function supported_currency(){
+        $this->load->view("main/header");
+        $this->load->view("main/supported_currency");
+        $this->load->view("main/footer");
+    }
+
+    function how(){
+        $this->load->view("main/header");
+        $this->load->view("main/how");
+        $this->load->view("main/footer");
+    }
+
+    function verify_user(){
+        if(empty($_GET["email"]) OR empty($_GET["code"])){
+            show_404();
+        } else {
+            $where = array(
+                "email" => $_GET["email"],
+                "code" => $_GET["code"]
+            );
+
+            $data = array(
+                "verified" => 1
+            );
+
+            $this->Users_model->update_where($where, $data);
+
+            $this->session->set_flashdata("verified", "completed");
+
+            redirect("access/login", "refresh");
+        }
     }
 
 }

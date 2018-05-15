@@ -3,6 +3,11 @@
      <div class="panel-heading font-size-xlarge">
         Register
     </div>
+        <?php if (isset($error)) { ?>
+            <div class="alert alert-danger alert-dismissable">
+                <?php echo $error; ?>
+            </div>
+        <?php }; ?>
     <div class='panel-body'>
         <form action="<?= base_url() ?>Access/register" method="post">
             <div class="input-group" style="width: 100%;">
@@ -49,11 +54,6 @@
                 <input type="submit" value='register' class="btn btn-default pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>
             </div>
          </form>
-        <?php if (isset($error)) { ?>
-            <div class="alert alert-danger alert-dismissable">
-                <?php echo $error; ?>
-            </div>
-        <?php }; ?>
     </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>

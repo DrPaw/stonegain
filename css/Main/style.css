@@ -5422,3 +5422,108 @@ p.success {
 p.error {
     color: red
 }
+
+.content-wrapper{
+    min-height : calc(100vh - 100px) !important;
+}
+
+.content-with-header {
+    height : calc(100vh - 100px - 200px) !important;
+}
+
+.full-height {
+    height : 100%;
+}
+
+.wallet-menu, .transaction-menu {
+    border-right : solid 1px #e3e3e3;
+}
+
+.wallet-menu>li {
+    height : 20%;
+    text-align : right;
+    border-bottom : solid 1px #e3e3e3;
+}
+
+.transaction-menu>li {
+    height : 50%;
+    text-align : right;
+    border-bottom : solid 1px #e3e3e3;
+}
+
+.wallet-menu>li>a {
+    height : 100%;
+    padding-right : 5%;
+    padding-top : 15%;
+    text-align : right;
+    color : black;
+}
+
+.transaction-menu>li>a {
+    height : 100%;
+    padding-right : 5%;
+    padding-top : 50%;
+    text-align : right;
+    color : black;
+}
+
+.wallet-menu>li.active,.transaction-menu>li.active {
+    border-right : solid 5px #7dafac;
+}
+
+.wallet-menu>li.active>a,.transaction-menu>li.active>a {
+    border : none;
+}
+
+.wallet-menu>li.active>a,.transaction-menu>li.active>a {
+    border : none !important;
+}
+
+.nav-tabs>li {
+    margin-bottom : -1.7px;
+}
+
+.wallet-table,.transaction-table {
+    border : solid 1px black;
+    margin-top : 2.5vh;
+}
+
+.transaction-table {
+    height : 80%;
+}
+
+.wallet-table>thead>tr>td{
+    border-bottom : solid 1px black;
+    padding : 2.5%;
+}
+
+.transaction-table>thead>tr>td{
+    border-bottom : solid 1px black;
+    padding : 1%;
+}
+
+.wallet-table>tbody>tr>td{
+    border : none;
+    padding : 2.5%;
+}
+
+.main-title {
+    font-size : 1em;
+}
+
+.dummy-title {
+    font-size : 0.8em;
+    color : transparent;
+    text-decoration: underline white;
+    margin-top: -1.5%;
+}
+
+.no-record {
+    text-align: center;
+    padding-bottom: 150px !important;
+    height: 50vh;
+}
+
+.no-record>td{
+    padding-top: 22vh !important;
+}

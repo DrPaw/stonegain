@@ -10,7 +10,7 @@ class TradeManagement extends BaseController {
         $this->page_data = array();
     }
 
-    public function index() {
+    public function buy() {
         $this->load->view("main/header", $this->page_data);
         $this->load->view("Main/trademanagement");
         $this->load->view("main/footer");

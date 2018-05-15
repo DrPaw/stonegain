@@ -76,6 +76,9 @@
                                 <li class="dropdown user user-menu">
                                     <a href="<?=base_url()?>userList/current_user/<?= $this->session->userdata("user")["user_id"] ?>" class="dropdown-toggle">Account</a>
                                 </li>
+                                <li class="dropdown user user-menu">
+                                    <a href="<?=base_url()?>access/logout/" class="dropdown-toggle">Logout</a>
+                                </li>
                             </ul>
                         </div>
                     <?php
@@ -112,18 +115,32 @@
                                 <a href="<?=base_url()?>main/terms" class="dropdown-toggle">Terms</a>
                             </li>
                             <li class="dropdown notifications-menu">
+                                <a href="<?=base_url()?>main/privacy" class="dropdown-toggle">Privacy</a>
+                            </li>
+                            <!-- <li class="dropdown notifications-menu">
+                                <a href="<?=base_url()?>main/supported_currency" class="dropdown-toggle">Supported Currencies</a>
+                            </li> -->
+                            <li class="dropdown notifications-menu">
+                                <a href="<?=base_url()?>main/how" class="dropdown-toggle">How it works</a>
+                            </li>
+                            <li class="dropdown notifications-menu">
                                 <a href="<?=base_url()?>main/faq" class="dropdown-toggle">FAQ</a>
                             </li>
                             <li class="dropdown notifications-menu">
                                 <a href="<?=base_url()?>main/contact" class="dropdown-toggle">Contact</a>
                             </li>
-                            <li class="dropdown tasks-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Buy</a>
-                            </li>
-                            <li class="dropdown user user-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Sell</a>
-                            </li>
-                            </li>
+                            <?php
+                            if($this->session->has_userdata("user")){
+                                ?>
+                                    <li class="dropdown tasks-menu">
+                                        <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Buy</a>
+                                    </li>
+                                    <li class="dropdown user user-menu">
+                                        <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Sell</a>
+                                    </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </nav>

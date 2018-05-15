@@ -5,7 +5,13 @@
                     <strong>&copy; 2016-2018 CoinCola All Rights Reserved.</strong>
                 </div>
                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
-                    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6"></div>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3"></div>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                        <div class="border-bottom">SUPPORTED CURRENCIES</div>
+                        <div>MYR</div>
+                        <div>USD</div>
+                        <div>SGD</div>
+                    </div>
                     <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
                         <div class="border-bottom">INTRODUCTION</div>
                         <div>About Us</div>
