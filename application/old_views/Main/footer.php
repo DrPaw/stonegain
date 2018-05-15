@@ -50,8 +50,8 @@
         <!-- Google map API js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-IIoucJ-70FQg6xZsORjQCUPHCVj9GV4"></script>
     <!-- Google map js -->
-    <script src="<?= site_url(); ?>js/Main/google-map.js"></script>
-    <script src="<?= site_url(); ?>js/Main/jquery.fancybox.js"></script>
-    <script src="<?= site_url(); ?>js/Main/functions.js"></script>
+    <script src="<?= site_url(); ?>js/main/google-map.js"></script>
+    <script src="<?= site_url(); ?>js/main/jquery.fancybox.js"></script>
+    <script src="<?= site_url(); ?>js/main/functions.js"></script>
     </body>
 </html>

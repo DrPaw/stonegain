@@ -8,14 +8,15 @@ class User extends CI_Controller {
         parent::__construct();
 
         $this->load->model("Users_model");
+        $this->load->model("User_crypto_model");
         
         $this->page_data = array();
     }
 
     public function details($user_id) {
-        $this->load->view("Main/header", $this->page_data);
-        $this->load->view("Main/user_details");
-        $this->load->view("Main/footer");
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/user_details");
+        $this->load->view("main/footer");
     }
 
     public function profile() {
@@ -95,5 +96,43 @@ class User extends CI_Controller {
         $this->page_data["user"] = $user[0];
 
         redirect("user/profile/", "refresh");
+    }
+
+    public function get_user_crypto_data(){
+        if($_POST){
+            $input = $this->input->post();
+
+            $where = array(
+                "user_crypto_id" => $input["user_crypto_id"]
+            );
+
+            $this->page_data["user_crypto"] = $this->User_crypto_model->get_where($where);
+
+            $this->load->view("main/crypto_refresh_details", $this->page_data);
+
+        } else {
+            show_404();
+        }
+    }
+
+    public function get_user_crypto_price(){
+        if($_POST){
+            $input = $this->input->post();
+
+            $where = array(
+                "user_crypto_id" => $input["user_crypto_id"]
+            );
+
+            $user_crypto = $this->User_crypto_model->get_where($where);
+
+            if(!empty($user_crypto)){
+                die($user_crypto[0]["btc_price"]);
+            } else {
+                die("0");
+            }
+
+        } else {
+            show_404();
+        }
     }
 }

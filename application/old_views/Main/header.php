@@ -109,16 +109,16 @@
                     <div class="navbar-custom-menu col-xs-6">
                         <ul class="nav navbar-nav float-right">
                             <li class="dropdown notifications-menu">
-                                <a href="<?= site_url('Main/about'); ?>">AboutUs</a>
+                                <a href="<?= site_url('main/about'); ?>">AboutUs</a>
                             </li>
                             <li class="dropdown notifications-menu">
-                                <a href="<?= site_url('Main/terms'); ?>">Terms</a>
+                                <a href="<?= site_url('main/terms'); ?>">Terms</a>
                             </li>
                             <li class="dropdown notifications-menu">
-                                <a href="<?= site_url('Main/faq'); ?>">FAQ</a>
+                                <a href="<?= site_url('main/faq'); ?>">FAQ</a>
                             </li>
                             <li class="dropdown notifications-menu">
-                                <a href="<?= site_url('Main/contact'); ?>">Contact</a>
+                                <a href="<?= site_url('main/contact'); ?>">Contact</a>
                             </li>
                             <li class="dropdown tasks-menu">
                                 <a href="<?= base_url() ?>trade_management" class="dropdown-toggle">Buy</a>

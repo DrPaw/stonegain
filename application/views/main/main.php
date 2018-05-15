@@ -16,9 +16,13 @@
                     <div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-header">
                         <div class="main-header navbar-custom-menu col-xs-6">
                             <!-- Logo -->
-                            <a href="index2.html" class="logo" style="border-right: 0px">
+                            <a href="<?=base_url()?>user_listing/buy" class="logo" style="border-right: 0px">
                                 <!-- logo for regular state and mobile devices -->
                                 <span class="logo-lg"><b>Quick Buy</b></span>
+                            </a>
+                            <a href="<?=base_url()?>user_listing/sell" class="logo" style="border-right: 0px">
+                                <!-- logo for regular state and mobile devices -->
+                                <span class="logo-lg"><b>Quick Sell</b></span>
                             </a>
                         </div>
                     </div>
@@ -89,25 +93,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th class="font-weight-400">
-                                                <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
-                                            </th>
-                                            <th class="font-weight-400" style="padding-top:16px">
-                                                <div>hongbin</div>
-                                                <div class="quick-seller col-padding-10">quick seller</div>
-                                                <div class="verification col-padding-10" colspan="2">Buyer account verification required</div>
-                                            </th>
-                                            <th class="font-weight-400" style="padding-top:16px">
-                                                <div>Trade 429|Rating 98%</div>
-                                                <div class="font-color-user">Average Release Time: 6 mins</div>
-                                            </th>
-                                            <th class="font-weight-400" style="padding-top:16px">Bank Transfer</th>
-                                            <th class="font-weight-400" style="padding-top:16px">5000-50000 MYR</th>
-                                            <th class="font-weight-400 price-color" style="padding-top:16px">56900 MYR</th>
-                                            <th style="padding-top:16px"><input type="submit" class="btn btn-info pull-center line-padding-10 search-btn" value="BUY"></th>
-                                        </tr>
-                                        <tr>
+                                        <?php
+                                        foreach($user_listing as $row){
+                                            ?>
+                                            <tr>
+                                                <th class="font-weight-400">
+                                                    <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
+                                                </th>
+                                                <th class="font-weight-400" style="padding-top:16px">
+                                                    <div><?= $row["username"]?></div>
+                                                </th>
+                                                <th class="font-weight-400" style="padding-top:16px">
+                                                    <div>Trade 429|Rating 98%</div>
+                                                    <div class="font-color-user">Average Release Time: 6 mins</div>
+                                                </th>
+                                                <th class="font-weight-400" style="padding-top:16px"><?= $row["payment_method"] ?></th>
+                                                <th class="font-weight-400" style="padding-top:16px"><?= $row["limit_from"]?>-<?= $row["limit_to"]?> MYR</th>
+                                                <th class="font-weight-400 price-color" style="padding-top:16px"><?= $row["price_after"]?> MYR</th>
+                                                <th style="padding-top:16px"><a href="<?= base_url()?>user_listing/view_listing/<?= $row["user_listing_id"]?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY</a></th>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                        <!-- <tr>
                                             <th class="font-weight-400">
                                                 <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
                                             </th>
@@ -159,7 +167,7 @@
                                             <th class="font-weight-400" style="padding-top:16px">30000-100000 MYR</th>
                                             <th class="font-weight-400 price-color" style="padding-top:16px">56900 MYR</th>
                                             <th style="padding-top:16px"><input type="submit" class="btn btn-info pull-center line-padding-10 search-btn" value="BUY"></th>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

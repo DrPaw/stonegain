@@ -1,6 +1,6 @@
 /*
 function add_to_cart(product_id,product_name,options){
-    $.post(site_url+'Main/add_to_cart',
+    $.post(site_url+'main/add_to_cart',
             {
                 product_id : product_id,
                 product_name : product_name,
@@ -14,7 +14,7 @@ function add_to_cart(product_id,product_name,options){
 */
 
 function delete_cart(index){
-    $.post(site_url+'Main/delete_cart',
+    $.post(site_url+'main/delete_cart',
     {
         index : index
     },

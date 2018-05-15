@@ -10,10 +10,14 @@ class Main extends BaseController {
         $this->page_data = array();
 
         $this->load->model("Users_model");
+        $this->load->model("User_listing_model");
     }
     
     public function index() {
-        $this->load->view("main/header");
+
+        $this->page_data["user_listing"] = $this->User_listing_model->get_index();
+
+        $this->load->view("main/header", $this->page_data);
         $this->load->view("main/main");
         $this->load->view("main/footer");
     }

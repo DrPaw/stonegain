@@ -6,8 +6,7 @@
         </div>
     <?php }; ?>
     <?php if (!empty($this->session->flashdata("verified"))) { ?>
-        <div class="alert alert-success
-            Your account has been verified. Please login to proceed. alert-dismissable col-xs-12 col-sm-12 col-md- col-lg-12">
+        <div class="alert alert-success alert-dismissable col-xs-12 col-sm-12 col-md- col-lg-12">
             Your account has been verified. Please login to proceed.
         </div>
     <?php }; ?>

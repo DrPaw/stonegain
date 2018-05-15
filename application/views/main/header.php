@@ -27,6 +27,10 @@
         <link rel="stylesheet" href="<?=base_url()?>css/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?=base_url()?>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+        <!-- jQuery 3 -->
+        <script src="<?=base_url()?>js/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="<?=base_url()?>js/bower_components/jquery-ui/jquery-ui.min.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -136,10 +140,10 @@
                             if($this->session->has_userdata("user")){
                                 ?>
                                     <li class="dropdown tasks-menu">
-                                        <a href="<?= base_url() ?>trade_management/buy" class="dropdown-toggle">Buy</a>
+                                        <a href="<?= base_url() ?>user_listing/buy" class="dropdown-toggle">Buy</a>
                                     </li>
                                     <li class="dropdown user user-menu">
-                                        <a href="<?= base_url() ?>trade_management/sell" class="dropdown-toggle">Sell</a>
+                                        <a href="<?= base_url() ?>user_listing/sell" class="dropdown-toggle">Sell</a>
                                     </li>
                                 <?php
                             }

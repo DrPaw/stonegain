@@ -11,9 +11,9 @@ class TradeManagement extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view("Main/header", $this->page_data);
-        $this->load->view("Main/trade_management/main");
-        $this->load->view("Main/footer");
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/trade_management/main");
+        $this->load->view("main/footer");
     }
 
 }
