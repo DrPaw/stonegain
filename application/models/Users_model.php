@@ -31,8 +31,10 @@ class Users_model extends CI_Model {
             "email",
             "country",
             "bank_name",
-            "bank_acount_number",
-            "password"
+            "bank_account_number",
+            "password",
+            "preferred_time",
+            "preferred_threshold",
         );
 
         $error = false;

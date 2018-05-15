@@ -673,3 +673,7 @@ a:link{
     padding: 7.5%;
     color: black;
 }
+
+.content-header {
+    padding : 15px 15px 0 15px;
+}

@@ -4,7 +4,7 @@
             <div class="box box-default">
                 <div class="box-header">Add User</div>
                 <div class="box-body">
-                    <form id="user_form" method="POST" action="<?php echo site_url("userList/add"); ?>" >
+                    <form id="user_form" method="POST" action="<?php echo site_url("admin_useradd"); ?>" >
                         <div class="alert alert-danger hidden user_form_alert" id="form_alert">
 
                         </div>

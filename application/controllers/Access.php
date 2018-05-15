@@ -8,6 +8,7 @@ class Access extends BaseController
         parent::__construct();
 
         $this->load->model("Email_model");
+
     }
 
     public function login()
@@ -53,13 +54,58 @@ class Access extends BaseController
         }
 
         $this->load->view('main/header', $data);
-        $this->load->view('access/login');
+        $this->load->view('main/login');
         $this->load->view('main/footer');
+    }
+
+    public function admin_login()
+    {
+        $data = array();
+
+        if($this->session->has_userdata("admin")){
+            redirect('Admin',"refresh");
+        }
+        
+        if($_POST){
+            $sql = "SELECT * FROM admin "
+                . "WHERE username = ? AND password = SHA2(CONCAT(salt, ?),512);";
+
+            $admin = $this->db->query($sql, array(
+                $this->input->post('username'),
+                $this->input->post('password'),
+            ))->result_array();
+            
+            if (count($admin)) {
+                if (count($admin)) {
+                    $result = $admin;
+                }
+
+                if ($result[0]['deleted'] == '0') {
+
+                        $session_data = array(
+                            'admin_id' => $result[0]['admin_id'],
+                            'username' => $result[0]['username'],
+                        );
+                        $admin_id = $result[0]['admin_id'];
+
+                        $this->session->set_userdata("admin", $session_data);
+
+                        redirect("dashboard", "refresh");
+                } else {
+                    $data['error'] = 'Account deactivated';
+                }
+            } else {
+                $data['error'] = 'Invalid username and password';
+            }
+        }
+
+        $this->load->view('access/header', $data);
+        $this->load->view('access/login');
+        $this->load->view('access/footer');
     }
 
     public function register()
     {
-
         $data = array();
 
         if ($_POST) {
@@ -110,7 +156,7 @@ class Access extends BaseController
         }
 
         $this->load->view('main/header', $data);
-        $this->load->view('access/register');
+        $this->load->view('main/register');
         $this->load->view('main/footer');
     }
 

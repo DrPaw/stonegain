@@ -40,7 +40,7 @@
             </div>
             <div class="input-group" style='margin-top : 2%; width: 100%;'>
                 <span class='input-group-addon' style='vertical-align:top; width:200px; text-align: left;'>Preferred Online/ Active Time</span>
-                <input name='preferred_time' type="text" class="form-control" placeholder='preferred online / active time'/>
+                <input name='preferred_time' type="time" class="form-control" placeholder='preferred online / active time'/>
             </div>
              <div class="input-group" style='margin-top : 2%; width: 100%;'>
                 <span class='input-group-addon' style='vertical-align:top; width:200px; text-align: left;'>Preferred threshold</span>

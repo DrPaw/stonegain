@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
 
     public function index() {
         $this->load->view("admin/header", $this->page_data);
-        $this->load->view("admin/Dashboard/main");
+        //$this->load->view("admin/dashboard");
         $this->load->view("admin/footer");
     }
 

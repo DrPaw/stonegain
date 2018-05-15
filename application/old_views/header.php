@@ -99,10 +99,10 @@
                                 <a href="#" class="dropdown-toggle">Contact</a>
                             </li>
                             <li class="dropdown tasks-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Buy</a>
+                                <a href="<?= base_url() ?>trade_management" class="dropdown-toggle">Buy</a>
                             </li>
                             <li class="dropdown user user-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Sell</a>
+                                <a href="<?= base_url() ?>trade_management" class="dropdown-toggle">Sell</a>
                             </li>
                         </ul>
                     </div>

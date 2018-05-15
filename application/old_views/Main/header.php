@@ -86,10 +86,10 @@
                             <div class="navbar-custom-menu col-xs-6">
                                 <ul class="nav navbar-nav float-right">
                                     <li class="dropdown messages-menu">
-                                        <a href="<?= base_url() ?>Access/login" class="dropdown-toggle">Login</a>
+                                        <a href="<?= base_url() ?>access/login" class="dropdown-toggle">Login</a>
                                     </li>
                                     <li class="dropdown notifications-menu">
-                                        <a href="<?= base_url() ?>Access/register" class="dropdown-toggle">Sign Up</a>
+                                        <a href="<?= base_url() ?>access/register" class="dropdown-toggle">Sign Up</a>
                                     </li>
                                 </ul>
                             </div>
@@ -121,10 +121,10 @@
                                 <a href="<?= site_url('Main/contact'); ?>">Contact</a>
                             </li>
                             <li class="dropdown tasks-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Buy</a>
+                                <a href="<?= base_url() ?>trade_management" class="dropdown-toggle">Buy</a>
                             </li>
                             <li class="dropdown user user-menu">
-                                <a href="<?= base_url() ?>trademanagement" class="dropdown-toggle">Sell</a>
+                                <a href="<?= base_url() ?>trade_management" class="dropdown-toggle">Sell</a>
                             </li>
                         </ul>
                     </div>

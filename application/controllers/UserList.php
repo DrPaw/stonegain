@@ -31,18 +31,7 @@ class UserList extends BaseController {
         $this->load->view("admin/footer");
     }
     
-    public function current_user($user_id) {
-
-        $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
-        ));
-
-        $this->page_data["user"] = $user[0];
-
-        $this->load->view("main/header", $this->page_data);
-        $this->load->view("main/user/details");
-        $this->load->view("main/footer");
-    }
+    
     
     public function add() {
 
@@ -155,59 +144,7 @@ class UserList extends BaseController {
         $this->load->view("admin/footer");
     }
     
-    public function edit_current_user($user_id) {
-
-        if ($_POST) {
-            $input = $this->input->post();
-
-            $error = false;
-
-            if ($input["password"] OR $input["password2"]) {
-                if ($input["password"] == $input["password2"]) {
-                    $hash = $this->hash($input["password"]);
-                } else {
-                    $error = true;
-                    $error_message = "Passwords do not match";
-                }
-            }
-
-            if (!$error) {
-                $where = array(
-                    "user_id" => $user_id
-                );
-                
-                $user = $this->Users_model->get_where($where);
-
-                $data = array(
-                    "username" => $user[0]["username"],
-                    "email" => $input["email"],
-                    "country" => $input["country"],
-                    "bank_name" => $input["bank_name"],
-                    "bank_account_number" => $input["bank_account_number"]
-                );
-
-                if (isset($hash)) {
-                    $data["password"] = $hash["password"];
-                    $data["salt"] = $hash["salt"];
-                }
-                
-                $this->Users_model->update_where($where, $data);
-            } else {
-                die(json_encode(array(
-                    "status" => false,
-                    "message" => $error_message
-                )));
-            }
-        }
-
-        $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
-        ));
-
-        $this->page_data["user"] = $user[0];
-
-        redirect("userlist/current_user/".$user_id, "refresh");
-    }
+    
     
     public function hash($password) {
         $salt = rand(111111, 999999);

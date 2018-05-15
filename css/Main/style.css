@@ -5527,3 +5527,12 @@ p.error {
 .no-record>td{
     padding-top: 22vh !important;
 }
+
+.skin-black .content-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/content-header-bg.jpg');
+    background-position: 100% 95%;
+}
+
+.transaction-box-height {
+    height : 45vh;
+}

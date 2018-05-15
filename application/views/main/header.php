@@ -73,8 +73,11 @@
                                 <li class="dropdown tasks-menu">
                                     <a href="<?=base_url()?>wallet" class="dropdown-toggle">Wallet</a>
                                 </li>
+                                <li class="dropdown tasks-menu">
+                                    <a href="<?=base_url()?>transaction" class="dropdown-toggle">Transactions</a>
+                                </li>
                                 <li class="dropdown user user-menu">
-                                    <a href="<?=base_url()?>userList/current_user/<?= $this->session->userdata("user")["user_id"] ?>" class="dropdown-toggle">Account</a>
+                                    <a href="<?=base_url()?>user/profile" class="dropdown-toggle">Account</a>
                                 </li>
                                 <li class="dropdown user user-menu">
                                     <a href="<?=base_url()?>access/logout/" class="dropdown-toggle">Logout</a>
@@ -133,10 +136,10 @@
                             if($this->session->has_userdata("user")){
                                 ?>
                                     <li class="dropdown tasks-menu">
-                                        <a href="<?= base_url() ?>trademanagement/buy" class="dropdown-toggle">Buy</a>
+                                        <a href="<?= base_url() ?>trade_management/buy" class="dropdown-toggle">Buy</a>
                                     </li>
                                     <li class="dropdown user user-menu">
-                                        <a href="<?= base_url() ?>trademanagement/sell" class="dropdown-toggle">Sell</a>
+                                        <a href="<?= base_url() ?>trade_management/sell" class="dropdown-toggle">Sell</a>
                                     </li>
                                 <?php
                             }
