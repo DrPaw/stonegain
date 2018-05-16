@@ -1,29 +1,33 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        
+
         $this->load->model("Admin_model");
         $this->page_data = array();
     }
 
-    public function index() {
+    public function index()
+    {
         $this->page_data["admins"] = $this->Admin_model->get_all();
-        
+
         $this->load->view("admin/header", $this->page_data);
         $this->load->view("admin/Admin/all");
         $this->load->view("admin/footer");
     }
-    
-    public function add() {
+
+    public function add()
+    {
 
         if ($_POST) {
             $input = $this->input->post();
-            
+
             $error = false;
 
             if ($input["password"] == $input["password2"]) {
@@ -57,18 +61,20 @@ class Admin extends CI_Controller {
         $this->load->view("admin/Admin/add");
         $this->load->view("admin/footer");
     }
-    
-    public function delete($admin_id){
+
+    public function delete($admin_id)
+    {
         $this->Admin_model->update_where(array(
             "admin_id" => $admin_id
         ), array(
             "deleted" => 1
         ));
-        
+
         redirect("admin", "refresh");
     }
-    
-    public function details($admin_id) {
+
+    public function details($admin_id)
+    {
 
         $admins = $this->Admin_model->get_where($where = array(
             "admin_id" => $admin_id
@@ -80,15 +86,16 @@ class Admin extends CI_Controller {
         $this->load->view("admin/Admin/details");
         $this->load->view("admin/footer");
     }
-    
-    public function edit($admin_id) {
+
+    public function edit($admin_id)
+    {
 
         if ($_POST) {
             $input = $this->input->post();
 
             $error = false;
 
-            if ($input["password"] OR $input["password2"]) {
+            if ($input["password"] or $input["password2"]) {
                 if ($input["password"] == $input["password2"]) {
                     $hash = $this->hash($input["password"]);
                 } else {
@@ -110,9 +117,9 @@ class Admin extends CI_Controller {
                     $data["password"] = $hash["password"];
                     $data["salt"] = $hash["salt"];
                 }
-                
+
                 $this->Admin_model->update_where($where, $data);
-                
+
                 die(json_encode(array(
                     "status" => true
                 )));
@@ -134,8 +141,9 @@ class Admin extends CI_Controller {
         $this->load->view("admin/Admin/edit");
         $this->load->view("admin/footer");
     }
-    
-    public function hash($password) {
+
+    public function hash($password)
+    {
         $salt = rand(111111, 999999);
         $password = hash("sha512", $salt . $password);
 

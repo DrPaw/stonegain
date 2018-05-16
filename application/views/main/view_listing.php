@@ -4,24 +4,24 @@
                     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding border-bottom margin-bottom-10">
                         <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
                             <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                                <span class="font-weight-bold">User:</span> <?=$user_listing["username"]?>
+                                <span class="font-weight-bold">User:</span> <?= $user_listing["username"] ?>
                             </div>
                             <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 sub-padding font-color-user">
                                Average Release Time: 0 mins
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
+                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
                               1000+ Trades
                             </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
+                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
                               488 Trusted
                             </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
+                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
                               98% Rating
                             </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
-                              300 BTC Volume
+                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
+                            <?= $user_listing["amount"] ?> BTC Volume
                             </div>
                         </div>
                     </div>
@@ -40,13 +40,13 @@
                                 <input type="text" class="form-control input-border" required name="BTC">
                             </div>
                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Price:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["price_after"]?> MYR/BTC</div>
+                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["price_after"] ?> MYR/BTC</div>
                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Limits:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["limit_from"]?>-<?= $user_listing["limit_to"]?> MYR</div>
+                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["limit_from"] ?>-<?= $user_listing["limit_to"] ?> MYR</div>
                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Payment Method:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["payment_method"]?></div>
+                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["payment_method"] ?></div>
                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Time of Payment:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["time_of_payment"]?></div>
+                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["time_of_payment"] ?></div>
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 margin-bottom-10 ">
                                 <input type="submit" class="btn btn-info pull-right" value="BUY">
                             </div>

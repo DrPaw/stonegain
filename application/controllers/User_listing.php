@@ -1,33 +1,37 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_listing extends CI_Controller {
+class User_listing extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $this->load->model("Users_model");
         $this->load->model("User_crypto_model");
         $this->load->model("User_listing_model");
-        
+
         $this->page_data = array();
     }
 
-    public function sell() {
+    public function sell()
+    {
 
-        if (!$this->session->has_userdata("user")) show_404(); 
-        
+        if (!$this->session->has_userdata("user")) show_404();
+
         $user_id = $this->session->userdata("user")["user_id"];
-        
+
 
         $where = array(
-            "user_crypto.user_id" => $user_id
+            "user_crypto.user_id" => $user_id,
+            "locked" => 0
         );
 
         $this->page_data["user_crypto"] = $this->User_crypto_model->get_where($where);
-        
-        if($_POST){
+
+        if ($_POST) {
             $input = $this->input->post();
 
             $data = array(
@@ -45,6 +49,16 @@ class User_listing extends CI_Controller {
 
             $this->User_listing_model->add($data);
 
+            $where = array(
+                "user_crypto_id" => $input["user_crypto_id"]
+            );
+
+            $data = array(
+                "locked" => 1
+            );
+
+            $this->User_crypto_model->update_where($where, $data);
+
             redirect("main", "refresh");
         }
 
@@ -53,7 +67,8 @@ class User_listing extends CI_Controller {
         $this->load->view("main/footer");
     }
 
-    public function view_listing($user_listing_id){
+    public function view_listing($user_listing_id)
+    {
 
         $where = array(
             "user_listing_id" => $user_listing_id
@@ -69,7 +84,8 @@ class User_listing extends CI_Controller {
 
     }
 
-    public function buy() {
+    public function buy()
+    {
         $this->load->view("main/header", $this->page_data);
         // $this->load->view("main/user_details");
         $this->load->view("main/footer");

@@ -1,3 +1,5 @@
 {
+    "phpcs.enabled": true,
+    "phpcs.standard": null,
     "git.ignoreLimitWarning": true
 }

@@ -84,7 +84,7 @@ class User_crypto_model extends CI_Model {
     
     public function update_where($where, $data) {
         $this->db->where($where);
-        $this->db->update("user", $data);
+        $this->db->update("user_crypto", $data);
     }
     
 }

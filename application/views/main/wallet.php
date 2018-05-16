@@ -1,4 +1,3 @@
-
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <div class="title">
@@ -31,16 +30,17 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">BTC</div>
-                                    <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
-                                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">ETH</div>
-                                    <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
                                     <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">USDT</div>
                                     <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
-                                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">BCH</div>
-                                    <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
-                                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">LTC</div>
-                                    <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
+                                    <?php
+                                    foreach ($crypto_wallet as $row) {
+                                        ?>
+                                        <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10"><?= $row["crypto"] ?></div>
+                                        <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5"><?= $row["total_amount"] ?></div>
+                                        <?php
+
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0" style="padding-right:10px">
@@ -54,30 +54,22 @@
                                             </tr>
                                         </thead>
                                             <tr>
-                                                <td>BTC</td>
-                                                <td>0.00000000</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ETH</td>
-                                                <td>0.00000000</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
                                                 <td>USDT</td>
                                                 <td>0.00000000</td>
                                                 <td>0</td>
                                             </tr>
-                                            <tr>
-                                                <td>BCH</td>
-                                                <td>0.00000000</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>LTC</td>
-                                                <td>0.00000000</td>
-                                                <td>0</td>
-                                            </tr>
+                                            <?php
+                                            foreach ($crypto_wallet as $row) {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $row["crypto"]?></td>
+                                                    <td><?= $row["available_amount"]?></td>
+                                                    <td><?= $row["locked_count"]?></td>
+                                                </tr>
+                                                <?php
+
+                                            }
+                                            ?>
                                         <tbody>
                                         </tbody>
                                     </table>

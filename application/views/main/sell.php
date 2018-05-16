@@ -1,6 +1,6 @@
 
                 <!-- Main content -->
-                <form method="POST" action="<?= base_url()?>user_listing/sell">
+                <form method="POST" action="<?= base_url() ?>user_listing/sell">
                     <section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12">
                         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding border-bottom margin-bottom-10">
                             <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
@@ -11,12 +11,13 @@
                                     <select id="crypto-select" class="form-control" name="user_crypto_id">
                                         <option value="0">None</option>
                                         <?php
-                                            foreach($user_crypto as $row){
-                                                ?>
-                                                <option value="<?= $row["user_crypto_id"] ?>"><?= $row["crypto"]?></option>
+                                        foreach ($user_crypto as $row) {
+                                            ?>
+                                                <option value="<?= $row["user_crypto_id"] ?>"><?= $row["crypto"] ?></option>
                                                 <?php
+
                                             }
-                                        ?>
+                                            ?>
                                     </select>
                                 </div>
                             </div>
@@ -101,11 +102,11 @@
                         postParam = {
                             user_crypto_id: user_crypto_id
                         };
-                        $.post("<?= site_url('user/get_user_crypto_data/')?>", postParam, function (response) {
+                        $.post("<?= site_url('user/get_user_crypto_data/') ?>", postParam, function (response) {
                             $("#crypto-details-refresh").html(response);
                         });
 
-                        $.post("<?= site_url('user/get_user_crypto_price/')?>", postParam, function (response) {
+                        $.post("<?= site_url('user/get_user_crypto_price/') ?>", postParam, function (response) {
                             crypto_price = response;
                             $("#price-before-form").val(crypto_price)
                             $("#price-before").text(crypto_price + " MYR/BTC")
