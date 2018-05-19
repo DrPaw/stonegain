@@ -30,8 +30,6 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">USDT</div>
-                                    <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">0.00000000</div>
                                     <?php
                                     foreach ($crypto_wallet as $row) {
                                         ?>
@@ -53,11 +51,6 @@
                                                 <td>Lock</td>
                                             </tr>
                                         </thead>
-                                            <tr>
-                                                <td>USDT</td>
-                                                <td>0.00000000</td>
-                                                <td>0</td>
-                                            </tr>
                                             <?php
                                             foreach ($crypto_wallet as $row) {
                                                 ?>
