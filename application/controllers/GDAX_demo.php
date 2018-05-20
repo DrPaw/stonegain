@@ -29,26 +29,26 @@ class GDAX_demo extends BaseController
         }
     }
     function getAccounts(){
-        $this->print($this->GDAX->getAccounts());
+        $this->debug($this->GDAX->getAccounts());
         
     }
 
     function listAddress($currency){
-        $this->print($this->GDAX->listAddress($currency));
+        $this->debug($this->GDAX->listAddress($currency));
     }
 
     function createAddress($currency){
         $str = "DEMO_".strtotime('now');
-        $this->print($this->GDAX->createAddress($currency,$str));
+        $this->debug($this->GDAX->createAddress($currency,$str));
     }
     
     function user(){
-        $this->print($this->GDAX->user());
+        $this->debug($this->GDAX->user());
     }
 
-    function print($result){
-        echo "<pre>";
-        var_dump($result);
-        echo "</pre>";
-    }
+    // function print($result){
+    //     echo "<pre>";
+    //     var_dump($result);
+    //     echo "</pre>";
+    // }
 }

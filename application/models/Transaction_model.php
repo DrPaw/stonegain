@@ -50,4 +50,7 @@ class Transaction_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function insert($data){
+        $this->db->insert("transaction", $data);
+    }
 }

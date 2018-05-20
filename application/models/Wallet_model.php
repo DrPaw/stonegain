@@ -19,4 +19,16 @@ class Wallet_model extends CI_Model
         return $query->result_array();
     }
 
+    function get_crypto_wallet_where($user_id,$where)
+    {
+        $this->db->select("*");
+        $this->db->from("user_crypto_wallet");
+        $this->db->where("user_id", $user_id);
+        $this->db->where($where);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
 }

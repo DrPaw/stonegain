@@ -5534,10 +5534,14 @@ p.error {
 }
 
 .transaction-box-height {
-    height : 45vh;
+    height : 35vh;
 }
 
 .skin-black .main-header>.logo:hover {
     background-color: #fcfcfc;
     color: #7dafac;
+}
+
+.sub-padding-custom {
+    padding:10px;
 }

@@ -6,6 +6,8 @@ class BaseController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model("Crypto_model");
     }
 
     public function hash($password)
@@ -71,6 +73,38 @@ class BaseController extends CI_Controller
         var_dump($array);
         echo "</pre>";
         die();
+    }
+
+    function sort_crypto_wallet($crypto_wallet)
+    {
+        if (empty($crypto_wallet)) show_404();
+
+        $crypto = $this->Crypto_model->get_all();
+
+        $sorted_wallet = array();
+        foreach ($crypto as $row) {
+            foreach ($crypto_wallet as $wallet_row) {
+                if ($row["crypto"] == $wallet_row["crypto"]) {
+                    $crypto_data = array(
+                        "crypto" => $row["crypto"],
+                        "total_amount" => $wallet_row["total_amount"],
+                        "available_amount" => $wallet_row["available_amount"],
+                        "locked_count" => $wallet_row["locked_count"]
+                    );
+                    break;
+                } else {
+                    $crypto_data = array(
+                        "crypto" => $row["crypto"],
+                        "total_amount" => "0.00000000",
+                        "available_amount" => "0.00000000",
+                        "locked_count" => 0
+                    );
+                }
+            }
+            array_push($sorted_wallet, $crypto_data);
+        }
+
+        return $sorted_wallet;
     }
 
 }
