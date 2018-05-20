@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 19, 2018 at 06:25 PM
+-- Generation Time: May 20, 2018 at 04:20 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `stonegain`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_resource`
+--
+
+CREATE TABLE `account_resource` (
+  `account_resource_id` int(11) NOT NULL,
+  `currency` varchar(64) COLLATE utf8_bin NOT NULL,
+  `name` varchar(256) COLLATE utf8_bin NOT NULL,
+  `value` varchar(256) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `account_resource`
+--
+
+INSERT INTO `account_resource` (`account_resource_id`, `currency`, `name`, `value`) VALUES
+(1, 'LTC', 'LTC Wallet', '92da5ce8-529d-58bd-8395-85e80745b7c8'),
+(2, 'ETH', 'ETH Wallet', 'd5f0d4ac-e282-587c-9022-9c7aebc50de3'),
+(3, 'BTC', 'BTC Wallet', '0d3e2eeb-272b-51e4-834f-840aeffec532');
 
 -- --------------------------------------------------------
 
@@ -67,7 +89,7 @@ CREATE TABLE `crypto` (
 INSERT INTO `crypto` (`crypto_id`, `crypto`, `name`, `marketcap`, `price`, `volume`, `circulating_supply`, `variance`) VALUES
 (1, 'BTC', 'Bitcoin', '145899767276.00', '8564.70', '677418000.00', '17,035,012 BTC', '-2.41'),
 (2, 'ETH', 'Ethereum', '68344310974.00', '687.14', '2545420000.00', '99,462,568 ETH', '-5.79'),
-(3, 'USDT', 'Tether', '2213166308.00', '1.00', '3574960000.00', '2,207,140,814 USDT', '0.27'),
+(3, 'USDT', 'USDT', '68344310974.00', '687.14', '2545420000.00', '99,462,568 USDT', '-5.79'),
 (4, 'BCH', 'Bitcoin Cash', '21443553065.00', '1251.80', '988472000.00', '17,130,175 BCH', '-11.79'),
 (5, 'LTC', 'Litecoin', '7683399452.00', '135.87', '409353000.00', '56,550,888 LTC	', '-7.15');
 
@@ -106,12 +128,25 @@ CREATE TABLE `role_access` (
 
 CREATE TABLE `transaction` (
   `transaction_id` int(11) NOT NULL,
-  `wallet_id` int(11) NOT NULL,
-  `type` enum('external','internal') NOT NULL,
-  `amount` decimal(9,2) NOT NULL,
-  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `user_id` int(11) NOT NULL,
+  `crypto_id` int(11) NOT NULL,
+  `transaction_type` enum('DEPOSIT','WITHDRAW') CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `address` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `salt` int(8) NOT NULL,
+  `remarks` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `used` tinyint(1) NOT NULL DEFAULT '0',
+  `completed` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`transaction_id`, `user_id`, `crypto_id`, `transaction_type`, `address`, `password`, `salt`, `remarks`, `used`, `completed`, `deleted`) VALUES
+(1, 11, 1, 'DEPOSIT', '0xfb8d64fa118a8a9203a50af841e7a5018debb45d', '4b80a70bc406063123daf4317ccd636db2c83878846728ffcd72ba0293d83ad6d9df85912bdba21dde67321e25c331628028ecc10bae61a6ead6e2cc56828df6', 729418, '', 0, 0, 0),
+(2, 11, 1, 'WITHDRAW', 'sdas', '4a4c6a601138303841ca54130d7a15cdd691abb3d3f63bd2cb66dd1399a1c64f786ca01b42f26a96801396c2cb57d5f1cde27a7decce9176b99fdca1e1b1770d', 399521, '21321312', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -183,6 +218,7 @@ CREATE TABLE `user_crypto_wallet` (
 ,`crypto` varchar(256)
 ,`total_amount` decimal(42,8)
 ,`available_amount` decimal(42,8)
+,`locked_amount` decimal(42,8)
 ,`locked_count` bigint(21)
 );
 
@@ -237,11 +273,17 @@ CREATE TABLE `wallet` (
 --
 DROP TABLE IF EXISTS `user_crypto_wallet`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `user_crypto_wallet`  AS  select `user_crypto`.`user_crypto_id` AS `user_crypto_id`,`user_crypto`.`user_id` AS `user_id`,`user_crypto`.`crypto_id` AS `crypto_id`,`user`.`username` AS `username`,`crypto`.`crypto` AS `crypto`,(select sum(`sum_crypto`.`amount`) from `user_crypto` `sum_crypto` where ((`sum_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_crypto`.`user_id` = `user`.`user_id`))) AS `total_amount`,(select sum(`sum_locked_crypto`.`amount`) from `user_crypto` `sum_locked_crypto` where ((`sum_locked_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_locked_crypto`.`user_id` = `user`.`user_id`) and (`sum_locked_crypto`.`locked` = 0))) AS `available_amount`,(select count(0) from `user_crypto` `locked_crypto` where ((`locked_crypto`.`locked` = 1) and (`locked_crypto`.`user_id` = `user`.`user_id`) and (`locked_crypto`.`crypto_id` = `crypto`.`crypto_id`))) AS `locked_count` from ((`user_crypto` left join `user` on((`user_crypto`.`user_id` = `user`.`user_id`))) left join `crypto` on((`user_crypto`.`crypto_id` = `crypto`.`crypto_id`))) group by `user_crypto`.`user_id`,`user_crypto`.`crypto_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `user_crypto_wallet`  AS  select `user_crypto`.`user_crypto_id` AS `user_crypto_id`,`user_crypto`.`user_id` AS `user_id`,`user_crypto`.`crypto_id` AS `crypto_id`,`user`.`username` AS `username`,`crypto`.`crypto` AS `crypto`,(select sum(`sum_crypto`.`amount`) from `user_crypto` `sum_crypto` where ((`sum_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_crypto`.`user_id` = `user`.`user_id`))) AS `total_amount`,(select sum(`sum_locked_crypto`.`amount`) from `user_crypto` `sum_locked_crypto` where ((`sum_locked_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_locked_crypto`.`user_id` = `user`.`user_id`) and (`sum_locked_crypto`.`locked` = 0))) AS `available_amount`,(select sum(`sum_locked_crypto`.`amount`) from `user_crypto` `sum_locked_crypto` where ((`sum_locked_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_locked_crypto`.`user_id` = `user`.`user_id`) and (`sum_locked_crypto`.`locked` = 1))) AS `locked_amount`,(select count(0) from `user_crypto` `locked_crypto` where ((`locked_crypto`.`locked` = 1) and (`locked_crypto`.`user_id` = `user`.`user_id`) and (`locked_crypto`.`crypto_id` = `crypto`.`crypto_id`))) AS `locked_count` from ((`user_crypto` left join `user` on((`user_crypto`.`user_id` = `user`.`user_id`))) left join `crypto` on((`user_crypto`.`crypto_id` = `crypto`.`crypto_id`))) group by `user_crypto`.`user_id`,`user_crypto`.`crypto_id` ;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `account_resource`
+--
+ALTER TABLE `account_resource`
+  ADD PRIMARY KEY (`account_resource_id`);
 
 --
 -- Indexes for table `admin`
@@ -271,7 +313,9 @@ ALTER TABLE `role_access`
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transaction_id`);
+  ADD PRIMARY KEY (`transaction_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `crypto_id` (`crypto_id`);
 
 --
 -- Indexes for table `user`
@@ -305,6 +349,11 @@ ALTER TABLE `wallet`
 --
 
 --
+-- AUTO_INCREMENT for table `account_resource`
+--
+ALTER TABLE `account_resource`
+  MODIFY `account_resource_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
@@ -328,7 +377,7 @@ ALTER TABLE `role_access`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
