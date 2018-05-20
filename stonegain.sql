@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2018 at 04:20 PM
+-- Generation Time: May 20, 2018 at 06:59 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -130,6 +130,7 @@ CREATE TABLE `transaction` (
   `transaction_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `crypto_id` int(11) NOT NULL,
+  `amount` decimal(20,8) NOT NULL DEFAULT '0.00000000',
   `transaction_type` enum('DEPOSIT','WITHDRAW') CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `address` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `password` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -137,16 +138,17 @@ CREATE TABLE `transaction` (
   `remarks` longtext CHARACTER SET utf8 COLLATE utf8_bin,
   `used` tinyint(1) NOT NULL DEFAULT '0',
   `completed` tinyint(1) NOT NULL DEFAULT '0',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0'
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`transaction_id`, `user_id`, `crypto_id`, `transaction_type`, `address`, `password`, `salt`, `remarks`, `used`, `completed`, `deleted`) VALUES
-(1, 11, 1, 'DEPOSIT', '0xfb8d64fa118a8a9203a50af841e7a5018debb45d', '4b80a70bc406063123daf4317ccd636db2c83878846728ffcd72ba0293d83ad6d9df85912bdba21dde67321e25c331628028ecc10bae61a6ead6e2cc56828df6', 729418, '', 0, 0, 0),
-(2, 11, 1, 'WITHDRAW', 'sdas', '4a4c6a601138303841ca54130d7a15cdd691abb3d3f63bd2cb66dd1399a1c64f786ca01b42f26a96801396c2cb57d5f1cde27a7decce9176b99fdca1e1b1770d', 399521, '21321312', 0, 0, 0);
+INSERT INTO `transaction` (`transaction_id`, `user_id`, `crypto_id`, `amount`, `transaction_type`, `address`, `password`, `salt`, `remarks`, `used`, `completed`, `deleted`, `created_date`) VALUES
+(1, 11, 1, '0.00000000', 'DEPOSIT', '0xfb8d64fa118a8a9203a50af841e7a5018debb45d', '4b80a70bc406063123daf4317ccd636db2c83878846728ffcd72ba0293d83ad6d9df85912bdba21dde67321e25c331628028ecc10bae61a6ead6e2cc56828df6', 729418, '', 0, 0, 0, '2018-05-20 16:39:53'),
+(2, 11, 1, '0.00000000', 'WITHDRAW', 'sdas', '4a4c6a601138303841ca54130d7a15cdd691abb3d3f63bd2cb66dd1399a1c64f786ca01b42f26a96801396c2cb57d5f1cde27a7decce9176b99fdca1e1b1770d', 399521, '21321312', 0, 0, 0, '2018-05-20 16:39:53');
 
 -- --------------------------------------------------------
 

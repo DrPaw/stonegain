@@ -5488,6 +5488,10 @@ p.error {
     margin-top : 2.5vh;
 }
 
+.transaction-log-table {
+    border : solid 1px black;
+}
+
 .transaction-table {
     height : 80%;
 }
@@ -5495,6 +5499,10 @@ p.error {
 .wallet-table>thead>tr>td{
     border-bottom : solid 1px black;
     padding : 2.5%;
+}
+
+.transaction-log-table>thead>tr>td {
+    border-bottom : solid 1px black;
 }
 
 .transaction-table>thead>tr>td{
@@ -5505,6 +5513,10 @@ p.error {
 .wallet-table>tbody>tr>td{
     border : none;
     padding : 2.5%;
+}
+
+.transaction-log-table>tbody>tr>td{
+    border : none;
 }
 
 .main-title {

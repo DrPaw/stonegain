@@ -103,6 +103,7 @@ class Transaction extends BaseController
                 "password" => $hash["password"],
                 "salt" => $hash["salt"],
                 "remarks" => $input["remarks"],
+                "amount" => $input["amount"]
             );
 
             $this->Transaction_model->insert($data);

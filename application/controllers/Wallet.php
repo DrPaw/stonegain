@@ -13,6 +13,7 @@ class Wallet extends BaseController
 
         $this->load->model("Wallet_model");
         $this->load->model("Crypto_model");
+        $this->load->model("Transaction_model");
     }
 
     public function index()
@@ -27,6 +28,12 @@ class Wallet extends BaseController
         $crypto_wallet = $this->sort_crypto_wallet($crypto_wallet);
 
         $this->page_data["crypto_wallet"] = $crypto_wallet;
+
+        $where = array(
+            "transaction.user_id" => $user_id
+        );
+
+        $this->page_data["transaction"] = $this->Transaction_model->get_log_where($where);
 
         $this->load->view("main/header", $this->page_data);
         $this->load->view("main/wallet");
