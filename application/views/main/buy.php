@@ -39,7 +39,7 @@
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">BTC:</div>
 				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" max="<?= ($user_listing['limit_to'] / $user_listing['price_after']) * $user_listing['amount'] ?>" min="<?=($user_listing['limit_from'] / $user_listing['price_after']) * $user_listing['amount']?>" onkeyup="calculate(this)">
+					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" onkeyup="calculate(this)">
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">Price:</div>
 				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">

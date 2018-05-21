@@ -36,7 +36,6 @@ class User_listing extends BaseController
             $data = array(
                 "user_id" => $user_id,
                 "crypto_id" => $input["crypto_id"],
-                "user_listing_status_id" => 1,
                 "markup" => $input["markup"],
                 "threshold" => $input["threshold"],
                 "price_before" => $input["price_before"],
