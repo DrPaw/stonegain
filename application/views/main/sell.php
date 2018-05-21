@@ -63,13 +63,17 @@
 						<p id="price-after">0 MYR/BTC</p>
 						<input type="hidden" class="form-control input-border" id="price-after-form" name="price_after">
 					</div>
+					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Total (Price <small>(after markup)</small> * Amount):</div>
+					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+						<p id="price-total">0 MYR/BTC</p>
+					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Limit From</div>
 					<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-5">
-						<input type="number" class="form-control input-border" required name="limit_from">
+						<input id="limit-to-form" type="number" class="form-control input-border" required name="limit_from">
 					</div>
 					<div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 label-height col-padding-10">to</div>
 					<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-5">
-						<input type="number" class="form-control input-border" required name="limit_to">
+						<input id="limit-from-form" type="number" class="form-control input-border" required name="limit_to">
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Payment Method:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
@@ -133,8 +137,17 @@
 	$(document).on("change", "#markup-form", function (e) {
 		if (crypto_price != 0) {
 			var crypto_price_after = (parseInt(crypto_price) + parseInt((crypto_price * ($(this).val() / 100)))).toFixed(2);
+			var amount = $("#amount-form").val();
+			var total = crypto_price_after * amount;
 			$("#price-after-form").val(crypto_price_after)
 			$("#price-after").text(crypto_price_after + " MYR/BTC")
+			$("#price-total").text(total + " MYR/BTC")
+			$("#limit-to-form").attr({
+				"max": total
+			});
+			$("#limit-from-form").attr({
+				"max": total
+			});
 		}
 	});
 
