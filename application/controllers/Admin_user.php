@@ -7,6 +7,8 @@ class Admin_user extends BaseController {
     public function __construct() {
         parent::__construct();
         $this->load->model("Users_model");
+        $this->load->model("Transaction_model");
+        $this->load->model("User_listing_model");
         $this->page_data = array();
     }
 
@@ -22,6 +24,13 @@ class Admin_user extends BaseController {
 
         $user = $this->Users_model->get_where($where = array(
             "user_id" => $user_id
+        ));
+
+        $this->page_data['eTransactions'] = $this->Transaction_model->get_where(array(
+            "user.user_id" => $user_id
+        ));
+        $this->page_data['listing'] = $this->User_listing_model->get_where(array(
+            "user.user_id" => $user_id
         ));
 
         $this->page_data["user"] = $user[0];

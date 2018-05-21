@@ -12,21 +12,19 @@ class Transaction_model extends CI_Model
     {
         $this->db->select("transaction.*");
         $this->db->from("transaction");
+        $this->db->order_by("transaction_id","desc");
 
         $query = $this->db->get();
 
         return $query->result_array();
     }
 
-    public function get_all_external()
+    public function get_user_external($user_id)
     {
-        $this->db->select("transaction.*");
-        $this->db->from("transaction");
-        $this->db->where('transaction.type', "external");
+        $sql = "SELECT external_transaction.*, (SELECT crypto from crypto WHERE crypto_id = external_transaction.currency_id) as crypto from external_transaction WHERE user_id = ? order by external_transaction_id DESC";
+        $transactions = $this->db->query($sql,array($user_id))->result_array();
 
-        $query = $this->db->get();
-
-        return $query->result_array();
+        return $transactions;
     }
 
     public function get_all_internal()
