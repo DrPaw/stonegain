@@ -72,7 +72,10 @@
                                     <a href="#" class="dropdown-toggle">Balance : 5 BTC</a>
                                 </li>
                                 <li class="dropdown notifications-menu">
-                                    <a href="#" class="dropdown-toggle">Order</a>
+                                    <a href="<?= base_url()?>trade_management/buy" class="dropdown-toggle">Offers</a>
+                                </li>
+                                <li class="dropdown notifications-menu">
+                                    <a href="<?= base_url()?>trade_management/sell" class="dropdown-toggle">Sales</a>
                                 </li>
                                 <li class="dropdown tasks-menu">
                                     <a href="<?=base_url()?>wallet" class="dropdown-toggle">Wallet</a>

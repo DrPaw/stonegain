@@ -107,7 +107,7 @@ class BaseController extends CI_Controller
                     "crypto" => $row["crypto"],
                     "total_amount" => "0.00000000",
                     "available_amount" => "0.00000000",
-                    "locked_count" => 0
+                    "locked_amount" => "0.0000000"
                 );
             }
             array_push($sorted_wallet, $crypto_data);
