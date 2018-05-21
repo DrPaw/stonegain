@@ -12,8 +12,8 @@ class User_listing_model extends CI_Model
     {
         $this->db->select("user_listing.*, user.username");
         $this->db->from("user_listing");
-        $this->db->join("user_crypto", "user_listing.user_crypto_id = user_crypto.user_crypto_id", "left");
-        $this->db->join("user", "user_crypto.user_id = user.user_id", "left");
+        $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
+        $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->order_by("created_date DESC");
         $this->db->limit("10");
 
@@ -24,10 +24,10 @@ class User_listing_model extends CI_Model
 
     public function get_where($where)
     {
-        $this->db->select("user_listing.*, user.username, user_crypto.amount");
+        $this->db->select("user_listing.*, user.username");
         $this->db->from("user_listing");
-        $this->db->join("user_crypto", "user_listing.user_crypto_id = user_crypto.user_crypto_id", "left");
-        $this->db->join("user", "user_crypto.user_id = user.user_id", "left");
+        $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
+        $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->where($where);
 
         $query = $this->db->get();

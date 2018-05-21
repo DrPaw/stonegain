@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2018 at 06:59 PM
+-- Generation Time: May 21, 2018 at 06:39 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -193,19 +193,17 @@ CREATE TABLE `user_crypto` (
   `crypto_id` int(11) NOT NULL,
   `amount` decimal(20,8) NOT NULL,
   `btc_price` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `usdt_price` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `locked` tinyint(1) NOT NULL DEFAULT '0'
+  `usdt_price` decimal(12,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `user_crypto`
 --
 
-INSERT INTO `user_crypto` (`user_crypto_id`, `user_id`, `crypto_id`, `amount`, `btc_price`, `usdt_price`, `locked`) VALUES
-(1, 11, 1, '0.31000000', '50000.00', '45000.00', 1),
-(2, 11, 1, '0.60000000', '10000.00', '800.00', 0),
-(3, 12, 1, '0.42000000', '10000.00', '800.00', 0),
-(4, 11, 2, '0.42200000', '2133.00', '2132.00', 0);
+INSERT INTO `user_crypto` (`user_crypto_id`, `user_id`, `crypto_id`, `amount`, `btc_price`, `usdt_price`) VALUES
+(1, 11, 1, '0.31000000', '50000.00', '45000.00'),
+(2, 11, 1, '0.60000000', '10000.00', '800.00'),
+(4, 11, 2, '0.42200000', '2133.00', '2132.00');
 
 -- --------------------------------------------------------
 
@@ -213,15 +211,12 @@ INSERT INTO `user_crypto` (`user_crypto_id`, `user_id`, `crypto_id`, `amount`, `
 -- Stand-in structure for view `user_crypto_wallet`
 --
 CREATE TABLE `user_crypto_wallet` (
-`user_crypto_id` int(11)
-,`user_id` int(11)
+`user_id` int(11)
 ,`crypto_id` int(11)
 ,`username` varchar(256)
 ,`crypto` varchar(256)
 ,`total_amount` decimal(42,8)
-,`available_amount` decimal(42,8)
 ,`locked_amount` decimal(42,8)
-,`locked_count` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -232,16 +227,20 @@ CREATE TABLE `user_crypto_wallet` (
 
 CREATE TABLE `user_listing` (
   `user_listing_id` int(11) NOT NULL,
-  `user_crypto_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `crypto_id` int(11) NOT NULL,
+  `user_listing_status_id` int(11) NOT NULL,
   `markup` decimal(12,2) NOT NULL DEFAULT '0.00',
   `threshold` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `amount` decimal(20,8) NOT NULL DEFAULT '0.00000000',
   `price_before` decimal(12,2) NOT NULL DEFAULT '0.00',
   `price_after` decimal(20,2) NOT NULL DEFAULT '0.00',
   `message` text COLLATE utf8_bin,
   `payment_method` enum('Bank Transfer') COLLATE utf8_bin NOT NULL,
   `limit_from` decimal(12,2) NOT NULL DEFAULT '0.00',
   `limit_to` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `time_of_payment` varchar(256) COLLATE utf8_bin NOT NULL,
+  `time_of_payment` int(11) NOT NULL,
+  `quick_sell` tinyint(1) NOT NULL DEFAULT '0',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -249,11 +248,47 @@ CREATE TABLE `user_listing` (
 -- Dumping data for table `user_listing`
 --
 
-INSERT INTO `user_listing` (`user_listing_id`, `user_crypto_id`, `markup`, `threshold`, `price_before`, `price_after`, `message`, `payment_method`, `limit_from`, `limit_to`, `time_of_payment`, `created_date`) VALUES
-(2, 1, '4.00', '10000.00', '50000.00', '52000.00', '', 'Bank Transfer', '50000.00', '100000.00', '30 Minutes', '2018-05-15 17:03:52'),
-(3, 1, '5.00', '10000.00', '50000.00', '52500.00', 'asdsad', 'Bank Transfer', '45000.00', '5000000.00', '5 min', '2018-05-15 17:11:08'),
-(4, 1, '10.00', '100000.00', '50000.00', '55000.00', 'asdsadsa', 'Bank Transfer', '50000.00', '100000.00', '30 Minutes', '2018-05-16 03:10:50'),
-(5, 1, '10.00', '100000.00', '50000.00', '55000.00', 'asdsadsa', 'Bank Transfer', '50000.00', '100000.00', '30 Minutes', '2018-05-16 03:11:09');
+INSERT INTO `user_listing` (`user_listing_id`, `user_id`, `crypto_id`, `user_listing_status_id`, `markup`, `threshold`, `amount`, `price_before`, `price_after`, `message`, `payment_method`, `limit_from`, `limit_to`, `time_of_payment`, `quick_sell`, `created_date`) VALUES
+(5, 11, 1, 1, '13.00', '2132.00', '0.12321000', '8564.70', '9677.00', '', 'Bank Transfer', '21321.00', '21321.00', 40, 0, '2018-05-21 04:35:28'),
+(6, 11, 1, 1, '12.00', '2132.00', '0.21000000', '8564.70', '9591.00', '', 'Bank Transfer', '213.00', '312321.00', 32, 1, '2018-05-21 04:39:12'),
+(7, 11, 2, 1, '21.00', '321.00', '0.00000001', '687.14', '831.00', '', 'Bank Transfer', '3.00', '321.00', 123, 0, '2018-05-21 04:39:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_listing_status`
+--
+
+CREATE TABLE `user_listing_status` (
+  `user_listing_status_id` int(11) NOT NULL,
+  `user_listing_status` varchar(256) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user_listing_status`
+--
+
+INSERT INTO `user_listing_status` (`user_listing_status_id`, `user_listing_status`) VALUES
+(1, 'Pending'),
+(2, 'Pending Payment'),
+(3, 'Payment Received'),
+(4, 'Completed'),
+(5, 'Canceled');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_trade_info`
+--
+
+CREATE TABLE `user_trade_info` (
+  `user_trade_info_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `trades` int(11) NOT NULL DEFAULT '0',
+  `rating` int(11) NOT NULL DEFAULT '0',
+  `average_time` int(11) NOT NULL DEFAULT '0',
+  `trusted` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -275,7 +310,7 @@ CREATE TABLE `wallet` (
 --
 DROP TABLE IF EXISTS `user_crypto_wallet`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `user_crypto_wallet`  AS  select `user_crypto`.`user_crypto_id` AS `user_crypto_id`,`user_crypto`.`user_id` AS `user_id`,`user_crypto`.`crypto_id` AS `crypto_id`,`user`.`username` AS `username`,`crypto`.`crypto` AS `crypto`,(select sum(`sum_crypto`.`amount`) from `user_crypto` `sum_crypto` where ((`sum_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_crypto`.`user_id` = `user`.`user_id`))) AS `total_amount`,(select sum(`sum_locked_crypto`.`amount`) from `user_crypto` `sum_locked_crypto` where ((`sum_locked_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_locked_crypto`.`user_id` = `user`.`user_id`) and (`sum_locked_crypto`.`locked` = 0))) AS `available_amount`,(select sum(`sum_locked_crypto`.`amount`) from `user_crypto` `sum_locked_crypto` where ((`sum_locked_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_locked_crypto`.`user_id` = `user`.`user_id`) and (`sum_locked_crypto`.`locked` = 1))) AS `locked_amount`,(select count(0) from `user_crypto` `locked_crypto` where ((`locked_crypto`.`locked` = 1) and (`locked_crypto`.`user_id` = `user`.`user_id`) and (`locked_crypto`.`crypto_id` = `crypto`.`crypto_id`))) AS `locked_count` from ((`user_crypto` left join `user` on((`user_crypto`.`user_id` = `user`.`user_id`))) left join `crypto` on((`user_crypto`.`crypto_id` = `crypto`.`crypto_id`))) group by `user_crypto`.`user_id`,`user_crypto`.`crypto_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `user_crypto_wallet`  AS  select `user_crypto`.`user_id` AS `user_id`,`user_crypto`.`crypto_id` AS `crypto_id`,`user`.`username` AS `username`,`crypto`.`crypto` AS `crypto`,(select sum(`sum_crypto`.`amount`) from `user_crypto` `sum_crypto` where ((`sum_crypto`.`crypto_id` = `crypto`.`crypto_id`) and (`sum_crypto`.`user_id` = `user`.`user_id`))) AS `total_amount`,(select sum(`user_listing`.`amount`) from `user_listing` where ((`user_listing`.`crypto_id` = `crypto`.`crypto_id`) and (`user_listing`.`user_id` = `user`.`user_id`))) AS `locked_amount` from ((`user_crypto` left join `user` on((`user_crypto`.`user_id` = `user`.`user_id`))) left join `crypto` on((`user_crypto`.`crypto_id` = `crypto`.`crypto_id`))) group by `user_crypto`.`user_id`,`user_crypto`.`crypto_id` ;
 
 --
 -- Indexes for dumped tables
@@ -338,7 +373,21 @@ ALTER TABLE `user_crypto`
 --
 ALTER TABLE `user_listing`
   ADD PRIMARY KEY (`user_listing_id`),
-  ADD KEY `crypto_id` (`user_crypto_id`);
+  ADD KEY `user_listing_status_id` (`user_listing_status_id`) USING BTREE,
+  ADD KEY `crypto_id` (`crypto_id`),
+  ADD KEY `user_id` (`user_id`) USING BTREE;
+
+--
+-- Indexes for table `user_listing_status`
+--
+ALTER TABLE `user_listing_status`
+  ADD PRIMARY KEY (`user_listing_status_id`);
+
+--
+-- Indexes for table `user_trade_info`
+--
+ALTER TABLE `user_trade_info`
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `wallet`
@@ -394,7 +443,12 @@ ALTER TABLE `user_crypto`
 -- AUTO_INCREMENT for table `user_listing`
 --
 ALTER TABLE `user_listing`
-  MODIFY `user_listing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_listing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `user_listing_status`
+--
+ALTER TABLE `user_listing_status`
+  MODIFY `user_listing_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `wallet`
 --
@@ -415,7 +469,15 @@ ALTER TABLE `user_crypto`
 -- Constraints for table `user_listing`
 --
 ALTER TABLE `user_listing`
-  ADD CONSTRAINT `user_listing_ibfk_2` FOREIGN KEY (`user_crypto_id`) REFERENCES `user_crypto` (`user_crypto_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_listing_ibfk_2` FOREIGN KEY (`user_listing_status_id`) REFERENCES `user_listing_status` (`user_listing_status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_listing_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_listing_ibfk_4` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`crypto_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_trade_info`
+--
+ALTER TABLE `user_trade_info`
+  ADD CONSTRAINT `user_trade_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

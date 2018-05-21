@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_listing extends CI_Controller
+class User_listing extends BaseController
 {
 
     public function __construct()
@@ -10,6 +10,7 @@ class User_listing extends CI_Controller
         parent::__construct();
 
         $this->load->model("Users_model");
+        $this->load->model("Wallet_model");
         $this->load->model("User_crypto_model");
         $this->load->model("User_listing_model");
 
@@ -23,19 +24,16 @@ class User_listing extends CI_Controller
 
         $user_id = $this->session->userdata("user")["user_id"];
 
-
-        $where = array(
-            "user_crypto.user_id" => $user_id,
-            "locked" => 0
-        );
-
-        $this->page_data["user_crypto"] = $this->User_crypto_model->get_where($where);
+        $this->page_data["crypto_wallet"] = $this->Wallet_model->get_crypto_wallet($user_id);
+        $this->page_data["quick_sell"] = $quick_sell;
 
         if ($_POST) {
             $input = $this->input->post();
 
             $data = array(
-                "user_crypto_id" => $input["user_crypto_id"],
+                "user_id" => $user_id,
+                "crypto_id" => $input["crypto_id"],
+                "user_listing_status_id" => 1,
                 "markup" => $input["markup"],
                 "threshold" => $input["threshold"],
                 "price_before" => $input["price_before"],
@@ -45,19 +43,14 @@ class User_listing extends CI_Controller
                 "limit_from" => $input["limit_from"],
                 "limit_to" => $input["limit_to"],
                 "time_of_payment" => $input["time_of_payment"],
+                "amount" => $input["amount"]
             );
+
+            if($quick_sell == "quick"){
+                $data["quick_sell"] = 1;
+            }
 
             $this->User_listing_model->add($data);
-
-            $where = array(
-                "user_crypto_id" => $input["user_crypto_id"]
-            );
-
-            $data = array(
-                "locked" => 1
-            );
-
-            $this->User_crypto_model->update_where($where, $data);
 
             redirect("main", "refresh");
         }

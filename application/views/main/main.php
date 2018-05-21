@@ -20,7 +20,7 @@
                                 <!-- logo for regular state and mobile devices -->
                                 <span class="logo-lg"><b>Quick Buy</b></span>
                             </a>
-                            <a href="<?=base_url()?>user_listing/sell" class="logo" style="border-right: 0px">
+                            <a href="<?=base_url()?>user_listing/sell/quick" class="logo" style="border-right: 0px">
                                 <!-- logo for regular state and mobile devices -->
                                 <span class="logo-lg"><b>Quick Sell</b></span>
                             </a>
