@@ -96,7 +96,7 @@
 					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height padding-left-10 margin-bottom-10 font-size-xlarge">Transaction Log</div>
 					<br>
 					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height">
-						<table class="table transaction-log-table">
+						<table class="table transaction-table">
 							<thead>
 								<tr>
 									<td>Crypto</td>
@@ -104,239 +104,30 @@
 									<td>Type</td>
 									<td>Time</td>
 								</tr>
-							</thead>
-							<tbody>
-								<?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach ($transaction as $row) {
+                                ?>
+							<tr>
+								<td>
+									<?= $row["crypto"] ?>
+								</td>
+								<td>
+									<?= $row["amount"] ?>
+								</td>
+								<td>
+									<?= $row["transaction_type"] ?>
+								</td>
+								<td>
+									<?= $row["created_date"] ?>
+								</td>
+							</tr>
+							<?php
 
     }
     ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?><?php
-    foreach ($transaction as $row) {
-        ?>
-                                <tr>
-                                    <td>
-                                        <?= $row["crypto"] ?>
-                                    </td>
-                                    <td>
-                                        <?= $row["amount"] ?>
-                                    </td>
-                                    <td>
-                                        <?= $row["transaction_type"] ?>
-                                    </td>
-                                    <td>
-                                        <?= $row["created_date"] ?>
-                                    </td>
-                                </tr>
-                                <?php
-
-}
-?>
-<?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-    <?php
-        foreach ($transaction as $row) {
-            ?>
-									<tr>
-										<td>
-											<?= $row["crypto"] ?>
-										</td>
-										<td>
-											<?= $row["amount"] ?>
-										</td>
-										<td>
-											<?= $row["transaction_type"] ?>
-										</td>
-										<td>
-											<?= $row["created_date"] ?>
-										</td>
-									</tr>
-									<?php
-
-    }
-    ?>
-							</tbody>
+                            </tbody>
 						</table>
 					</div>
 				</div>

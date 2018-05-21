@@ -16,10 +16,10 @@ class User_listing extends CI_Controller
         $this->page_data = array();
     }
 
-    public function sell()
+    public function sell($quick_sell = "")
     {
 
-        if (!$this->session->has_userdata("user")) show_404();
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
 
         $user_id = $this->session->userdata("user")["user_id"];
 

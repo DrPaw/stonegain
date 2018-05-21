@@ -75,7 +75,7 @@ class Access extends BaseController
                 $this->input->post('password'),
             ))->result_array();
             
-            die($this->db->last_query());
+            // die($this->db->last_query());
 
             if (count($admin)) {
                 if (count($admin)) {
