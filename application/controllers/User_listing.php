@@ -13,6 +13,7 @@ class User_listing extends BaseController
         $this->load->model("Wallet_model");
         $this->load->model("User_crypto_model");
         $this->load->model("User_listing_model");
+        $this->load->model("User_trade_model");
 
         $this->load->library("pagination");
 
@@ -73,8 +74,29 @@ class User_listing extends BaseController
 
         $this->page_data["user_listing"] = $user_listing[0];
 
+        if($_POST){
+            $input = $this->input->post();
+
+            if (!$this->session->has_userdata("user")) redirect('access/login', "refresh");
+
+            $user_id = $this->session->userdata("user")["user_id"];
+
+            $data = array(
+                "buyer_id" => $user_id,
+                "seller_id" => $user_listing[0]["user_id"],
+                "user_listing_id" => $user_listing[0]["user_listing_id"],
+                "myr_amount" => $input['myr_amount'],
+                "btc_amount" => $input['btc_amount'],
+                'user_trade_status_id' => 1
+            );
+
+            $this->User_trade_model->insert($data);
+
+            redirect("wallet", "refresh");
+        }
+
         $this->load->view("main/header", $this->page_data);
-        $this->load->view("main/view_listing");
+        $this->load->view("main/buy");
         $this->load->view("main/footer");
 
     }
