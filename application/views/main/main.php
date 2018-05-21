@@ -1,123 +1,154 @@
-                <!-- Content Header (Page header) -->
-                <section class="content-header col-lg-12 col-md-12 col-xs-12 col-sm-12 background-color">
-                    <div id="slideshow">
-                        <div class="slide-wrapper">
-                            <div class="slide">
-                                <h3 class="slide-number">STRENGTH IN <span style="color: #98eae7">NUMBERS</span></h3>
-                                <div class="slide-word">Magic Internet Money</div>
-                                <div class="slide-word">You can't go wrong with the classic</div>
-                            </div>
-                        </div>
-                      </div>
-                </section>
+<!-- Content Header (Page header) -->
+<section class="content-header col-lg-12 col-md-12 col-xs-12 col-sm-12 background-color">
+	<div id="slideshow">
+		<div class="slide-wrapper">
+			<div class="slide">
+				<h3 class="slide-number">STRENGTH IN
+					<span style="color: #98eae7">NUMBERS</span>
+				</h3>
+				<div class="slide-word">Magic Internet Money</div>
+				<div class="slide-word">You can't go wrong with the classic</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-                <!-- Main content -->
-                <section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 line-padding-0">
-                    <div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-header">
-                        <div class="main-header navbar-custom-menu col-xs-6">
-                            <!-- Logo -->
-                            <a href="<?=base_url()?>user_listing/buy" class="logo" style="border-right: 0px">
-                                <!-- logo for regular state and mobile devices -->
-                                <span class="logo-lg"><b>Quick Buy</b></span>
-                            </a>
-                            <a href="<?=base_url()?>user_listing/sell/quick" class="logo" style="border-right: 0px">
-                                <!-- logo for regular state and mobile devices -->
-                                <span class="logo-lg"><b>Quick Sell</b></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 search-bar col-padding-10">
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-50">
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Amount</div>
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                    <input type="text" class="form-control input-border" name="Amount" placeholder="Amount">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Currency</div>
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                    <input type="text" class="form-control input-border" name="Currency" placeholder="Currency">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Country</div>
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                    <input type="text" class="form-control input-border" name="Country" placeholder="Country">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                               <input type="submit" class="btn btn-info pull-center padding-top-10 search-btn" value="Search">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
-                    <div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding-top-10">
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
-                                <select name="referrer_id" class="form-control">
-                                    <option value="0">Advertisement</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
-                                <select name="referrer_id" class="form-control">
-                                    <option value="0">Malaysia</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
-                                <select name="referrer_id" class="form-control">
-                                    <option value="0">Currency</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 sub-padding">
-                                <select name="referrer_id" class="form-control">
-                                    <option value="0">Payment Method</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 sub-padding">
-                                <input type="submit" class="btn btn-info pull-center line-padding-10 search-btn" value="Search">
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 line-padding-10">
-                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12"></div>
-                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border-gray">
-                                <table id="data-table" class="table table-bordered table-hover data-table">
-                                    <thead>
-                                        <tr class="border-bottom-black">
-                                            <th colspan="2">Username</th>
-                                            <th>Credit</th>
-                                            <th>Payment Method</th>
-                                            <th>Limits</th>
-                                            <th>Prices</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        foreach($user_listing as $row){
-                                            ?>
-                                            <tr>
-                                                <th class="font-weight-400">
-                                                    <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
-                                                </th>
-                                                <th class="font-weight-400" style="padding-top:16px">
-                                                    <div><?= $row["username"]?></div>
-                                                </th>
-                                                <th class="font-weight-400" style="padding-top:16px">
-                                                    <div>Trade 429|Rating 98%</div>
-                                                    <div class="font-color-user">Average Release Time: 6 mins</div>
-                                                </th>
-                                                <th class="font-weight-400" style="padding-top:16px"><?= $row["payment_method"] ?></th>
-                                                <th class="font-weight-400" style="padding-top:16px"><?= $row["limit_from"]?>-<?= $row["limit_to"]?> MYR</th>
-                                                <th class="font-weight-400 price-color" style="padding-top:16px"><?= $row["price_after"]?> MYR</th>
-                                                <th style="padding-top:16px"><a href="<?= base_url()?>user_listing/view_listing/<?= $row["user_listing_id"]?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY</a></th>
-                                            </tr>
-                                            <?php
-                                        }
-                                        ?>
-                                        <!-- <tr>
+<!-- Main content -->
+<section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 line-padding-0">
+	<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-header">
+		<div class="main-header navbar-custom-menu col-xs-6">
+			<!-- Logo -->
+			<a href="#" class="logo" style="border-right: 0px">
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">
+					<b>Quick Buy</b>
+				</span>
+			</a>
+			<a href="<?= base_url() ?>user_listing/sell/quick" class="logo" style="border-right: 0px">
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">
+					<b>Quick Sell</b>
+				</span>
+			</a>
+		</div>
+	</div>
+	<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 search-bar col-padding-10">
+		<div class="col-lg-11 col-md-11 col-xs-12 col-sm-12 col-padding-50">
+			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Amount</div>
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					<input type="text" class="form-control input-border" name="Amount" placeholder="Amount">
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Currency</div>
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					<input type="text" class="form-control input-border" name="Currency" placeholder="Currency">
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Country</div>
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					<input type="text" class="form-control input-border" name="Country" placeholder="Country">
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 no-padding">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					<br>
+				</div>
+				<input type="submit" class="btn btn-info pull-center search-btn form-control input-border" value="Search">
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
+	<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
+		<div class="col-lg-10 col-md-10 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Advertisement</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Malaysia</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Currency</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Payment Method</option>
+				</select>
+			</div>
+        </div>
+		<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+				<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
+			</div>
+        </div>
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 line-padding-10">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12"></div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border-gray">
+				<table id="data-table" class="table table-bordered table-hover data-table">
+					<thead>
+						<tr class="border-bottom-black">
+							<th colspan="2">Username</th>
+							<th>Credit</th>
+							<th>Payment Method</th>
+							<th>Limits</th>
+							<th>Prices</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+        foreach ($user_listing as $row) {
+            ?>
+							<tr>
+								<th class="font-weight-400">
+									<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<div>
+										<?= $row["username"] ?>
+									</div>
+									<?php
+        if ($row["quick_sell"] == 1) {
+            ?>
+										<div class="quick-seller col-padding-10">quick seller</div>
+										<?php
+
+        }
+        ?>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<div>Trade 429|Rating 98%</div>
+									<div class="font-color-user">Average Release Time: 6 mins</div>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<?= $row["payment_method"] ?>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<?= $row["limit_from"] ?>-
+										<?= $row["limit_to"] ?> MYR</th>
+								<th class="font-weight-400 price-color" style="padding-top:16px">
+									<?= $row["price_after"] ?> MYR</th>
+								<th style="padding-top:16px">
+									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY</a>
+								</th>
+							</tr>
+							<?php
+
+    }
+    ?>
+								<!-- <tr>
                                             <th class="font-weight-400">
-                                                <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
+                                                <img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
                                             </th>
                                             <th class="font-weight-400" style="padding-top:16px">
                                                 <div>tsphkj</div>
@@ -135,7 +166,7 @@
                                         </tr>
                                         <tr>
                                             <th class="font-weight-400">
-                                                <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
+                                                <img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
                                             </th>
                                             <th class="font-weight-400" style="padding-top:16px">
                                                 <div>jaingpinmiao</div>
@@ -153,7 +184,7 @@
                                         </tr>
                                         <tr>
                                             <th class="font-weight-400" style="padding-top:16px">
-                                                <img src="<?=site_url();?>/images/stonegain/avatar.png" class="avatar">
+                                                <img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
                                             </th>
                                             <th class="font-weight-400" style="padding-top:16px">
                                                 <div>htldyp</div>
@@ -168,16 +199,15 @@
                                             <th class="font-weight-400 price-color" style="padding-top:16px">56900 MYR</th>
                                             <th style="padding-top:16px"><input type="submit" class="btn btn-info pull-center line-padding-10 search-btn" value="BUY"></th>
                                         </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
-                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0">
-                        <img src="<?=site_url();?>/images/stonegain/stonegain.png" class="col-xs-12 col-padding-0" style="height:100%">
-                    </div>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
+	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0">
+		<img src="<?= site_url(); ?>/images/stonegain/stonegain.png" class="col-xs-12 col-padding-0" style="height:100%">
+	</div>
 
-                </section>
-                <!-- /.content -->
-
+</section>
+<!-- /.content -->

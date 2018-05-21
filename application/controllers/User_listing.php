@@ -14,6 +14,8 @@ class User_listing extends BaseController
         $this->load->model("User_crypto_model");
         $this->load->model("User_listing_model");
 
+        $this->load->library("pagination");
+
         $this->page_data = array();
     }
 
@@ -46,7 +48,7 @@ class User_listing extends BaseController
                 "amount" => $input["amount"]
             );
 
-            if($quick_sell == "quick"){
+            if ($quick_sell == "quick") {
                 $data["quick_sell"] = 1;
             }
 
@@ -60,7 +62,7 @@ class User_listing extends BaseController
         $this->load->view("main/footer");
     }
 
-    public function view_listing($user_listing_id)
+    public function buy($user_listing_id)
     {
 
         $where = array(
@@ -77,10 +79,41 @@ class User_listing extends BaseController
 
     }
 
-    public function buy()
+    public function view_listing($page = "")
     {
+
+        $count = $this->User_listing_model->get_count();
+
+        $per_page = 10;
+
+        $config['base_url'] = base_url() . '/user_listing/view_listing';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
+
+        $this->page_data["user_listing"] = $this->User_listing_model->get_paging($page, $per_page);
+
         $this->load->view("main/header", $this->page_data);
-        // $this->load->view("main/user_details");
+        $this->load->view("main/view_listing");
         $this->load->view("main/footer");
     }
 }

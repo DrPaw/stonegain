@@ -90,7 +90,7 @@ class BaseController extends CI_Controller
                             "crypto" => $row["crypto"],
                             "total_amount" => $wallet_row["total_amount"],
                             "available_amount" => $wallet_row["available_amount"],
-                            "locked_count" => $wallet_row["locked_count"]
+                            "locked_amount" => $wallet_row["locked_amount"]
                         );
                         break;
                     } else {
@@ -98,7 +98,7 @@ class BaseController extends CI_Controller
                             "crypto" => $row["crypto"],
                             "total_amount" => "0.00000000",
                             "available_amount" => "0.00000000",
-                            "locked_count" => 0
+                            "locked_amount" => "0.00000000"
                         );
                     }
                 }

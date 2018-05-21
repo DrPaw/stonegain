@@ -77,7 +77,7 @@
 										<?= $row["available_amount"] ?>
 									</td>
 									<td>
-										<?= $row["locked_count"] ?>
+										<?= $row["locked_amount"] ?>
 									</td>
 								</tr>
 								<?php
