@@ -30,6 +30,10 @@ class Transaction extends BaseController
         $this->load->view("main/footer");
     }
 
+    function getDepositAddress(){
+        $this->load->model("GDAX");
+        $address = $this->db->get_where("user_deposit_address",array())->result_array();
+    }
     function get_crypto_amount()
     {
         if ($_POST and $this->session->has_userdata("user")) {
@@ -56,6 +60,15 @@ class Transaction extends BaseController
         } else {
             show_404();
         }
+    }
+
+    function loadDeposit(){
+        $this->load->model("Transaction_model");
+        $address = $this->Transaction_model->getDepositAddress($this->session->userdata('user')['user_id'],$this->input->post("currency"));
+        die(json_encode(array(
+            "status" => "SUCCESS",
+            "data" => $address['value']
+        )));
     }
 
     function deposit()

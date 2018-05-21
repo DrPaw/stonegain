@@ -78,4 +78,43 @@ class Transaction_model extends CI_Model
 
         return $query->result_array();
     }
+
+    function getDepositAddress($user_id,$currency){
+
+        $this->db->order_by("user_deposit_address_id","desc");
+        $currencyAddress = $this->db->get_where("user_deposit_address",array(
+            "user_id" => $user_id,
+            "currency" => $currency,
+            'active' => 1
+        ))->result_array();
+
+        if(!count($currencyAddress)){
+            $this->load->model("GDAX");
+            $addressName = $this->session->userdata("user")['username']."_".strtotime('now');
+            $address = $this->GDAX->createAddress($currency,$addressName);
+
+            if($address['status'] == "SUCCESS"){
+                $this->db->insert("user_deposit_address",array(
+                    "user_id" => $user_id,
+                    "currency" => $currency,
+                    "resource_id" => $address['data']->id,
+                    "value" => $address['data']->address,
+                    "resource_path" => $address['data']->resource_path
+                ));
+            }else{
+                var_dump($address);
+                return false;
+            }
+
+            $this->db->order_by("user_deposit_address_id","desc");
+            $currencyAddress = $this->db->get_where("user_deposit_address",array(
+                "user_id" => $user_id,
+                "currency" => $currency,
+                'active' => 1
+            ))->result_array();
+        }
+
+        return $currencyAddress[0];
+        
+    }
 }

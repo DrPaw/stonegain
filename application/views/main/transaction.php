@@ -27,12 +27,12 @@
 					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border margin-bottom" style="height:25%;">
 						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding-custom">
 							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 font-size-large">
-								<select class="form-control crypto-select" name="crypto_id">
-									<option value="0">None</option>
+								<select class="form-control crypto-select" id="depositCrypto" name="crypto_id" onchange="loadDeposit()">
+									<option value="0" >None</option>
 									<?php
         foreach ($crypto as $row) {
             ?>
-										<option value="<?= $row["crypto_id"] ?>">
+										<option value="<?= $row["crypto"] ?>">
 											<?= $row["name"] ?>
 										</option>
 										<?php
@@ -43,7 +43,7 @@
 							</div>
 							<div id="refresh-crypto-amount-deposit">
 								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Asseta : 0</div>
+								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
 								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0</div>
 							</div>
 						</div>
@@ -52,24 +52,14 @@
 						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border transaction-box-height sub-padding-custom">
 							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Address :</div>
 							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-								<input type="text" class="form-control input-border" required name="address">
+								<input type="text" class="form-control input-border" value="Please select a currency" id="depositAddress" disabled name="address">
 							</div>
-							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Amount :</div>
-							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-								<input type="number" class="form-control input-border" required name="amount">
-							</div>
-							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Payment Password :</div>
-							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5 line-padding-10">
-								<input type="password" class="form-control input-border" required name="password">
-							</div>
-							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10 line-padding-10">Remark :</div>
-							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 col-padding-5 label-height line-padding-10">
-								<input type="text" class="form-control input-border" name="remarks">
-							</div>
+							
 							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10">
-								<br>
-								<input type="submit" class="btn btn-info pull-right" value="Send">
-							</div>
+                                Please deposit your token to this address 
+                                <p>Please ensure the address is correct or else coin will be lost permanently</p>
+                            </div>
+							
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0">
@@ -100,7 +90,7 @@
 							</div>
 							<div id="refresh-crypto-amount-withdraw">
 								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Asseta : 0</div>
+								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
 								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0</div>
 							</div>
 						</div>
@@ -155,5 +145,17 @@
 			$("#refresh-crypto-amount-withdraw").html(response);
 		});
 	});
+
+    function loadDeposit(){
+        var currency = $("#depositCrypto").val();
+        $.post("<?= site_url('Transaction/loadDeposit'); ?>",
+                {
+                    currency: currency
+                },
+                function(res){
+                    console.log(res);
+                    $("#depositAddress").val(res.data);
+                }, "JSON");
+    }
 
 </script>
