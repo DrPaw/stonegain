@@ -140,7 +140,7 @@
                             if($this->session->has_userdata("user")){
                                 ?>
                                     <li class="dropdown tasks-menu">
-                                        <a href="<?= base_url() ?>user_listing/buy" class="dropdown-toggle">Buy</a>
+                                        <a href="<?= base_url() ?>user_listing/view_listing" class="dropdown-toggle">Buy</a>
                                     </li>
                                     <li class="dropdown user user-menu">
                                         <a href="<?= base_url() ?>user_listing/sell" class="dropdown-toggle">Sell</a>

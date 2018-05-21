@@ -1,9 +1,9 @@
-<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-    <?= (!empty($user_crypto[0]["amount"]))? $user_crypto[0]["amount"] : "" ?> remaining
+<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 sub-padding">
+    Total Balance: <?= (!empty($crypto_wallet["total_amount"]))? $crypto_wallet["total_amount"] : "" ?>
 </div>
-<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-<?= (!empty($user_crypto[0]["btc_price"]))? $user_crypto[0]["btc_price"] : "" ?> BTC Price
+<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 sub-padding">
+    Locked Amount: <?= (!empty($crypto_wallet["locked_amount"]))? $crypto_wallet["locked_amount"] : "" ?>
 </div>
-<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-<?= (!empty($user_crypto[0]["usdt_price"]))? $user_crypto[0]["usdt_price"] : "" ?> USDT Price
+<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 sub-padding">
+    Available Balance: <?= (!empty($crypto_wallet["available_amount"]))? $crypto_wallet["available_amount"] : "" ?>
 </div>

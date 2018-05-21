@@ -1,71 +1,93 @@
+<section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 line-padding-0">
+	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
+	<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
+		<div class="col-lg-10 col-md-10 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Advertisement</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Malaysia</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Currency</option>
+				</select>
+			</div>
+			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+				<select name="referrer_id" class="form-control">
+					<option value="0">Payment Method</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+				<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 line-padding-10">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12"></div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border-gray">
+				<table id="data-table" class="table table-bordered table-hover data-table">
+					<thead>
+						<tr class="border-bottom-black">
+							<th colspan="2">Username</th>
+							<th>Credit</th>
+							<th>Payment Method</th>
+							<th>Limits</th>
+							<th>Prices</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+        foreach ($user_listing as $row) {
+            ?>
+							<tr>
+								<th class="font-weight-400">
+									<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<div>
+										<?= $row["username"] ?>
+									</div>
+									<?php
+        if ($row["quick_sell"] == 1) {
+            ?>
+										<div class="quick-seller col-padding-10">quick seller</div>
+										<?php
 
-                <!-- Main content -->
-                <section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding border-bottom margin-bottom-10">
-                        <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                                <span class="font-weight-bold">User:</span> <?= $user_listing["username"] ?>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 sub-padding font-color-user">
-                               Average Release Time: 0 mins
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                              1000+ Trades
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                              488 Trusted
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                              98% Rating
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-                            <?= $user_listing["amount"] ?> BTC Volume
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding margin-bottom-10 font-weight-bold">
-                          Purchase Details
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">MYR</div>
-                            <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-                                <input type="text" class="form-control input-border" required name="MYR">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">BTC</div>
-                            <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-                                <input type="text" class="form-control input-border" required name="BTC">
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Price:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["price_after"] ?> MYR/BTC</div>
-                            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Limits:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["limit_from"] ?>-<?= $user_listing["limit_to"] ?> MYR</div>
-                            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Payment Method:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["payment_method"] ?></div>
-                            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-10">Time of Payment:</div>
-                            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 label-height col-padding-5"><?= $user_listing["time_of_payment"] ?></div>
-                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 margin-bottom-10 ">
-                                <input type="submit" class="btn btn-info pull-right" value="BUY">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding font-weight-bold">
-                           Messages
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-                            <?= (!empty($user_listing["message"])) ? $user_listing["message"] : "No Messages" ?>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding padding-top-50 font-weight-bold">
-                           Notice of Transaction
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-                           Trading Currencies and other financial instruments carries risk due to the potential of increased volatility and speculation.  
-                        </div>
-                    </div>
-                </section>
-                <!-- /.content -->
-            
+        }
+        ?>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<div>Trade 429|Rating 98%</div>
+									<div class="font-color-user">Average Release Time: 6 mins</div>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<?= $row["payment_method"] ?>
+								</th>
+								<th class="font-weight-400" style="padding-top:16px">
+									<?= $row["limit_from"] ?>-
+										<?= $row["limit_to"] ?> MYR</th>
+								<th class="font-weight-400 price-color" style="padding-top:16px">
+									<?= $row["price_after"] ?> MYR</th>
+								<th style="padding-top:16px">
+									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY</a>
+								</th>
+							</tr>
+							<?php
+
+    }
+    ?>
+					</tbody>
+				</table>
+			</div>
+			<?= $this->page_data["pagination"] ?>
+		</div>
+	</div>
+	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
+</section>

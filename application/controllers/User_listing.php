@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_listing extends CI_Controller
+class User_listing extends BaseController
 {
 
     public function __construct()
@@ -10,32 +10,32 @@ class User_listing extends CI_Controller
         parent::__construct();
 
         $this->load->model("Users_model");
+        $this->load->model("Wallet_model");
         $this->load->model("User_crypto_model");
         $this->load->model("User_listing_model");
+
+        $this->load->library("pagination");
 
         $this->page_data = array();
     }
 
-    public function sell()
+    public function sell($quick_sell = "")
     {
 
-        if (!$this->session->has_userdata("user")) show_404();
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
 
         $user_id = $this->session->userdata("user")["user_id"];
 
-
-        $where = array(
-            "user_crypto.user_id" => $user_id,
-            "locked" => 0
-        );
-
-        $this->page_data["user_crypto"] = $this->User_crypto_model->get_where($where);
+        $this->page_data["crypto_wallet"] = $this->Wallet_model->get_crypto_wallet($user_id);
+        $this->page_data["quick_sell"] = $quick_sell;
 
         if ($_POST) {
             $input = $this->input->post();
 
             $data = array(
-                "user_crypto_id" => $input["user_crypto_id"],
+                "user_id" => $user_id,
+                "crypto_id" => $input["crypto_id"],
+                "user_listing_status_id" => 1,
                 "markup" => $input["markup"],
                 "threshold" => $input["threshold"],
                 "price_before" => $input["price_before"],
@@ -45,19 +45,14 @@ class User_listing extends CI_Controller
                 "limit_from" => $input["limit_from"],
                 "limit_to" => $input["limit_to"],
                 "time_of_payment" => $input["time_of_payment"],
+                "amount" => $input["amount"]
             );
+
+            if ($quick_sell == "quick") {
+                $data["quick_sell"] = 1;
+            }
 
             $this->User_listing_model->add($data);
-
-            $where = array(
-                "user_crypto_id" => $input["user_crypto_id"]
-            );
-
-            $data = array(
-                "locked" => 1
-            );
-
-            $this->User_crypto_model->update_where($where, $data);
 
             redirect("main", "refresh");
         }
@@ -67,7 +62,7 @@ class User_listing extends CI_Controller
         $this->load->view("main/footer");
     }
 
-    public function view_listing($user_listing_id)
+    public function buy($user_listing_id)
     {
 
         $where = array(
@@ -84,10 +79,41 @@ class User_listing extends CI_Controller
 
     }
 
-    public function buy()
+    public function view_listing($page = "")
     {
+
+        $count = $this->User_listing_model->get_count();
+
+        $per_page = 10;
+
+        $config['base_url'] = base_url() . '/user_listing/view_listing';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
+
+        $this->page_data["user_listing"] = $this->User_listing_model->get_paging($page, $per_page);
+
         $this->load->view("main/header", $this->page_data);
-        // $this->load->view("main/user_details");
+        $this->load->view("main/view_listing");
         $this->load->view("main/footer");
     }
 }
