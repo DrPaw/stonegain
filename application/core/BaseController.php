@@ -7,7 +7,7 @@ class BaseController extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model("Crypto_model");
+        $this->load->model("Account_resource_model");
     }
 
     public function hash($password)
@@ -78,16 +78,40 @@ class BaseController extends CI_Controller
     function sort_crypto_wallet($crypto_wallet)
     {
         //if (empty($crypto_wallet)) show_404();
-
-        $crypto = $this->Crypto_model->get_all();
-
+        
         $sorted_wallet = array();
+
+        if (!empty($crypto_wallet)) {
+            foreach ($crypto_wallet as $wallet_row) {
+                if ("USDT" == $wallet_row["crypto"]) {
+                    $crypto_data = array(
+                        "crypto" => "USDT",
+                        "total_amount" => $wallet_row["total_amount"],
+                        "available_amount" => $wallet_row["available_amount"],
+                        "locked_amount" => $wallet_row["locked_amount"]
+                    );
+                    break;
+                } else {
+                    $crypto_data = array(
+                        "crypto" => "USDT",
+                        "total_amount" => "0.00000000",
+                        "available_amount" => "0.00000000",
+                        "locked_amount" => "0.00000000"
+                    );
+                }
+            }
+        }
+
+        array_push($sorted_wallet, $crypto_data);
+
+        $crypto = $this->Account_resource_model->get_all();
+
         foreach ($crypto as $row) {
             if (!empty($crypto_wallet)) {
                 foreach ($crypto_wallet as $wallet_row) {
-                    if ($row["crypto"] == $wallet_row["crypto"]) {
+                    if ($row["currency"] == $wallet_row["crypto"]) {
                         $crypto_data = array(
-                            "crypto" => $row["crypto"],
+                            "crypto" => $row["currency"],
                             "total_amount" => $wallet_row["total_amount"],
                             "available_amount" => $wallet_row["available_amount"],
                             "locked_amount" => $wallet_row["locked_amount"]
@@ -95,7 +119,7 @@ class BaseController extends CI_Controller
                         break;
                     } else {
                         $crypto_data = array(
-                            "crypto" => $row["crypto"],
+                            "crypto" => $row["currency"],
                             "total_amount" => "0.00000000",
                             "available_amount" => "0.00000000",
                             "locked_amount" => "0.00000000"
@@ -104,7 +128,7 @@ class BaseController extends CI_Controller
                 }
             } else {
                 $crypto_data = array(
-                    "crypto" => $row["crypto"],
+                    "crypto" => $row["currency"],
                     "total_amount" => "0.00000000",
                     "available_amount" => "0.00000000",
                     "locked_amount" => "0.0000000"
