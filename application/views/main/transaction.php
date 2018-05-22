@@ -106,11 +106,11 @@
 								<input type="number" class="form-control input-border" required name="amount">
 							</div>
 							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Payment Password :</div>
-							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5 line-padding-10">
+							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
 								<input type="password" class="form-control input-border" required name="password">
 							</div>
-							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10 line-padding-10">Remark :</div>
-							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 col-padding-5 label-height line-padding-10">
+							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Remark :</div>
+							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 col-padding-5 label-height">
 								<input type="text" class="form-control input-border" name="remarks">
 							</div>
 							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10">

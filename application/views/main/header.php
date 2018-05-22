@@ -50,16 +50,13 @@
                     <div class="navbar-custom-menu col-xs-6">
                         <ul class="nav navbar-nav">
                             <li class="dropdown messages-menu">
-                                <a href="#" class="dropdown-toggle font-size-large"><b>BTC</b></a>
+                                <a href="<?= base_url()?>user_listing/view_listing?currency=BTC" class="dropdown-toggle font-size-large"><b>BTC</b></a>
                             </li>
                             <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle font-size-large"><b>ETH</b></a>
-                            </li>
-                            <li class="dropdown tasks-menu">
-                                <a href="#" class="dropdown-toggle font-size-large"><b>BCH</b></a>
+                                <a href="<?= base_url()?>user_listing/view_listing?currency=ETH" class="dropdown-toggle font-size-large"><b>ETH</b></a>
                             </li>
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle font-size-large"><b>LTC</b></a>
+                                <a href="<?= base_url()?>user_listing/view_listing?currency=LTC" class="dropdown-toggle font-size-large"><b>LTC</b></a>
                             </li>
                         </ul>
                     </div>

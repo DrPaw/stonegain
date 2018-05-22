@@ -22,7 +22,7 @@
 					98% Rating
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					<?= $user_listing["amount"] ?> BTC Volume
+					<?= $user_listing["amount"] ?> <?= $user_listing["crypto"]?> Volume
 				</div>
 			</div>
 		</div>
@@ -77,6 +77,8 @@
 			</div>
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
 				Trading Currencies and other financial instruments carries risk due to the potential of increased volatility and speculation.
+				It is strongly recommended that you consider the possible risks and rewards that are associated with the investment and trade of CFDs in order to fully understand if this type of investment is right for you.
+				We highly recommend you to speak with one of our account representatives before maaking any kind of transactions.
 			</div>
 		</div>
 	</form>

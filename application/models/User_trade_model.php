@@ -1,12 +1,15 @@
 <?php
 
-Class User_trade_model extends CI_Model{
+class User_trade_model extends CI_Model
+{
 
-    function insert($data){
+    function insert($data)
+    {
         $this->db->insert("user_trade", $data);
     }
 
-    function get_offers_where($where){
+    function get_offers_where($where)
+    {
         $this->db->select("*, 'BUY' AS type");
         $this->db->from("user_trade");
         $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
@@ -20,7 +23,8 @@ Class User_trade_model extends CI_Model{
         return $query->result_array();
     }
 
-    function get_sales_where($where){
+    function get_sales_where($where)
+    {
         $this->db->select("*, 'SELL' AS type");
         $this->db->from("user_trade");
         $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
@@ -32,6 +36,29 @@ Class User_trade_model extends CI_Model{
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+
+    function get_where_involved($where, $user_id)
+    {
+        $this->db->select("*, 'SELL' AS type");
+        $this->db->from("user_trade");
+        $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
+        $this->db->join("user_trade_status", "user_trade.user_trade_status_id = user_trade_status.user_trade_status_id", "left");
+        $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
+        $this->db->where("buyer_id", $user_id);
+        $this->db->or_where("seller_id", $user_id);
+        $this->db->where($where);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    function update_where($where, $data)
+    {
+        $this->db->where($where);
+        $this->db->update("user_trade", $data);
+
     }
 
 }

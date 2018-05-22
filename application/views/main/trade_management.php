@@ -38,38 +38,56 @@
 					</thead>
 					<tbody>
 						<?php
-    foreach ($user_trades_processing as $row) {
-        ?>
+					foreach ($user_trades_processing as $row) {
+						?>
 							<tr>
 								<td>
-									<?= $row['username'] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row['username'] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["user_listing_id"] ?>
-								</td>
-								<td><?= $row['type']?></td>
-								<td>
-									<?= $row["myr_amount"] ?> MYR</td>
-								<td>
-									<?= $row["btc_amount"] ?> BTC</td>
-								<td>
-									<?= $row["created_date"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["user_listing_id"] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["crypto"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row['type'] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["user_trade_status"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["myr_amount"] ?> MYR</td>
+								</a>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["btc_amount"] ?> BTC</td>
+								</a>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["created_date"] ?>
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["crypto"] ?>
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["user_trade_status"] ?>
+									</a>
 								</td>
 							</tr>
 							<?php
 
-    }
-    ?>
+					}
+					?>
 					</tbody>
 				</table>
-            </div>
-            <div id="completed" class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height tab-pane">
+			</div>
+			<div id="completed" class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height tab-pane">
 				<table class="table transaction-table">
 					<thead>
 						<tr>
@@ -85,34 +103,54 @@
 					</thead>
 					<tbody>
 						<?php
-    foreach ($user_trades_completed as $row) {
-        ?>
+					foreach ($user_trades_completed as $row) {
+						?>
 							<tr>
 								<td>
-									<?= $row['username'] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row['username'] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["user_listing_id"] ?>
-								</td>
-								<td><?= $row['type']?></td>
-								<td>
-									<?= $row["myr_amount"] ?> MYR</td>
-								<td>
-									<?= $row["btc_amount"] ?> BTC</td>
-								<td>
-									<?= $row["created_date"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["user_listing_id"] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["crypto"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row['type'] ?>
+									</a>
 								</td>
 								<td>
-									<?= $row["user_trade_status"] ?>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["myr_amount"] ?> MYR
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["btc_amount"] ?> BTC
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["created_date"] ?>
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["crypto"] ?>
+									</a>
+								</td>
+								<td>
+									<a href="<?= base_url() ?>user_listing/details/<?= $row["user_listing_id"]?>/<?= $row["user_trade_id"]?>">
+										<?= $row["user_trade_status"] ?>
+									</a>
 								</td>
 							</tr>
 							<?php
 
-    }
-    ?>
+					}
+					?>
 					</tbody>
 				</table>
 			</div>

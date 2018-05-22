@@ -15,82 +15,99 @@
 
 <!-- Main content -->
 <section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 line-padding-0">
-	<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-header">
-		<div class="main-header navbar-custom-menu col-xs-6">
-			<!-- Logo -->
-			<a href="#" class="logo" style="border-right: 0px">
-				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg">
-					<b>Quick Buy</b>
-				</span>
-			</a>
-			<a href="<?= base_url() ?>user_listing/sell/quick" class="logo" style="border-right: 0px">
-				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg">
-					<b>Quick Sell</b>
-				</span>
-			</a>
-		</div>
-	</div>
-	<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 search-bar col-padding-10">
-		<div class="col-lg-11 col-md-11 col-xs-12 col-sm-12 col-padding-50">
-			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Amount</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-					<input type="text" class="form-control input-border" name="Amount" placeholder="Amount">
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Currency</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-					<input type="text" class="form-control input-border" name="Currency" placeholder="Currency">
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Country</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-					<input type="text" class="form-control input-border" name="Country" placeholder="Country">
-				</div>
+	<form method="GET" action="<?= base_url()?>user_listing/buy/quick_buy" id="quick-buy-form">
+		<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-header">
+			<div class="main-header navbar-custom-menu col-xs-6">
+				<!-- Logo -->
+				<a id="quick-buy-button" class="logo" style="border-right: 0px">
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg">
+						<b>Quick Buy</b>
+					</span>
+				</a>
+				<a href="<?= base_url() ?>user_listing/sell/quick" class="logo" style="border-right: 0px">
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg">
+						<b>Quick Sell</b>
+					</span>
+				</a>
 			</div>
 		</div>
-		<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 no-padding">
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-					<br>
+		<div class="navbar-static-top col-lg-12 col-md-12 col-xs-12 col-sm-12 search-bar col-padding-10">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-50">
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Amount</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+						<input type="text" class="form-control input-border" name="amount" placeholder="Amount">
+					</div>
 				</div>
-				<input type="submit" class="btn btn-info pull-center search-btn form-control input-border" value="Search">
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Currency</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+						<input type="text" class="form-control input-border" name="currency" placeholder="Currency" list="currency">
+						<datalist id="currency">
+							<?php
+					foreach ($currency_list as $row) {
+						?>
+								<option value="<?= $row['currency'] ?>">
+									<?php
+
+						}
+						?>
+						</datalist>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 sub-padding">
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">Country</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+						<input type="text" class="form-control input-border" name="country" placeholder="Country">
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
 	<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
-		<div class="col-lg-10 col-md-10 col-xs-10 col-sm-12 padding-top-12">
-			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
-				<select name="referrer_id" class="form-control">
-					<option value="0">Advertisement</option>
-				</select>
+	<form action="<?= base_url() ?>user_listing/view_listing" method="GET">
+			<div class="col-lg-10 col-md-10 col-xs-10 col-sm-12 padding-top-12">
+				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+					<select name="advertisement" class="form-control">
+						<option value="">Advertisement</option>
+					</select>
+				</div>
+				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+					<select name="country" class="form-control">
+						<option value="">Malaysia</option>
+					</select>
+				</div>
+				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+					<select name="currency" class="form-control">
+						<option value="">Currency</option>
+						<?php
+					foreach ($currency_list as $row) {
+						?>
+							<option value="<?= $row['currency'] ?>">
+								<?= $row['currency'] ?>
+							</option>
+							<?php
+
+					}
+					?>
+					</select>
+				</div>
+				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
+					<select name="payment_method" class="form-control">
+						<option value="">Payment Method</option>
+						<option value="Bank Transfer">Bank Transfer</option>
+					</select>
+				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
-				<select name="referrer_id" class="form-control">
-					<option value="0">Malaysia</option>
-				</select>
+			<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+					<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
+				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
-				<select name="referrer_id" class="form-control">
-					<option value="0">Currency</option>
-				</select>
-			</div>
-			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
-				<select name="referrer_id" class="form-control">
-					<option value="0">Payment Method</option>
-				</select>
-			</div>
-        </div>
-		<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-				<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
-			</div>
-        </div>
+		</form>
 		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 line-padding-10">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12"></div>
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border-gray">
@@ -107,8 +124,8 @@
 					</thead>
 					<tbody>
 						<?php
-        foreach ($user_listing as $row) {
-            ?>
+					foreach ($user_listing as $row) {
+						?>
 							<tr>
 								<th class="font-weight-400">
 									<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
@@ -118,13 +135,13 @@
 										<?= $row["username"] ?>
 									</div>
 									<?php
-        if ($row["quick_sell"] == 1) {
-            ?>
+								if ($row["quick_sell"] == 1) {
+									?>
 										<div class="quick-seller col-padding-10">quick seller</div>
 										<?php
 
-        }
-        ?>
+								}
+								?>
 								</th>
 								<th class="font-weight-400" style="padding-top:16px">
 									<div>Trade 429|Rating 98%</div>
@@ -139,14 +156,14 @@
 								<th class="font-weight-400 price-color" style="padding-top:16px">
 									<?= $row["price_after"] ?> MYR</th>
 								<th style="padding-top:16px">
-									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY</a>
+									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY <?= $row['crypto'] ?></a>
 								</th>
 							</tr>
 							<?php
 
-    }
-    ?>
-								<!-- <tr>
+					}
+					?>
+							<!-- <tr>
                                             <th class="font-weight-400">
                                                 <img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
                                             </th>
@@ -211,3 +228,8 @@
 
 </section>
 <!-- /.content -->
+<script>
+	$(document).on('click', "#quick-buy-button", function(e){
+		$("#quick-buy-form").submit();
+	});
+	</script>

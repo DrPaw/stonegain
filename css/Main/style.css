@@ -5557,3 +5557,12 @@ p.error {
 .sub-padding-custom {
     padding:10px;
 }
+
+a {
+    cursor : pointer;
+}
+
+.no-record-wrapper {
+    text-align: center;
+    padding: 20%;
+}

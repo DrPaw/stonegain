@@ -17,8 +17,10 @@ class Admin_transaction extends CI_Controller
     {
 
         $sql = "SELECT *, (SELECT username FROM user WHERE user_id = user_trade.buyer_id ) as buyer_name,
-                (SELECT username FROM user WHERE user_id = user_trade.seller_id ) as seller_name 
-                  FROM user_trade ORDER BY user_buy_id DESC";
+                (SELECT username FROM user WHERE user_id = user_trade.seller_id ) as seller_name,
+                (SELECT user_trade_status FROM user_trade_status WHERE user_trade_status_id = user_trade.user_trade_status_id ) as user_trade_status 
+                  FROM user_trade ORDER BY user_trade_id DESC";
+
         $this->pageData["user_trade"] = $this->db->query($sql)->result_array();
         $this->pageData['cryptos'] = $this->db->get("crypto");
         $this->load->view("admin/header", $this->pageData);
@@ -28,7 +30,7 @@ class Admin_transaction extends CI_Controller
 
     function internal($transaction_id){
         $result = $this->db->get_where("user_trade",array(
-            'user_buy_id' => $transaction_id
+            'user_trade_id' => $transaction_id
         ))->result_array();
 
         if (!count($result)) die('404');
@@ -42,9 +44,6 @@ class Admin_transaction extends CI_Controller
 
     public function add()
     {
-
-        
-
         $this->load->view("admin/header", $this->page_data);
         $this->load->view("admin/Admin/add");
         $this->load->view("admin/footer");

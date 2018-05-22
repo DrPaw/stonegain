@@ -43,11 +43,11 @@
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Amount:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-						<input id="amount-form" type="number" class="form-control input-border" required name="amount" min="0" step="any">
+						<input id="amount-form" type="number" class="form-control input-border" required name="amount" min="0" step="any" value="0">
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Markup Percentage:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-						<input id="markup-form" type="number" class="form-control input-border" required name="markup">
+						<input id="markup-form" type="number" class="form-control input-border" required name="markup" value="0">
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Threshold:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
@@ -63,9 +63,9 @@
 						<p id="price-after">0 MYR/BTC</p>
 						<input type="hidden" class="form-control input-border" id="price-after-form" name="price_after">
 					</div>
-					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Total (Price <small>(after markup)</small> * Amount):</div>
+					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Total:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-						<p id="price-total">0 MYR/BTC</p>
+						<p id="price-total">0 MYR <small>price (after markup) * amount</small></p>
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Limit From</div>
 					<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-5">
@@ -131,17 +131,24 @@
 			$("#amount-form").val(0);
 		});
 
-		$("#markup-form").val("");
+		$("#markup-form").val(0);
 	});
 
-	$(document).on("change", "#markup-form", function (e) {
+	$(document).on("change", "#markup-form, #amount-form", function (e) {
 		if (crypto_price != 0) {
-			var crypto_price_after = (parseInt(crypto_price) + parseInt((crypto_price * ($(this).val() / 100)))).toFixed(2);
+			var markup = $("#markup-form").val();
+			if (markup <= 0) {
+				var crypto_price_after = crypto_price;
+			} else {
+				var crypto_price_after = parseFloat(crypto_price) + (parseFloat(crypto_price) * parseFloat(markup / 100));
+			}
+			crypto_price_after = parseFloat(crypto_price_after).toFixed(2);
 			var amount = $("#amount-form").val();
 			var total = crypto_price_after * amount;
+			total = parseFloat(total).toFixed(2);
 			$("#price-after-form").val(crypto_price_after)
 			$("#price-after").text(crypto_price_after + " MYR/BTC")
-			$("#price-total").text(total + " MYR/BTC")
+			$("#price-total").text(total + " MYR")
 			$("#limit-to-form").attr({
 				"max": total
 			});
