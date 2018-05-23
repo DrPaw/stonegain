@@ -1,31 +1,68 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $this->load->model("Users_model");
+        $this->load->model("User_listing_model");
         $this->load->model("User_crypto_model");
-        
+
+        $this->load->library("pagination");
+
         $this->page_data = array();
     }
 
-    public function details($user_id) {
+    public function details($user_id)
+    {
         $this->load->view("main/header", $this->page_data);
         $this->load->view("main/user_details");
         $this->load->view("main/footer");
     }
 
-    public function profile() {
+    public function profile($page = "")
+    {
 
-        if(!$this->session->has_userdata("user")){
-            show_404();
-        } else {
-            $user_id = $this->session->userdata("user")["user_id"];
-        }
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
+
+        $user_id = $this->session->userdata("user")["user_id"];
+
+        $per_page = 5;
+
+        $where = array(
+            "user_listing.user_id" => $user_id
+        );
+        $count = $this->User_listing_model->get_count_where($where);
+        $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+
+        $config['base_url'] = base_url() . '/user/profile';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
 
         $user = $this->Users_model->get_where($where = array(
             "user_id" => $user_id
@@ -34,24 +71,74 @@ class User extends CI_Controller {
         $this->page_data["user"] = $user[0];
 
         $this->load->view("main/header", $this->page_data);
-        $this->load->view("main/user/details");
+        $this->load->view("main/profile");
         $this->load->view("main/footer");
     }
 
-    public function edit_profile() {
+    public function view_profile($user_id, $page = "")
+    {
 
-        if(!$this->session->has_userdata("user")){
-            show_404();
-        } else {
-            $user_id = $this->session->userdata("user")["user_id"];
-        }
+        if ($this->session->has_userdata("user") and $user_id == $this->session->userdata("user")["user_id"]) redirect("user/profile", "refresh");
+
+        $per_page = 5;
+
+        $where = array(
+            "user_listing.user_id" => $user_id
+        );
+        $count = $this->User_listing_model->get_count_where($where);
+        $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+
+        $config['base_url'] = base_url() . '/user/profile';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
+
+        $user = $this->Users_model->get_where($where = array(
+            "user_id" => $user_id
+        ));
+
+        if (empty($user)) redirect("main/no_result", "refresh");
+
+        $this->page_data["user"] = $user[0];
+
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/user_profile");
+        $this->load->view("main/footer");
+    }
+
+    public function edit_profile()
+    {
+
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
+
+        $user_id = $this->session->userdata("user")["user_id"];
+
 
         if ($_POST) {
             $input = $this->input->post();
 
             $error = false;
 
-            if ($input["password"] OR $input["password2"]) {
+            if ($input["password"] or $input["password2"]) {
                 if ($input["password"] == $input["password2"]) {
                     $hash = $this->hash($input["password"]);
                 } else {
@@ -64,7 +151,7 @@ class User extends CI_Controller {
                 $where = array(
                     "user_id" => $user_id
                 );
-                
+
                 $user = $this->Users_model->get_where($where);
 
                 $data = array(
@@ -79,8 +166,10 @@ class User extends CI_Controller {
                     $data["password"] = $hash["password"];
                     $data["salt"] = $hash["salt"];
                 }
-                
+
                 $this->Users_model->update_where($where, $data);
+
+                redirect("user/profile/", "refresh");
             } else {
                 die(json_encode(array(
                     "status" => false,
@@ -95,11 +184,15 @@ class User extends CI_Controller {
 
         $this->page_data["user"] = $user[0];
 
-        redirect("user/profile/", "refresh");
+
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/edit_profile");
+        $this->load->view("main/footer");
     }
 
-    public function get_user_crypto_data(){
-        if($_POST){
+    public function get_user_crypto_data()
+    {
+        if ($_POST) {
             $input = $this->input->post();
 
             $where = array(
@@ -115,8 +208,9 @@ class User extends CI_Controller {
         }
     }
 
-    public function get_user_crypto_price(){
-        if($_POST){
+    public function get_user_crypto_price()
+    {
+        if ($_POST) {
             $input = $this->input->post();
 
             $where = array(
@@ -125,7 +219,7 @@ class User extends CI_Controller {
 
             $user_crypto = $this->User_crypto_model->get_where($where);
 
-            if(!empty($user_crypto)){
+            if (!empty($user_crypto)) {
                 die($user_crypto[0]["btc_price"]);
             } else {
                 die("0");

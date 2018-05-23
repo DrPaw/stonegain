@@ -100,7 +100,7 @@
 						<option value="">Payment Method</option>
 						<option value="Bank Transfer">Bank Transfer</option>
 					</select>
-				</div>
+			</div>
 			</div>
 			<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
@@ -132,7 +132,7 @@
 								</th>
 								<th class="font-weight-400" style="padding-top:16px">
 									<div>
-										<?= $row["username"] ?>
+										<a href="<?= base_url()?>user/view_profile/<?= $row['user_id']?>"><?= $row["username"] ?></a>
 									</div>
 									<?php
 								if ($row["quick_sell"] == 1) {
@@ -154,8 +154,8 @@
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th class="font-weight-400 price-color" style="padding-top:16px">
-									<?= $row["price_after"] ?> MYR</th>
-								<th style="padding-top:16px">
+									<?= $row["price_after"] ?> MYR/BTC</th>
+								<th style="padding-top:16px;text-align:center;">
 									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY <?= $row['crypto'] ?></a>
 								</th>
 							</tr>

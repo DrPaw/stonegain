@@ -103,8 +103,8 @@
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th class="font-weight-400 price-color" style="padding-top:16px">
-									<?= $row["price_after"] ?> MYR</th>
-								<th style="padding-top:16px">
+									<?= $row["price_after"] ?> MYR/BTC</th>
+								<th style="padding-top:16px;text-align:center;">
 									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY
 										<?= $row["crypto"] ?>
 									</a>
@@ -117,7 +117,7 @@
 					</tbody>
 				</table>
 			</div>
-			<?= $this->page_data["pagination"] ?>
+			<?= $pagination ?>
 		</div>
 	</div>
 	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>

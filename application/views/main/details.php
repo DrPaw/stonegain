@@ -71,7 +71,9 @@
 	if (!empty($user_trade["receipt"])) {
 		?>
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 font-weight-bold">
-				<img class="receipt" src="<?= base_url() . $user_trade[" receipt "] ?>">
+				<a href="#img">
+					<img class="receipt" src="<?= base_url() . $user_trade['receipt'] ?>">
+				</a>
 			</div>
 			<?php
 
@@ -103,24 +105,34 @@
 		?>
 	</div>
 </section>
-<!-- /.content -->
-<script>
-	function calculate(index) {
-		var myr_amount = $("#myr-amount-form").val();
-		var btc_amount = $("#btc-amount-form").val();
-		var price = <?= $user_listing["price_after"] ?>;
-		var amount = <?= $user_listing["amount"] ?>;
-		var total_price = <?= $user_listing["price_after"] * $user_listing["amount"] ?>;
+<?php
+if (!empty($user_trade["receipt"])) {
+	?>
+	<a href="#_" class="lightbox" id="img">
+		<img src="<?= base_url().$user_trade['receipt'] ?>">
+	</a>
+	<?php
 
-		if ((index).name === "myr_amount") {
-			var new_btc_amount = (myr_amount / total_price) * amount;
-			$("#btc-amount-form").val(new_btc_amount);
-		} else if ((index).name === "btc_amount") {
-			var new_myr_amount = (btc_amount / amount) * total_price;
-			$("#myr-amount-form").val(new_myr_amount);
+}
+?>
+	<!-- /content -->
+	<script>
+		function calculate(index) {
+			var myr_amount = $("#myr-amount-form").val();
+			var btc_amount = $("#btc-amount-form").val();
+			var price = <?= $user_listing["price_after"] ?>;
+			var amount = <?= $user_listing["amount"] ?>;
+			var total_price = <?= $user_listing["price_after"] * $user_listing["amount"] ?>;
+
+			if ((index).name === "myr_amount") {
+				var new_btc_amount = (myr_amount / total_price) * amount;
+				$("#btc-amount-form").val(new_btc_amount);
+			} else if ((index).name === "btc_amount") {
+				var new_myr_amount = (btc_amount / amount) * total_price;
+				$("#myr-amount-form").val(new_myr_amount);
+
+			}
 
 		}
 
-	}
-
-</script>
+	</script>
