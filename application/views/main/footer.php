@@ -51,15 +51,16 @@
 <div class="chat-user-list">
 	<a class="btn btn-default close-message-button pull-right">
 		<i class="fa fa-close"></i>
-		<div class="row no-margin">
+		<div class="row no-margin" id="refresh-user-list">
 			<a>
 				<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 chat-user">
 					<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+						<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
 					</div>
 					<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
 						<p class="no-padding no-margin">user</p>
 						<small class="no-padding no-margin">
-							<?= date("h:i:s a")?>
+							<?= date("h:i:s a") ?>
 						</small>
 					</div>
 				</div>
@@ -158,6 +159,48 @@
 			show_message_content = false;
 		}
 	});
+
+	<?php
+if ($this->session->has_userdata("user")) {
+    ?>
+	$(document).on('click', ".chat-with-user", function (e) {
+		var target_user_id = $(this).data('user');
+		var user_id = <?= $this->session->userdata("user")["user_id"] ?>;
+
+		postParam = {
+			target_user_id: target_user_id,
+			user_id: user_id
+		}
+
+		$.post("<?= site_url('ajax/open_chat/') ?>", postParam, function (response) {
+			postParam = {
+				target_user_id: target_user_id,
+				user_id: user_id,
+				user_chat_id: response
+			};
+			$.post("<?= site_url('ajax/update_user_chat_list/') ?>", postParam, function (response) {
+				$("#refresh-user-list").html(response);
+				$.post("<?= site_url('ajax/load_chat_content/') ?>", postParam, function (response) {
+					$(".chat-content").html(response);
+					$(".chat-overlay").toggle();
+					$(".chat-user-list").animate({
+						right: "0"
+					}, 500, function () {
+						$(".chat-content").toggle();
+						$(".chat-content").animate({
+							left: "0"
+						}, 500, function () {});
+						show_message_content = true;
+					});
+					show_message = true;
+				});
+			});
+		});
+	});
+	<?php
+
+}
+?>
 
 </script>
 </body>

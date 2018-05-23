@@ -6858,3 +6858,9 @@ a {
 	background-color: white;
     color: black;
 }
+
+.user-chat-list-thumbnail {
+	border-radius: 50%;
+    border: solid 1px #242d32;
+    margin-top: 0.35vw;
+}

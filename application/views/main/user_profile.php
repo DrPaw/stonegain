@@ -32,8 +32,25 @@
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12" style="padding-top:1.5vw; height:100%;">
-					<a href="<?= base_url() ?>/user/trust/<?= $user['user_id'] ?>" class="btn btn-primary pull-right">
-						<i class="fa fa-thumbs-up"></i> trust</a>
+					<?php
+				if ($this->session->has_userdata("user")) {
+					?>
+						<?php
+					if($this->session->userdata("user")["user_id"] != $user['user_id']){
+						?>
+							<a class="btn btn-primary pull-right chat-with-user" data-user="<?= $user['user_id']?>">
+								<i class="fa fa-comment"></i> chat
+							</a>
+							<?php
+					}
+					?>
+							<a href="<?= base_url() ?>/user/trust/<?= $user['user_id'] ?>" class="btn btn-primary pull-right" style="margin-right:0.5vw;">
+								<i class="fa fa-thumbs-up"></i> trust
+							</a>
+							<?php
+
+			}
+			?>
 				</div>
 			</div>
 		</div>

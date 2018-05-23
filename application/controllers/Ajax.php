@@ -8,6 +8,9 @@ class Ajax extends BaseController
 
         $this->load->model("Wallet_model");
         $this->load->model("Crypto_model");
+        $this->load->model("User_chat_model");
+        $this->load->model("User_chat_message_model");
+
     }
 
     function get_user_crypto_data()
@@ -27,8 +30,9 @@ class Ajax extends BaseController
         }
     }
 
-    function set_max_amount(){
-        if($_POST){
+    function set_max_amount()
+    {
+        if ($_POST) {
             $input = $this->input->post();
 
             $where = array(
@@ -42,8 +46,9 @@ class Ajax extends BaseController
         }
     }
 
-    function get_crypto_price(){
-        if($_POST){
+    function get_crypto_price()
+    {
+        if ($_POST) {
             $input = $this->input->post();
 
             $where = array(
@@ -52,8 +57,68 @@ class Ajax extends BaseController
 
             $crypto = $this->Crypto_model->get_where($where);
 
-            (!empty($crypto))? die($crypto[0]["price"]) : 0.00;
-            
+            (!empty($crypto)) ? die($crypto[0]["price"]) : 0.00;
+
+        }
+    }
+
+    function open_chat()
+    {
+        if ($_POST) {
+            $input = $this->input->post();
+
+            if ($input["target_user_id"] < $input["user_id"]) {
+                $user_1_id = $input["target_user_id"];
+                $user_2_id = $input["user_id"];
+            } else if ($input["target_user_id"] > $input["user_id"]) {
+                $user_1_id = $input["user_id"];
+                $user_2_id = $input["target_user_id"];
+            }
+
+            $where = array(
+                "user_1_id" => $user_1_id,
+                "user_2_id" => $user_2_id,
+            );
+
+            $user_chat = $this->User_chat_model->get_where($where);
+
+            if (empty($user_chat)) {
+                $data = $where;
+
+                $user_chat_id = $this->User_chat_model->insert($data);
+            } else {
+                $user_chat_id = $user_chat[0]["user_chat_id"];
+
+                $this->User_chat_model->set_to_active($user_chat_id);
+            }
+
+            die($user_chat_id);
+        }
+    }
+
+    function update_user_chat_list()
+    {
+        if ($_POST) {
+            $input = $this->input->post();
+
+            $user_chat = $this->User_chat_model->get_mine_where($input["user_id"]);
+
+            $this->page_data["user_chat_list"] = $user_chat;
+
+            $this->load->view("main/refresh_user_chat_list", $this->page_data);
+        }
+
+    }
+
+    function load_chat_content(){
+        if($_POST){
+            $input = $this->input->post();
+
+            $user_chat_message = $this->User_chat_message_model->get_where($input["user_chat_id"]);
+
+            $this->page_data["user_chat_message"] = $user_chat_message;
+
+            $this->load->view("main/chat_content", $this->page_data);
         }
     }
 }
