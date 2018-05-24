@@ -1,32 +1,46 @@
-<div class='loginBox '>
-    <div class="panel-heading">
-        Login
-    </div>
-    <div class='panel-body'>
-        <form method="post">
-            <div class="input-group">
-                <span class='input-group-addon' style='vertical-align:top;'>
-                    <i class=' glyphicon glyphicon-user'>
-                    </i>
-                </span>
-                <input name='username' type="text" class="form-control" placeholder='username'/>
-            </div>
-             <div class="input-group" style='margin-top : 3%;'>
-                 <span class='input-group-addon' >
-                     <i class=' glyphicon glyphicon-lock'>
-                     </i>
-                 </span>
-                <input name='password' type="password" placeholder='password' class="form-control" />
-            </div>
-            <div class ="button-container">
-                <input type="submit" value='login' class="btn btn-default" style='margin-top : 3%;margin-left: 80%;margin-bottom : 5%;'>
-            </div>
-        </form>
-        <?php if(isset($error)){ ?>
-        <div class="alert alert-danger alert-dismissable">
-            <?= $error; ?>
-        </div>
-        <?php } ;?>
-    </div>
-    
-</div>
+<form method="POST" action="<?= base_url()?>access/admin_login">
+	<div class='loginBox '>
+		<div class="login-heading">
+			<p>Login</p>
+		</div>
+		<div class='panel-body'>
+			<form method="post">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<?php if (isset($error)) { ?>
+							<div class="alert alert-danger alert-dismissable">
+								<?= $error; ?>
+							</div>
+							<?php 
+    } ?>
+						</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<label>Username
+								<label>
+						</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<input name='username' type="text" class="form-control" placeholder='username' />
+						</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<br>
+							<br>
+						</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<label>Password
+								<label>
+						</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<input name='password' type="password" placeholder='password' class="form-control" />
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="login-footer">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 button-container">
+				<input type="submit" value="login" class="btn btn-primary">
+			</div>
+		</div>
+	</div>
+</form>

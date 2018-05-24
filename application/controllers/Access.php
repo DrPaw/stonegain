@@ -41,7 +41,7 @@ class Access extends BaseController
 
                         $this->session->set_userdata("user", $session_data);
 
-                        redirect("main", "refresh");
+                        redirect("", "refresh");
                     } else {
                         $data['error'] = 'Account has not been verified. Please verify your email to proceed.';
                     }
