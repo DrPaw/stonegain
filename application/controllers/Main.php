@@ -10,6 +10,7 @@ class Main extends BaseController {
         $this->page_data = array();
 
         $this->load->model("Users_model");
+        $this->load->model("User_trade_info_model");
         $this->load->model("User_listing_model");
         $this->load->model("Account_resource_model");
     }
@@ -86,6 +87,14 @@ class Main extends BaseController {
             );
 
             $this->Users_model->update_where($where, $data);
+
+            $user = $this->Users_model->get_where($where);
+
+            $data = array(
+                "user_id" => $user[0]['user_id']
+            );
+
+            $this->User_trade_info_model->insert($data);
 
             $this->session->set_flashdata("verified", "completed");
 

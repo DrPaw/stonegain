@@ -11,6 +11,16 @@
 				<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12" style="padding-top:1.5vw; height:100%;">
 					<h4>
 						<?= $user['username'] ?>
+							<?php
+						if (!empty($user_trust)) {
+							?>
+							<small class='trusted'>
+								<i class='fa fa-check-circle'></i>
+							</small>
+							<?php
+
+					}
+					?>
 					</h4>
 					<h5>
 						<?= $user['email'] ?>
@@ -18,15 +28,15 @@
 					<br>
 					<div class="col-md-8 col-lg-8 col-xs-12 col-sm-12 no-padding align-center" style="margin-left:-2vw;">
 						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">1000+</p>
+							<p class="no-padding no-margin"><?= $user["trades"]?></p>
 							<p class="no-padding no-margin">Trades</p>
 						</div>
 						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">385</p>
+							<p class="no-padding no-margin"><?= $user["trusted"]?></p>
 							<p class="no-padding no-margin">Trusted</p>
 						</div>
 						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">98%</p>
+							<p class="no-padding no-margin"><?= $user["rating"]?>%</p>
 							<p class="no-padding no-margin">Rating</p>
 						</div>
 					</div>
@@ -36,21 +46,35 @@
 				if ($this->session->has_userdata("user")) {
 					?>
 						<?php
-					if($this->session->userdata("user")["user_id"] != $user['user_id']){
+					if ($this->session->userdata("user")["user_id"] != $user['user_id']) {
 						?>
-							<a class="btn btn-primary pull-right chat-with-user" data-user="<?= $user['user_id']?>">
+							<a class="btn btn-primary pull-right chat-with-user" data-user="<?= $user['user_id'] ?>">
 								<i class="fa fa-comment"></i> chat
 							</a>
 							<?php
-					}
-					?>
-							<a href="<?= base_url() ?>/user/trust/<?= $user['user_id'] ?>" class="btn btn-primary pull-right" style="margin-right:0.5vw;">
-								<i class="fa fa-thumbs-up"></i> trust
-							</a>
-							<?php
 
-			}
-			?>
+					}
+					if (empty($user_trust)) {
+						?>
+								<a href="<?= base_url() ?>user/trust/<?= $user['user_id'] ?>" class="btn btn-primary pull-right" style="margin-right:0.5vw;">
+									<i class="fa fa-thumbs-up"></i> trust
+								</a>
+								<?php
+
+						} else {
+							?>
+									<a href="<?= base_url() ?>user/untrust/<?= $user['user_id'] ?>" class="btn btn-danger pull-right" style="margin-right:0.5vw;">
+										<i class="fa fa-thumbs-down"></i> untrust
+									</a>
+									<?php
+
+							}
+							?>
+
+									<?php
+
+							}
+							?>
 				</div>
 			</div>
 		</div>

@@ -7018,3 +7018,7 @@ a {
 .line-wrap {
 	white-space : pre-line;
 }
+
+.trusted {
+	color : #3c8dbc;
+}

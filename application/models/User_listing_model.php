@@ -10,11 +10,12 @@ class User_listing_model extends CI_Model
 
     public function get_index()
     {
-        $this->db->select("user_listing.*, user.username, crypto.crypto");
+        $this->db->select("user_listing.*, user.username, crypto.crypto, user_trade_info.trusted, user_trade_info.trades, user_trade_info.rating, user_trade_info.average_time");
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->order_by("created_date DESC");
+        $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         $this->db->limit("10");
 
         $query = $this->db->get();
@@ -36,10 +37,11 @@ class User_listing_model extends CI_Model
 
     public function get_paging($page, $per_page)
     {
-        $this->db->select("user_listing.*, user.username, crypto.crypto");
+        $this->db->select("user_listing.*, user.username, crypto.crypto, user_trade_info.trusted, user_trade_info.trades, user_trade_info.rating, user_trade_info.average_time");
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
+        $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         if (empty($page)) {
             $page = 0;
         } else {
@@ -54,10 +56,11 @@ class User_listing_model extends CI_Model
 
     public function get_paging_where($page, $per_page, $where = array())
     {
-        $this->db->select("user_listing.*, user.username, crypto.crypto");
+        $this->db->select("user_listing.*, user.username, crypto.crypto, user_trade_info.trusted, user_trade_info.trades, user_trade_info.rating, user_trade_info.average_time");
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
+        $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         if (!empty($where)) {
             $this->db->where($where);
         }
@@ -100,10 +103,11 @@ class User_listing_model extends CI_Model
 
     public function get_where($where)
     {
-        $this->db->select("user_listing.*, user.username, crypto.crypto");
+        $this->db->select("user_listing.*, user.username, crypto.crypto, user_trade_info.trusted, user_trade_info.trades, user_trade_info.rating, user_trade_info.average_time");
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
+        $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         $this->db->where($where);
 
         $query = $this->db->get();
@@ -116,6 +120,7 @@ class User_listing_model extends CI_Model
         $this->db->select("user_listing.*, user.username, crypto.crypto");
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
+        $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         if (!empty($where)) {
             $this->db->where($where);

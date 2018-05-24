@@ -8,18 +8,18 @@
 					<?= $user_listing["username"] ?>
 				</div>
 				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 sub-padding font-color-user">
-					Average Release Time: 0 mins
+					Average Release Time: <?= $user_listing["average_time"]?> mins
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					1000+ Trades
+				<?= $user_listing["trades"]?> Trades
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					488 Trusted
+				<?= $user_listing["trusted"]?> Trusted
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					98% Rating
+				<?= $user_listing["rating"]?>% Rating
 				</div>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
 					<?= $user_listing["amount"] ?> <?= $user_listing["crypto"]?> Volume

@@ -144,8 +144,8 @@
 								?>
 								</th>
 								<th class="font-weight-400" style="padding-top:16px">
-									<div>Trade 429|Rating 98%</div>
-									<div class="font-color-user">Average Release Time: 6 mins</div>
+									<div><?= $row["trades"]?> Trades|Rating <?= $row["rating"]?>%</div>
+									<div class="font-color-user">Average Release Time: <?= $row["average_time"]?> mins</div>
 								</th>
 								<th class="font-weight-400" style="padding-top:16px">
 									<?= $row["payment_method"] ?>

@@ -12,6 +12,8 @@ class User extends CI_Controller
         $this->load->model("Users_model");
         $this->load->model("User_listing_model");
         $this->load->model("User_crypto_model");
+        $this->load->model("User_trust_model");
+        $this->load->model("User_trade_info_model");
 
         $this->load->library("pagination");
 
@@ -65,7 +67,7 @@ class User extends CI_Controller
         $this->page_data["pagination"] = $this->pagination->create_links();
 
         $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
+            "user.user_id" => $user_id
         ));
 
         $this->page_data["user"] = $user[0];
@@ -113,12 +115,25 @@ class User extends CI_Controller
         $this->page_data["pagination"] = $this->pagination->create_links();
 
         $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
+            "user.user_id" => $user_id
         ));
 
         if (empty($user)) redirect("main/no_result", "refresh");
 
         $this->page_data["user"] = $user[0];
+
+        if ($this->session->has_userdata("user")) {
+            $where = array(
+                "user_id" => $this->session->userdata("user")["user_id"],
+                "target_id" => $user_id
+            );
+
+            $user_trust = $this->User_trust_model->get_where($where);
+        } else {
+            $user_trust = array();
+        }
+
+        if (!empty($user_trust)) $this->page_data["user_trust"] = $user_trust;
 
         $this->load->view("main/header", $this->page_data);
         $this->load->view("main/user_profile");
@@ -228,5 +243,61 @@ class User extends CI_Controller
         } else {
             show_404();
         }
+    }
+
+    function trust($user_id)
+    {
+
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
+
+        $data = array(
+            "user_id" => $this->session->userdata("user")["user_id"],
+            "target_id" => $user_id
+        );
+
+        $this->User_trust_model->insert($data);
+
+        $where = array(
+            "user_id" => $user_id
+        );
+
+        $user_trade_info = $this->User_trade_info_model->get_where($where);
+
+        $data = array(
+            "trusted" => $user_trade_info[0]["trusted"] + 1
+        );
+
+        $this->User_trade_info_model->update_where($where, $data);
+
+        redirect("user/view_profile/" . $user_id, "refresh");
+
+    }
+
+    function untrust($user_id)
+    {
+
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
+
+        $where = array(
+            "user_id" => $this->session->userdata("user")["user_id"],
+            "target_id" => $user_id
+        );
+
+        $this->User_trust_model->delete_where($where);
+
+        $where = array(
+            "user_id" => $user_id
+        );
+
+        $user_trade_info = $this->User_trade_info_model->get_where($where);
+
+        $data = array(
+            "trusted" => $user_trade_info[0]["trusted"] - 1
+        );
+
+        $this->User_trade_info_model->update_where($where, $data);
+
+        redirect("user/view_profile/" . $user_id, "refresh");
+
     }
 }

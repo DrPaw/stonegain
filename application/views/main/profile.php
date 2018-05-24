@@ -17,16 +17,16 @@
 					</h5>
 					<br>
 					<div class="col-md-8 col-lg-8 col-xs-12 col-sm-12 no-padding align-center" style="margin-left:-2vw;">
-						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">1000+</p>
+					<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+							<p class="no-padding no-margin"><?= $user["trades"]?></p>
 							<p class="no-padding no-margin">Trades</p>
 						</div>
 						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">385</p>
+							<p class="no-padding no-margin"><?= $user["trusted"]?></p>
 							<p class="no-padding no-margin">Trusted</p>
 						</div>
 						<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-							<p class="no-padding no-margin">98%</p>
+							<p class="no-padding no-margin"><?= $user["rating"]?>%</p>
 							<p class="no-padding no-margin">Rating</p>
 						</div>
 					</div>

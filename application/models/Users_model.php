@@ -1,12 +1,15 @@
 <?php
 
-class Users_model extends CI_Model {
+class Users_model extends CI_Model
+{
 
-    function __construct() {
-        parent ::__construct();
+    function __construct()
+    {
+        parent::__construct();
     }
-    
-    public function get_all() {
+
+    public function get_all()
+    {
         $this->db->select("user.*");
         $this->db->from("user");
 
@@ -15,17 +18,20 @@ class Users_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_where($where) {
-        $this->db->select("user.*");
+    public function get_where($where)
+    {
+        $this->db->select("user.*, user_trade_info.trusted, user_trade_info.trades, user_trade_info.rating, user_trade_info.average_time");
         $this->db->from("user");
+        $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         $this->db->where($where);
 
         $query = $this->db->get();
 
         return $query->result_array();
     }
-    
-    public function add($input) {
+
+    public function add($input)
+    {
         $required = array(
             "username",
             "email",
@@ -79,10 +85,11 @@ class Users_model extends CI_Model {
             }
         }
     }
-    
-    public function update_where($where, $data) {
+
+    public function update_where($where, $data)
+    {
         $this->db->where($where);
         $this->db->update("user", $data);
     }
-    
+
 }
