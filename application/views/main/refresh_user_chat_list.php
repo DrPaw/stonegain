@@ -3,7 +3,7 @@ foreach ($user_chat_list as $row) {
     ?>
 	<a>
 		<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 chat-user <?php
-		if($open_first){
+		if($open_first == $row["user_chat_id"]){
 			?>
 			active
 			<?php

@@ -135,16 +135,25 @@
 <script>
 	var show_message = false;
 	var show_message_content = false;
+	var showing_message_content = 0;
 
 	$(document).on('click', ".message-button,.close-message-button", function (e) {
 		$(".chat-overlay").toggle();
 		if (show_message === false) {
-			$(".chat-user-list").animate({
-				right: "0"
-			}, 500, function () {
-				$(".chat-content").toggle();
+			postParam = {
+				user_id: <?= $this->session->userdata('user')['user_id']?>
+			};
+
+			$.post("<?= site_url('ajax/update_user_chat_list/') ?>", postParam, function (response) {
+				$("#refresh-user-list").html(response);
+
+				$(".chat-user-list").animate({
+					right: "0"
+				}, 500, function () {
+					$(".chat-content").toggle();
+				});
+				show_message = true;
 			});
-			show_message = true;
 		} else if (show_message === true) {
 			if (show_message_content === true) {
 				$(".chat-content").animate({
@@ -169,18 +178,44 @@
 	});
 
 	$(document).on('click', ".chat-user", function (e) {
+		var user_chat_id = $(this).data('chat');
+		$('.chat-user').removeClass("active");
 		if (show_message_content === false) {
 			$(this).addClass("active");
-			$(".chat-content").animate({
-				left: "0"
-			}, 500, function () {});
-			show_message_content = true;
+			postParam = {
+				user_chat_id: user_chat_id,
+				user_id: <?= $this->session->userdata('user')['user_id']?>
+			};
+			$.post("<?= site_url('ajax/load_chat_content/') ?>", postParam, function (response) {
+				$(".chat-content").html(response);
+				$(".chat-content").animate({
+					left: "0"
+				}, 500, function () {
+					$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
+				});
+				show_message_content = true;
+				showing_message_content = user_chat_id;
+			});
+
 		} else if (show_message_content === true) {
-			$(this).removeClass("active");
-			$(".chat-content").animate({
-				left: "80vw"
-			}, 500, function () {});
-			show_message_content = false;
+			if (user_chat_id === showing_message_content) {
+				$(this).removeClass("active");
+				$(".chat-content").animate({
+					left: "80vw"
+				}, 500, function () {});
+				show_message_content = false;
+			} else {
+				$(this).addClass("active");
+				postParam = {
+					user_chat_id: user_chat_id,
+					user_id: <?= $this->session->userdata('user')['user_id']?>
+				};
+				$.post("<?= site_url('ajax/load_chat_content/') ?>", postParam, function (response) {
+					$(".chat-content").html(response);
+					$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
+					showing_message_content = user_chat_id;
+				});
+			}
 		}
 	});
 
@@ -211,7 +246,9 @@
 						$(".chat-content").toggle();
 						$(".chat-content").animate({
 							left: "0"
-						}, 500, function () {});
+						}, 500, function () {
+							$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
+						});
 						show_message_content = true;
 					});
 					show_message = true;
@@ -220,10 +257,30 @@
 		});
 	});
 
-	document.getElementById('message-input').addEventListener('keyup', function () {
+	$(document).on('submit', '#send-message-form', function (e) {
+		e.preventDefault();
+		var message = $("#form-message").val();
+		var user_chat_id = $("#form-user-chat-id").val();
+
+		postParam = {
+			message: message,
+			user_chat_id: user_chat_id
+		};
+		$.post("<?= site_url('ajax/send_message/') ?>", postParam, function (response) {
+			$("#refresh-messages").html(response);
+			$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
+		});
+
+		$("#form-message").val("");
+		$(".message-input").keyup();
+
+	});
+
+
+	$(document).on('keyup', '.message-input', function () {
 		this.style.height = 0;
 		this.style.height = this.scrollHeight + 'px';
-	}, false);
+	});
 
 </script>
 </body>

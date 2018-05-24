@@ -13,6 +13,15 @@ class User_chat_message_model extends CI_model
 
         return $query->result_array();
     }
+
+    function insert($data){
+        $this->db->insert("user_chat_message", $data);
+    }
+
+    function update_where($where, $data){
+        $this->db->where($where);
+        $this->db->update("user_chat_message", $data);
+    }
 }
 
 ?>
