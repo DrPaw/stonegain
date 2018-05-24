@@ -148,7 +148,7 @@ class Ajax extends BaseController
             );
 
             $this->User_chat_message_model->update_where($where, $data);
-            
+
             $where = array(
                 "user_chat_id" => $user_chat_id
             );

@@ -18,16 +18,17 @@ class User_chat_model extends CI_model
     function get_mine_where($user_id, $where = array())
     {
         $this->db->select("
-            *, (SELECT IF(user_chat.user_1_id = ". $user_id.",
+            *, (SELECT IF(user_chat.user_1_id = " . $user_id . ",
             (SELECT username FROM user WHERE user.user_id = user_chat.user_2_id),
             (SELECT username FROM user WHERE user.user_id = user_chat.user_1_id)
             )) AS target_username
         ");
         $this->db->from("user_chat");
-        $this->db->where("user_1_id", $user_id);
-        $this->db->or_where("user_2_id", $user_id);
-        if(!empty($where)){
+        if (!empty($where)) {
             $this->db->where($where);
+        } else {
+            $this->db->where("user_1_id", $user_id);
+            $this->db->or_where("user_2_id", $user_id);
         }
         $this->db->order_by("last_active_time DESC");
 

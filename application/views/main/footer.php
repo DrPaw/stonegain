@@ -41,9 +41,15 @@
 </footer>
 </div>
 <!-- ./wrapper -->
+<?php
+if($this->session->has_userdata("user")){
+?>
 <a class="btn btn-primary message-button">
 	<i class="fa fa-comments"></i>
 </a>
+<?php
+}
+?>
 <div class="chat-overlay">
 </div>
 <div class="chat-content">
@@ -179,6 +185,7 @@
 
 	$(document).on('click', ".chat-user", function (e) {
 		var user_chat_id = $(this).data('chat');
+		console.log(user_chat_id);
 		$('.chat-user').removeClass("active");
 		if (show_message_content === false) {
 			$(this).addClass("active");

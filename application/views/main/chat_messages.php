@@ -16,9 +16,7 @@ if ($row['user_id'] == $this->session->userdata('user')['user_id']) {
 ?>
 					<div class="talk-bubble tri-right round border right-in">
 						<div class="talktext">
-							<p class="line-wrap">
-								<?= $row["message"] ?>
-							</p>
+							<p class="line-wrap"><?= $row["message"] ?></p>
 							<div class="talktext-details">
 								<small>
 									<?= $row['created_date'] ?>
