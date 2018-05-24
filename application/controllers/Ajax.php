@@ -88,9 +88,9 @@ class Ajax extends BaseController
                 $user_chat_id = $this->User_chat_model->insert($data);
             } else {
                 $user_chat_id = $user_chat[0]["user_chat_id"];
-
-                $this->User_chat_model->set_to_active($user_chat_id);
             }
+
+            $this->User_chat_model->set_to_active($user_chat_id);
 
             die($user_chat_id);
         }
@@ -121,7 +121,8 @@ class Ajax extends BaseController
             );
 
             $user_chat = $this->User_chat_model->get_mine_where($input["user_id"], $where);
-            $user_chat_message = $this->User_chat_message_model->get_where($input["user_chat_id"]);
+
+            $user_chat_message = $this->User_chat_message_model->get_where($where);
 
             $this->page_data["user_chat"] = $user_chat[0];
             $this->page_data["user_chat_message"] = $user_chat_message;
