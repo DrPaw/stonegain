@@ -47,25 +47,47 @@
 <div class="chat-overlay">
 </div>
 <div class="chat-content">
+	<div class="relative-wrapper">
+		<div class="chat-content-header">
+			<div class="col-md-1 col-lg-1 col-sm-4 col-xs-4 align-center">
+				<img src="<?= base_url() ?>images/profile.jpg" class="chat-content-thumbnail">
+			</div>
+			<div class="col-md-11 col-lg-11 col-sm-8 col-xs-8 no-padding">
+				<h5 class="chat-content-username">username</h5>
+			</div>
+		</div>
+		<div class="chat-content-message-content">
+		</div>
+		<div class="chat-content-input">
+			<div class="relative-wrapper">
+				<textarea class="form-control message-input" id="message-input" rows="1"></textarea>
+				<input type="hidden" name="user_chat_id">
+				<button type="submit" class="btn btn-default send-button">
+					<i class="fa fa-send"></i>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="chat-user-list">
 	<a class="btn btn-default close-message-button pull-right">
 		<i class="fa fa-close"></i>
-		<div class="row no-margin" id="refresh-user-list">
-			<a>
-				<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 chat-user">
-					<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-						<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
-					</div>
-					<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
-						<p class="no-padding no-margin">user</p>
-						<small class="no-padding no-margin">
-							<?= date("h:i:s a") ?>
-						</small>
-					</div>
+	</a>
+	<div class="row no-margin" id="refresh-user-list">
+		<a>
+			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 chat-user">
+				<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+					<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
 				</div>
-			</a>
-		</div>
+				<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
+					<p class="no-padding no-margin">user</p>
+					<small class="no-padding no-margin">
+						<?= date("h:i:s a") ?>
+					</small>
+				</div>
+			</div>
+		</a>
+	</div>
 	</a>
 </div>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -142,17 +164,19 @@
 				}, 500, function () {});
 				show_message = false;
 			}
-
+			$(".chat-user").removeClass("active");
 		}
 	});
 
 	$(document).on('click', ".chat-user", function (e) {
 		if (show_message_content === false) {
+			$(this).addClass("active");
 			$(".chat-content").animate({
 				left: "0"
 			}, 500, function () {});
 			show_message_content = true;
 		} else if (show_message_content === true) {
+			$(this).removeClass("active");
 			$(".chat-content").animate({
 				left: "80vw"
 			}, 500, function () {});
@@ -160,9 +184,6 @@
 		}
 	});
 
-	<?php
-if ($this->session->has_userdata("user")) {
-    ?>
 	$(document).on('click', ".chat-with-user", function (e) {
 		var target_user_id = $(this).data('user');
 		var user_id = <?= $this->session->userdata("user")["user_id"] ?>;
@@ -176,7 +197,8 @@ if ($this->session->has_userdata("user")) {
 			postParam = {
 				target_user_id: target_user_id,
 				user_id: user_id,
-				user_chat_id: response
+				user_chat_id: response,
+				open_first: true
 			};
 			$.post("<?= site_url('ajax/update_user_chat_list/') ?>", postParam, function (response) {
 				$("#refresh-user-list").html(response);
@@ -197,10 +219,11 @@ if ($this->session->has_userdata("user")) {
 			});
 		});
 	});
-	<?php
 
-}
-?>
+	document.getElementById('message-input').addEventListener('keyup', function () {
+		this.style.height = 0;
+		this.style.height = this.scrollHeight + 'px';
+	}, false);
 
 </script>
 </body>

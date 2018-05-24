@@ -15,7 +15,7 @@ class User_chat_model extends CI_model
         return $query->result_array();
     }
 
-    function get_mine_where($user_id)
+    function get_mine_where($user_id, $where = array())
     {
         $this->db->select("
             *, (SELECT IF(user_chat.user_1_id = ". $user_id.",
@@ -26,6 +26,9 @@ class User_chat_model extends CI_model
         $this->db->from("user_chat");
         $this->db->where("user_1_id", $user_id);
         $this->db->or_where("user_2_id", $user_id);
+        if(!empty($where)){
+            $this->db->where($where);
+        }
         $this->db->order_by("last_active_time DESC");
 
         $query = $this->db->get();

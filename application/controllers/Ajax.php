@@ -105,6 +105,8 @@ class Ajax extends BaseController
 
             $this->page_data["user_chat_list"] = $user_chat;
 
+            if(!empty($input["open_first"])) $this->page_data["open_first"] = true;
+
             $this->load->view("main/refresh_user_chat_list", $this->page_data);
         }
 
@@ -114,8 +116,14 @@ class Ajax extends BaseController
         if($_POST){
             $input = $this->input->post();
 
+            $where = array(
+                "user_chat_id" => $input["user_chat_id"]
+            );
+
+            $user_chat = $this->User_chat_model->get_mine_where($input["user_id"], $where);
             $user_chat_message = $this->User_chat_message_model->get_where($input["user_chat_id"]);
 
+            $this->page_data["user_chat"] = $user_chat[0];
             $this->page_data["user_chat_message"] = $user_chat_message;
 
             $this->load->view("main/chat_content", $this->page_data);
