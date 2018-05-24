@@ -213,7 +213,8 @@ class User_listing extends BaseController
                     );
 
                     $data = array(
-                        "receipt" => $receipt
+                        "receipt" => $receipt,
+                        "user_trade_status_id" => 2
                     );
 
                     $this->User_trade_model->update_where($where, $data);

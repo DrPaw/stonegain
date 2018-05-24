@@ -44,13 +44,13 @@
                                     foreach ($user_trade as $row) {
                                         ?>
                                         <tr>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['buyer_name']; ?></a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['seller_name']; ?></a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['myr_amount']; ?> MYR</a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['btc_amount']; ?> BTC</a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['created_date']; ?></a></td>
-                                            <td><a href="<?= base_url() ?>Admin_transaction/internal/details/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['user_trade_status']; ?></a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['buyer_name']; ?></a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['seller_name']; ?></a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['myr_amount']; ?> MYR</a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['btc_amount']; ?> BTC</a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['created_date']; ?></a></td>
+                                            <td><a href="<?= base_url() ?>admin_transaction/internal/<?= $row['user_trade_id'] ?>" class="a-color-backend"><?php echo $row['user_trade_status']; ?></a></td>
                                         </tr>
                                         <?php
                                         $i++;

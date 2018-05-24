@@ -70,10 +70,20 @@
 		<?php
 	if (!empty($user_trade["receipt"])) {
 		?>
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 font-weight-bold">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 font-weight-bold align-center">
 				<a href="#img">
 					<img class="receipt" src="<?= base_url() . $user_trade['receipt'] ?>">
 				</a>
+				<form method="POST" action="<?= base_url() ?>user_listing/details/<?= $user_listing['user_listing_id'] ?>/<?= $user_trade['user_trade_id'] ?>"
+				enctype="multipart/form-data">
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+						<input type="file" name="receipt">
+						<input type="hidden" name="upload" value="receipt">
+					</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+						<input type="submit" class="btn btn-info pull-right" value="Reupload Receipt">
+					</div>
+				</form>
 			</div>
 			<?php
 
@@ -109,7 +119,7 @@
 if (!empty($user_trade["receipt"])) {
 	?>
 	<a href="#_" class="lightbox" id="img">
-		<img src="<?= base_url().$user_trade['receipt'] ?>">
+		<img src="<?= base_url() . $user_trade['receipt'] ?>">
 	</a>
 	<?php
 

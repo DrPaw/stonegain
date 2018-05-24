@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_transaction extends CI_Controller
+class Admin_transaction extends BaseController
 {
 
     public function __construct()
@@ -10,30 +10,29 @@ class Admin_transaction extends CI_Controller
         parent::__construct();
 
         $this->load->model("Transaction_model");
+        $this->load->model("User_trade_model");
         $this->pageData = array();
     }
 
     public function index()
     {
 
-        $sql = "SELECT *, (SELECT username FROM user WHERE user_id = user_trade.buyer_id ) as buyer_name,
-                (SELECT username FROM user WHERE user_id = user_trade.seller_id ) as seller_name,
-                (SELECT user_trade_status FROM user_trade_status WHERE user_trade_status_id = user_trade.user_trade_status_id ) as user_trade_status 
-                  FROM user_trade ORDER BY user_trade_id DESC";
-
-        $this->pageData["user_trade"] = $this->db->query($sql)->result_array();
+        $this->pageData["user_trade"] = $this->User_trade_model->get_all();
         $this->pageData['cryptos'] = $this->db->get("crypto");
         $this->load->view("admin/header", $this->pageData);
         $this->load->view("admin/Transaction/all");
         $this->load->view("admin/footer");
     }
 
-    function internal($transaction_id){
-        $result = $this->db->get_where("user_trade",array(
-            'user_trade_id' => $transaction_id
-        ))->result_array();
+    function internal($user_trade_id){
 
-        if (!count($result)) die('404');
+        $where = array(
+            "user_trade_id" => $user_trade_id
+        );
+
+        $result = $this->User_trade_model->get_where($where);
+
+        if (!count($result)) show_404();
 
 
         $this->pageData["user_trade"] = $result[0];
