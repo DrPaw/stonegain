@@ -63,7 +63,7 @@ class Access extends BaseController
         $data = array();
 
         if($this->session->has_userdata("admin")){
-            redirect('Admin',"refresh");
+            redirect('admin',"refresh");
         }
         
         if($_POST){

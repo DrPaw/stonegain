@@ -46,7 +46,8 @@ class User_listing extends BaseController
                 "limit_from" => $input["limit_from"],
                 "limit_to" => $input["limit_to"],
                 "time_of_payment" => $input["time_of_payment"],
-                "amount" => $input["amount"]
+                "amount" => $input["amount"],
+                "amount_available" => $input["amount_available"],
             );
 
             if ($quick_sell == "quick") {

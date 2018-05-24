@@ -27,59 +27,8 @@ class User_crypto_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function add($input) {
-        $required = array(
-            "username",
-            "email",
-            "country",
-            "bank_name",
-            "bank_account_number",
-            "password",
-            "preferred_time",
-            "preferred_threshold",
-        );
-
-        $error = false;
-
-        foreach ($required as $field) {
-            if (empty($_POST[$field])) {
-                $error = true;
-                $error_message = "Please do not leave " . $field . " empty";
-            }
-        }
-
-        if ($error) {
-            die(json_encode(array(
-                "status" => false,
-                "message" => $error_message
-            )));
-        } else {
-            $this->db->select('*');
-            $this->db->from('user');
-            $this->db->where('username =', $input['username']);
-
-            $query = $this->db->get();
-
-            $admin = $query->result_array();
-
-            if (count($admin) > 0) {
-                die(json_encode(array(
-                    "status" => false,
-                    "message" => "Username already exists"
-                )));
-            } else {
-                $this->db->insert("user", $input);
-
-                if ($this->db->affected_rows() == 0) {
-                    die(json_encode(array(
-                        "status" => false,
-                        "message" => "Insert Error"
-                    )));
-                } else {
-                    return $this->db->insert_id();
-                }
-            }
-        }
+    public function insert($data){
+        $this->db->insert("user_crypto", $data);
     }
     
     public function update_where($where, $data) {
