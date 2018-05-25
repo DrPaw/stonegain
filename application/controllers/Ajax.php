@@ -10,6 +10,9 @@ class Ajax extends BaseController
         $this->load->model("Crypto_model");
         $this->load->model("User_chat_model");
         $this->load->model("User_chat_message_model");
+        $this->load->model("User_listing_model");
+
+        $this->page_data[] = array();
 
     }
 
@@ -187,6 +190,23 @@ class Ajax extends BaseController
             $this->page_data["messages"] = $user_chat_message;
 
             $this->load->view("main/chat_messages", $this->page_data);
+        }
+    }
+
+    function load_admin_user_listing(){
+        if($_POST){
+            $input = $this->input->post();
+
+            $where = array(
+                "user_listing_id" => $input["user_listing_id"]
+            );
+
+            $user_listing = $this->User_listing_model->get_where($where);
+
+            $this->page_data["user_listing"] = $user_listing[0];
+
+            $this->load->view("admin/Transaction/refresh_user_listing_details", $this->page_data);
+
         }
     }
 }

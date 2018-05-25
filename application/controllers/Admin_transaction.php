@@ -14,10 +14,11 @@ class Admin_transaction extends BaseController
         $this->load->model("User_trade_status_model");
         $this->load->model("User_listing_model");
         $this->load->model("User_crypto_model");
+        $this->load->model("Users_model");
 
         if(!$this->session->has_userdata("admin")) redirect("access/admin_login");
         
-        $this->pageData = array();
+        $this->page_data = array();
     }
 
     public function index()
@@ -25,6 +26,7 @@ class Admin_transaction extends BaseController
 
         $this->pageData["user_trade"] = $this->User_trade_model->get_all();
         $this->pageData['cryptos'] = $this->db->get("crypto");
+
         $this->load->view("admin/header", $this->pageData);
         $this->load->view("admin/Transaction/all");
         $this->load->view("admin/footer");
@@ -155,8 +157,28 @@ class Admin_transaction extends BaseController
 
     public function add()
     {
+        $this->page_data["user_listing"] = $this->User_listing_model->get_all();
+        $this->page_data["users"] = $this->Users_model->get_all();
+
+        if($_POST){
+            $input = $this->input->post();
+
+            $data = array(
+                "buyer_id" => $input["buyer_id"],
+                "seller_id" => $input["seller_id"],
+                "user_listing_id" => $input["user_listing_id"],
+                "myr_amount" => $input["myr_amount"],
+                "btc_amount" => $input["btc_amount"],
+                "user_trade_status_id" => 1,
+            );
+
+            $this->User_trade_model->insert($data);
+
+            redirect('admin_transaction', 'refresh');
+        }
+
         $this->load->view("admin/header", $this->page_data);
-        $this->load->view("admin/Admin/add");
+        $this->load->view("admin/Transaction/add");
         $this->load->view("admin/footer");
     }
 
