@@ -23,7 +23,7 @@ class Admin_user extends BaseController {
     public function details($user_id) {
 
         $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
+            "user.user_id" => $user_id
         ));
 
         $this->page_data['eTransactions'] = $this->Transaction_model->get_where(array(

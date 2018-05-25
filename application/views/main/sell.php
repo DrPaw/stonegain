@@ -69,11 +69,11 @@
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Limit From</div>
 					<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-5">
-						<input id="limit-to-form" type="number" class="form-control input-border" required name="limit_from">
+						<input id="limit-to-form" type="number" class="form-control input-border" step="any" required name="limit_from">
 					</div>
 					<div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 label-height col-padding-10">to</div>
 					<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 label-height col-padding-5">
-						<input id="limit-from-form" type="number" class="form-control input-border" required name="limit_to">
+						<input id="limit-from-form" type="number" class="form-control input-border" step="any" required name="limit_to">
 					</div>
 					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Payment Method:</div>
 					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">

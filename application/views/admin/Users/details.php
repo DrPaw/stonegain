@@ -54,6 +54,22 @@
                                     <th>Referral Link</th>
                                     <td>: <?= $user['referral_link']; ?></td>
                                 </tr>
+                                <tr>
+                                    <th>Trades</th>
+                                    <td>: <?= $user['trades']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Rating</th>
+                                    <td>: <?= $user['rating']; ?>%</td>
+                                </tr>
+                                <tr>
+                                    <th>Average Release Time</th>
+                                    <td>: <?= $user['average_time']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Trusted</th>
+                                    <td>: <?= $user['trusted']; ?></td>
+                                </tr>
                             </table>
                         </div>
                     </div>

@@ -145,7 +145,7 @@
         ?>
 						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 font-weight-bold align-center">
 							<a href="#img">
-								<img class="receipt" src="<?= base_url() . $user_trade['receipt'] ?>">
+								<img class="receipt object-fit" src="<?= base_url() . $user_trade['receipt'] ?>">
 							</a>
 						</div>
 						<?php

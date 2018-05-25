@@ -80,8 +80,7 @@ class User_trade_model extends CI_Model
         $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
         $this->db->join("user_trade_status", "user_trade.user_trade_status_id = user_trade_status.user_trade_status_id", "left");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
-        $this->db->where("buyer_id", $user_id);
-        $this->db->or_where("seller_id", $user_id);
+        $this->db->where("(buyer_id = " . $user_id . " OR seller_id = " . $user_id . ")");
         $this->db->where($where);
 
         $query = $this->db->get();

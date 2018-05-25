@@ -15,6 +15,8 @@ class User_listing extends BaseController
         $this->load->model("User_listing_model");
         $this->load->model("User_trade_model");
         $this->load->model("Account_resource_model");
+        $this->load->model("User_rating_model");
+        $this->load->model("User_trade_info_model");
 
         $this->load->library("pagination");
 
@@ -47,16 +49,29 @@ class User_listing extends BaseController
                 "limit_to" => $input["limit_to"],
                 "time_of_payment" => $input["time_of_payment"],
                 "amount" => $input["amount"],
-                "amount_available" => $input["amount_available"],
+                "amount_available" => $input["amount"],
             );
 
             if ($quick_sell == "quick") {
                 $data["quick_sell"] = 1;
             }
 
-            $this->User_listing_model->add($data);
+            $user_listing_id = $this->User_listing_model->add($data);
 
-            redirect("main", "refresh");
+            $user_trade_info = $this->User_listing_model->get_trade_details($user_id);
+
+            $data = array(
+                "trades" => $user_trade_info[0]['trades'],
+                "average_time" => $user_trade_info[0]['average_time']
+            );
+
+            $where = array(
+                "user_id" => $user_id
+            );
+
+            $this->User_trade_info_model->update_where($where, $data);
+
+            redirect("user_listing/buy/" . $user_listing_id, "refresh");
         }
 
         $this->load->view("main/header", $this->page_data);
@@ -71,7 +86,7 @@ class User_listing extends BaseController
 
         $user_id = $this->session->userdata("user")["user_id"];
 
-        if($user_listing_id == "quick_buy"){
+        if ($user_listing_id == "quick_buy") {
             $input = $this->input->get();
 
             $where = array(
@@ -87,8 +102,8 @@ class User_listing extends BaseController
             $where = array(
                 "user_listing_id" => $user_listing_id
             );
-    
-            $user_listing = $this->User_listing_model->get_where($where);    
+
+            $user_listing = $this->User_listing_model->get_where($where);
         }
 
         if (empty($user_listing)) redirect("main/no_result", "refresh");
@@ -122,7 +137,7 @@ class User_listing extends BaseController
 
         $per_page = 10;
 
-        if($_GET) {
+        if ($_GET) {
             $input = $this->input->get();
             $where = array();
             if (!empty($input["currency"])) $where["crypto"] = $input["currency"];
@@ -187,18 +202,30 @@ class User_listing extends BaseController
 
         $user_listing = $this->User_listing_model->get_where($where);
 
+        $where = array(
+            "user_id" => $this->session->userdata('user')['user_id'],
+            "user_trade_id" => $user_trade_id
+        );
+
+        $user_rating = $this->User_rating_model->get_where($where);
+
+        if (!empty($user_rating)) {
+            $this->page_data["user_rating"] = $user_rating[0];
+        }
+
         $this->page_data["user_listing"] = $user_listing[0];
         $this->page_data["user_trade"] = $user_trade[0];
 
-        if($_POST){
-            if($_FILES){
+        if ($_POST) {
+            if ($_FILES) {
                 $error = "";
                 if (!empty($_FILES['receipt']['name'])) {
                     $config = array(
                         "allowed_types" => "gif|png|jpg|jpeg",
                         "upload_path" => "./images/receipt/",
-                        "path" => "images/receipt/");
-    
+                        "path" => "images/receipt/"
+                    );
+
                     $this->load->library("upload", $config);
                     if ($this->upload->do_upload("receipt")) {
                         $receipt = $config['path'] . $this->upload->data()['file_name'];
@@ -208,7 +235,7 @@ class User_listing extends BaseController
                 } else {
                     die("Please upload a receipt.");
                 }
-                if($error == ""){
+                if ($error == "") {
                     $where = array(
                         "user_trade_id" => $user_trade_id
                     );
@@ -229,5 +256,58 @@ class User_listing extends BaseController
         $this->load->view("main/details");
         $this->load->view("main/footer");
 
+    }
+
+    function rate_trade($user_listing_id, $user_trade_id, $rating)
+    {
+        if ($rating != "good" and $rating != "bad") show_404();
+
+        $where = array(
+            "user_trade_id" => $user_trade_id
+        );
+
+        $user_trade = $this->User_trade_model->get_where($where);
+
+        if (empty($user_trade)) show_404();
+
+        $data = array(
+            "user_id" => $this->session->userdata('user')['user_id'],
+            "target_id" => $user_trade[0]["seller_id"],
+            "user_trade_id" => $user_trade_id,
+            "rating" => $rating,
+        );
+
+        $this->User_rating_model->insert($data);
+
+        $where = array(
+            "target_id" => $user_trade[0]["seller_id"]
+        );
+
+        $user_total_rating = $this->User_rating_model->get_where($where);
+
+        $user_total_rating = count($user_total_rating);
+
+        $where = array(
+            "target_id" => $user_trade[0]["seller_id"],
+            "rating" => "good"
+        );
+
+        $total_good_rating = $this->User_rating_model->get_where($where);
+
+        $total_good_rating = count($total_good_rating);
+
+        $rating_percentage = ($total_good_rating / $user_total_rating) * 100;
+
+        $data = array(
+            "rating" => $rating_percentage
+        );
+
+        $where = array(
+            "user_id" => $user_trade[0]["seller_id"]
+        );
+
+        $this->User_trade_info_model->update_where($where, $data);
+
+        redirect('user_listing/details/' . $user_listing_id . '/' . $user_trade_id, "refersh");
     }
 }

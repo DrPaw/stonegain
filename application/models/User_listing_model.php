@@ -135,12 +135,24 @@ class User_listing_model extends CI_Model
     public function add($input)
     {
         $this->db->insert("user_listing", $input);
+
+        return $this->db->insert_id();
     }
 
     public function update_where($where, $data)
     {
         $this->db->where($where);
         $this->db->update("user_listing", $data);
+    }
+
+    public function get_trade_details($user_id){
+        $this->db->select("COUNT(*) AS trades, AVG(time_of_payment) AS average_time");
+        $this->db->from("user_listing");
+        $this->db->where("user_id", $user_id);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
 }
