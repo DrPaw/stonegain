@@ -15,6 +15,18 @@ class User_chat_model extends CI_model
         return $query->result_array();
     }
 
+    function get_all()
+    {
+        $this->db->select("*, 
+        (SELECT username FROM user WHERE user.user_id = user_chat.user_1_id) AS user_1_username,
+        (SELECT username FROM user WHERE user.user_id = user_chat.user_2_id) AS user_2_username");
+        $this->db->from("user_chat");
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     function get_mine_where($user_id, $where = array())
     {
         $this->db->select("

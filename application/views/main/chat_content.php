@@ -48,7 +48,7 @@
 						<form method="POST" id="send-message-form">
 							<textarea class="form-control message-input" rows="1" name="message" id="form-message"></textarea>
 							<input type="hidden" name="user_chat_id" value="<?= $user_chat['user_chat_id'] ?>" id="form-user-chat-id">
-							<button type="submit" class="btn btn-default send-button">
+							<button type="submit" class="btn btn-default send-button" disabled>
 								<i class="fa fa-send"></i>
 							</button>
 						</form>

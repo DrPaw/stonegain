@@ -11,6 +11,8 @@ class Admin extends CI_Controller
 
         $this->load->model("Admin_model");
         $this->page_data = array();
+        
+        if(!$this->session->has_userdata("admin")) redirect("access/admin_login");
     }
 
     public function index()

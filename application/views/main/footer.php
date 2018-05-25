@@ -283,10 +283,18 @@ if($this->session->has_userdata("user")){
 
 	});
 
-
 	$(document).on('keyup', '.message-input', function () {
 		this.style.height = 0;
 		this.style.height = this.scrollHeight + 'px';
+
+		var message = $(this).val();
+		var str_length = $.trim(message).length;
+
+		if(str_length > 0){
+			$('.send-button').prop("disabled", false);
+		} else {
+			$('.send-button').prop("disabled", true);
+		}
 	});
 
 </script>

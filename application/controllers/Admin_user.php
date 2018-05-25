@@ -10,6 +10,8 @@ class Admin_user extends BaseController {
         $this->load->model("Transaction_model");
         $this->load->model("User_listing_model");
         $this->page_data = array();
+
+        if(!$this->session->has_userdata("admin")) redirect("access/admin_login");
     }
 
     public function index() {

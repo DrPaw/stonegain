@@ -14,6 +14,9 @@ class Admin_transaction extends BaseController
         $this->load->model("User_trade_status_model");
         $this->load->model("User_listing_model");
         $this->load->model("User_crypto_model");
+
+        if(!$this->session->has_userdata("admin")) redirect("access/admin_login");
+        
         $this->pageData = array();
     }
 

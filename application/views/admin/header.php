@@ -87,8 +87,13 @@
                             </a>
                         </li>
                         <li>
+                            <a href="<?= base_url() ?>admin_user_chat">
+                                <i class="fa fa-file"></i> <span>User Chats</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>access/logout">
-                                <i class="fa fa-sign-out"></i> <span>Logout</span>
+                                <i class="fa fa-comments"></i> <span>Logout</span>
                             </a>
                         </li>
                     </ul>
