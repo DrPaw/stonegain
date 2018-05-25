@@ -14,6 +14,7 @@ class Transaction extends BaseController
         $this->load->model("Wallet_model");
         $this->load->model("Crypto_model");
         $this->load->model("Transaction_model");
+        $this->load->model("User_trade_model");
     }
 
     public function index()
@@ -30,9 +31,10 @@ class Transaction extends BaseController
         $this->load->view("main/footer");
     }
 
-    function getDepositAddress(){
+    function getDepositAddress()
+    {
         $this->load->model("GDAX");
-        $address = $this->db->get_where("user_deposit_address",array())->result_array();
+        $address = $this->db->get_where("user_deposit_address", array())->result_array();
     }
     function get_crypto_amount()
     {
@@ -62,12 +64,30 @@ class Transaction extends BaseController
         }
     }
 
-    function loadDeposit(){
+    function loadDeposit()
+    {
         $this->load->model("Transaction_model");
-        $address = $this->Transaction_model->getDepositAddress($this->session->userdata('user')['user_id'],$this->input->post("currency"));
+        $address = $this->Transaction_model->getDepositAddress($this->session->userdata('user')['user_id'], $this->input->post("currency"));
         die(json_encode(array(
             "status" => "SUCCESS",
             "data" => $address['value']
+        )));
+    }
+
+    function updateTransaction($user_trade_id)
+    {
+        $where = array(
+            "user_trade_id" => $user_trade_id
+        );
+
+        $data = array(
+            "user_trade_status_id" => 3
+        );
+
+        $this->User_trade_model->update_where($where, $data);
+
+        die(json_encode(array(
+            "status" => "SUCCESS"
         )));
     }
 

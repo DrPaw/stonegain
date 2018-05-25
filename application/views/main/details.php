@@ -58,45 +58,50 @@
 				<?= $user_trade["user_trade_status"] ?>
 			</div>
 			<?php
-			if($user_trade['user_trade_status_id'] == 4 AND empty($user_rating)){
-				?>
+		if ($user_trade['user_trade_status_id'] == 4 and empty($user_rating)) {
+			?>
 				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">How would you rate this trade?</div>
 				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-					<a href="<?= base_url()?>user_listing/rate_trade/<?= $user_trade['user_listing_id']?>/<?= $user_trade['user_trade_id']?>/good" class="btn btn-success">
+					<a href="<?= base_url() ?>user_listing/rate_trade/<?= $user_trade['user_listing_id'] ?>/<?= $user_trade['user_trade_id'] ?>/good"
+					class="btn btn-success">
 						<i class="fa fa-thumbs-up"></i>
 					</a>
-					<a href="<?= base_url()?>user_listing/rate_trade/<?= $user_trade['user_listing_id']?>/<?= $user_trade['user_trade_id']?>/bad" class="btn btn-danger">
+					<a href="<?= base_url() ?>user_listing/rate_trade/<?= $user_trade['user_listing_id'] ?>/<?= $user_trade['user_trade_id'] ?>/bad"
+					class="btn btn-danger">
 						<i class="fa fa-thumbs-down"></i>
 					</a>
 				</div>
 				<?php
-			} else if($user_trade['user_trade_status_id'] == 4 AND !empty($user_rating)){
-				?>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">You rate this trade:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-					<?= strtoupper($user_rating['rating'])?>
-				</div>
-				<?php
+
+		} else if ($user_trade['user_trade_status_id'] == 4 and !empty($user_rating)) {
+			?>
+					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">You rate this trade:</div>
+					<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+						<?= strtoupper($user_rating['rating']) ?>
+					</div>
+					<?php
+
 			}
 			?>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding font-weight-bold">
-					Messages
-				</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-					<?= (!empty($user_listing["message"])) ? $user_listing["message"] : "No Messages" ?>
-				</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding padding-top-50 font-weight-bold">
-					Notice of Transaction
-				</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-					Trading Currencies and other financial instruments carries risk due to the potential of increased volatility and speculation.
-				</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding font-weight-bold">
+						Messages
+					</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+						<?= (!empty($user_listing["message"])) ? $user_listing["message"] : "No Messages" ?>
+					</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding padding-top-50 font-weight-bold">
+						Notice of Transaction
+					</div>
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
+						Trading Currencies and other financial instruments carries risk due to the potential of increased volatility and speculation.
+					</div>
 		</div>
 	</div>
 	<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
 		<?php
-	if (!empty($user_trade["receipt"])) {
-		?>
+	if ($user_trade["user_trade_status_id"] < 3) {
+		if (!empty($user_trade["receipt"])) {
+			?>
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 font-weight-bold align-center">
 				<a href="#img">
 					<img class="receipt" src="<?= base_url() . $user_trade['receipt'] ?>">
@@ -115,6 +120,7 @@
 						</div>
 					</form>
 					<?php
+
 			}
 			?>
 			</div>
@@ -142,8 +148,22 @@
 				}
 				?>
 				</form>
+				<hr>
 				<?php
+			if ($user_trade['user_trade_status'] == 1) {
+				?>
+					<?php
 
+			}
+			?>
+					<h3>Pay with PayPal</h3>
+					<br>
+					<br>
+
+					<div class="subscribe" id="paypal-button"></div>
+					<?php
+
+			}
 		}
 		?>
 	</div>
@@ -176,6 +196,55 @@ if (!empty($user_trade["receipt"])) {
 
 			}
 
+		}
+
+		$(document).ready(function () {
+			var myr_amount = <?= $user_trade['myr_amount']; ?>;
+			console.log(myr_amount);
+			paypal.Button.render({
+
+				env: 'sandbox', // Or 'sandbox'
+
+				client: {
+					sandbox: 'AQy0kbAHWglyL3QOzSQirh_hOjuGLSzoxS_v-jDSZ6KOcHVeDxUYag9EBdumKkZgTzvdLtuvhJSkMHgQ',
+					//production: 'xxxxxxxxx'
+				},
+
+				commit: true, // Show a 'Pay Now' button
+
+				payment: function (data, actions) {
+					return actions.payment.create({
+						payment: {
+							transactions: [{
+								amount: {
+									total: myr_amount,
+									currency: 'MYR'
+								}
+							}]
+						}
+					});
+				},
+
+				onAuthorize: function (data, actions) {
+					return actions.payment.execute().then(function (payment) {
+						$.post("<?= site_url('Transaction/updateTransaction/' . $user_trade['user_trade_id']); ?>", {
+
+						}, function (res) {
+							console.log(res);
+
+							window.location = "<?= site_url('user_listing/details/' . $user_listing['user_listing_id'] . "/" . $user_trade['user_trade_id']); ?>";
+						});
+					});
+				}
+
+			}, '#paypal-button');
+
+		});
+
+
+		function showThankYou() {
+			$(".subscribe").hide();
+			$("#thankYou").modal('show');
 		}
 
 	</script>

@@ -164,7 +164,7 @@ class User extends CI_Controller
 
             if (!$error) {
                 $where = array(
-                    "user_id" => $user_id
+                    "user.user_id" => $user_id
                 );
 
                 $user = $this->Users_model->get_where($where);
@@ -174,7 +174,9 @@ class User extends CI_Controller
                     "email" => $input["email"],
                     "country" => $input["country"],
                     "bank_name" => $input["bank_name"],
-                    "bank_account_number" => $input["bank_account_number"]
+                    "bank_account_number" => $input["bank_account_number"],
+                    "preferred_time" => $input["preferred_time"],
+                    "preferred_threshold" => $input["preferred_threshold"],
                 );
 
                 if (isset($hash)) {
@@ -194,7 +196,7 @@ class User extends CI_Controller
         }
 
         $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
+            "user.user_id" => $user_id
         ));
 
         $this->page_data["user"] = $user[0];

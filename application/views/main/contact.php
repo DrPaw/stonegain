@@ -43,7 +43,8 @@
                                 <p class="form-messege"></p>
                                 <div class="col-xs-12">
                                     <div class="send-email">
-                                        <button type="submit" class="btn btn-default">Send email</button>
+                                        <button type="button" id="sendMail" class="btn btn-default">Send email</button>
+                                    <br><br>
                                     </div>
                                 </div>
                             </form>
@@ -54,3 +55,14 @@
         </div>
 
         <!--Contact email end-->
+
+
+
+<script>
+
+    $(document).ready(function(){
+        $("#sendMail").click(function(){
+            $("#thankYou").modal("show");
+        });
+    });
+</script>
