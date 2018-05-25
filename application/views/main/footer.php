@@ -96,6 +96,27 @@ if($this->session->has_userdata("user")){
 	</div>
 	</a>
 </div>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="thankYou">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thank You For Contacting Us</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>We have received your message. Our team will get back to you as soon as possible.</p>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
 	$.widget.bridge('uibutton', $.ui.button);

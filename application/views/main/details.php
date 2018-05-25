@@ -142,6 +142,12 @@
 				}
 				?>
 				</form>
+                <hr>
+
+                <h3>Pay with PayPal</h3>
+                <br><br>
+
+  <div class="subscribe" id="paypal-button"></div>
 				<?php
 
 		}
@@ -178,4 +184,51 @@ if (!empty($user_trade["receipt"])) {
 
 		}
 
-	</script>
+$(document).ready(function(){
+    var myr_amount = <?= $user_trade['myr_amount']; ?>;
+    console.log(myr_amount);
+    paypal.Button.render({
+
+            env: 'sandbox', // Or 'sandbox'
+
+            client: {
+                sandbox:    'AQy0kbAHWglyL3QOzSQirh_hOjuGLSzoxS_v-jDSZ6KOcHVeDxUYag9EBdumKkZgTzvdLtuvhJSkMHgQ',
+                //production: 'xxxxxxxxx'
+            },
+
+            commit: true, // Show a 'Pay Now' button
+
+            payment: function(data, actions) {
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: myr_amount, currency: 'MYR' }
+                            }
+                        ]
+                    }
+                }); 
+            }, 
+
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function(payment) {
+                    $.post("<?= site_url('Transaction/updateTransaction/'. $user_listing['user_listing_id']); ?>",{
+                        
+                    },function(res){
+                        console.log(res);
+
+                        window.location = "<?= site_url('user_listing/details/'.$user_listing['user_listing_id']); ?>";
+                    });
+                });
+            }
+
+            }, '#paypal-button');
+    
+});
+    
+
+function showThankYou(){
+    $(".subscribe").hide();
+    $("#thankYou").modal('show');
+}
+  </script>

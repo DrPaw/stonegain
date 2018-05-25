@@ -71,6 +71,12 @@ class Transaction extends BaseController
         )));
     }
 
+    function updateTransaction($transaction_id){
+        die(json_encode(array(
+            "status" => "SUCCESS"
+        )));
+    }
+
     function deposit()
     {
         if ($_POST and $this->session->has_userdata("user")) {
