@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wallet extends CI_Controller {
+class Wallet extends BaseController {
 
     public function __construct() {
         parent::__construct();

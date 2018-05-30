@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TradeManagement extends CI_Controller {
+class TradeManagement extends BaseController {
 
     public function __construct() {
         parent::__construct();

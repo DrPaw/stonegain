@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Transaction extends CI_Controller {
+class Transaction extends BaseController {
 
     public function __construct() {
         parent::__construct();

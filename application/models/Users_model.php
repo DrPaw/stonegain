@@ -72,6 +72,8 @@ class Users_model extends CI_Model
                     "message" => "Username already exists"
                 )));
             } else {
+                $input["verified"] = 1;
+
                 $this->db->insert("user", $input);
 
                 if ($this->db->affected_rows() == 0) {

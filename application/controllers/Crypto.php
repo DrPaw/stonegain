@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Crypto extends CI_Controller {
+class Crypto extends BaseController {
 
     public function __construct() {
         parent::__construct();

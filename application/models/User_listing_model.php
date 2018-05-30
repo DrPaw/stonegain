@@ -121,7 +121,6 @@ class User_listing_model extends CI_Model
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
-        $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         if (!empty($where)) {
             $this->db->where($where);
         }

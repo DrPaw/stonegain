@@ -6808,7 +6808,7 @@ a {
 	right: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 10001;
+	z-index: 1049;
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0.3);
 	display: none;
@@ -6821,7 +6821,7 @@ a {
 	position: fixed;
 	left: 80vw;
 	top: 0;
-	z-index: 100001;
+	z-index: 1049;
 	display: none;
 }
 
@@ -6832,7 +6832,7 @@ a {
 	position: fixed;
 	right: -20vw;
 	top: 0;
-	z-index: 100002;
+	z-index: 1049;
 }
 
 .close-message-button {
@@ -6917,6 +6917,7 @@ a {
 	padding-top: 0.7%;
 	position: absolute;
 	bottom: 0;
+	padding-left: 2.5vw;
 	padding-right: 2.5vw;
 }
 
@@ -6939,6 +6940,30 @@ a {
 .send-button:active,
 .send-button:hover,
 .send-button:focus {
+	background: none;
+	box-shadow: none;
+}
+
+
+.upload-button {
+	padding: 0;
+	background: none;
+	border: none;
+	font-size: 2vw;
+	margin-left: 0.2vw;
+	position: absolute;
+	bottom: 0;
+	left: 0.5vw;
+	top: 0.05vh;
+}
+
+.upload-button:hover {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.upload-button:active,
+.upload-button:hover,
+.upload-button:focus {
 	background: none;
 	box-shadow: none;
 }
@@ -7016,9 +7041,35 @@ a {
 }
 
 .line-wrap {
-	white-space : pre-line;
+	white-space: pre-line;
 }
 
 .trusted {
-	color : #3c8dbc;
+	color: #3c8dbc;
+}
+
+.message-button-badge {
+	position: absolute !important;
+	top: -4px;
+	right: -2px;
+	border: solid 1px #337ab7;
+	border-radius: 50%;
+	height: 1.2vw;
+	width: 1.2vw;
+	padding: 0;
+	padding-top: 9%;
+	text-align: center;
+}
+
+.individual-chat-badge {
+	text-align: center;
+    float: right;
+    margin-top: 0.5vw;
+    background-color: white;
+    color: #242d32;
+    border: solid 1px #242d32;
+    border-radius: 50%;
+    height: 1.2vw;
+    width: 1.2vw;
+    padding: 2%;
 }

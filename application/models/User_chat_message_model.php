@@ -45,13 +45,28 @@ class User_chat_message_model extends CI_model
         return $query->result_array();
     }
 
-    function insert($data){
+    function insert($data)
+    {
         $this->db->insert("user_chat_message", $data);
     }
 
-    function update_where($where, $data){
+    function update_where($where, $data)
+    {
         $this->db->where($where);
         $this->db->update("user_chat_message", $data);
+    }
+
+    function get_all_unread($user_id)
+    {
+        $this->db->select("COUNT(*) as count");
+        $this->db->from("user_chat");
+        $this->db->join("user_chat_message", "user_chat.user_chat_id = user_chat_message.user_chat_id AND (user_chat.user_1_id = " . $user_id . " OR user_chat.user_2_id = " . $user_id . ")", "left");
+        $this->db->where("has_read", 0);
+        $this->db->where("user_id !=", $user_id);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 }
 

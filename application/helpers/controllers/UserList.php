@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserList extends CI_Controller {
+class UserList extends BaseController {
 
     public function __construct() {
         parent::__construct();

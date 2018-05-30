@@ -28,7 +28,17 @@
 					?>
 							<div class="talk-bubble tri-right round border right-in">
 								<div class="talktext">
-									<p class="line-wrap"><?= $row["message"] ?></p>
+									<?php
+									if($row["is_image"] == 1){
+										?>
+										<img class="message-image" src="<?= base_url() . $row["message"]?>">
+										<?php
+									} else {
+										?>
+										<p class="line-wrap"><?= $row["message"] ?></p>
+										<?php
+									}
+									?>
 									<div class="talktext-details">
 										<small>
 											<?= $row['created_date'] ?>
@@ -47,6 +57,9 @@
 					<div class="relative-wrapper">
 						<form method="POST" id="send-message-form">
 							<textarea class="form-control message-input" rows="1" name="message" id="form-message"></textarea>
+							<button type="button" class="btn btn-default upload-button" data-toggle="modal" data-target="#upload-modal">
+								<i class="fa fa-plus"></i>
+							</button>
 							<input type="hidden" name="user_chat_id" value="<?= $user_chat['user_chat_id'] ?>" id="form-user-chat-id">
 							<button type="submit" class="btn btn-default send-button" disabled>
 								<i class="fa fa-send"></i>
@@ -55,3 +68,34 @@
 					</div>
 				</div>
 	</div>
+
+	<!-- Modal -->
+	<div id="upload-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog" id="upload-modal-content">
+			<form method="POST" id="upload-image-form" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Upload an Image</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<div class="alert alert-danger alert-dismissable hidden" id="upload-error">
+							</div>
+						</div>
+						<input type="file" required name="image" id="form-image">
+						<input type="hidden" name="user_chat_id" value="<?= $user_chat['user_chat_id'] ?>" id="form-user-chat-id">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		var chat_count = <?= $count ?>;
+
+	</script>

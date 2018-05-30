@@ -31,7 +31,13 @@
                                 <tr>
                                     <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
                                     <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $row['username']; ?></a></td>
-                                    <td><button class="btn btn-danger delete-button" data-id="<?= $row['admin_id'] ?>"
+                                    <td><button class="btn btn-danger delete-button" data-id="<?= $row['admin_id'] ?>" <?php
+                                                if($this->session->userdata("admin")["admin_id"] == $row["admin_id"]){
+                                                    ?>
+                                                        disabled
+                                                    <?php
+                                                }
+                                                ?>>
                                             <i class="fa fa-trash"></i>Delete</button></td>
 
                                 </tr>

@@ -33,7 +33,12 @@ class User_chat_model extends CI_model
             *, (SELECT IF(user_chat.user_1_id = " . $user_id . ",
             (SELECT username FROM user WHERE user.user_id = user_chat.user_2_id),
             (SELECT username FROM user WHERE user.user_id = user_chat.user_1_id)
-            )) AS target_username
+            )) AS target_username,
+            (SELECT COUNT(*) 
+            FROM user_chat_message 
+            WHERE user_chat.user_chat_id = user_chat_message.user_chat_id
+            AND user_chat_message.user_id != ".$user_id."
+            AND user_chat_message.has_read = 0) AS total_unread
         ");
         $this->db->from("user_chat");
         if (!empty($where)) {

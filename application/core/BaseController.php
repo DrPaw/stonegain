@@ -8,6 +8,43 @@ class BaseController extends CI_Controller
         parent::__construct();
 
         $this->load->model("Account_resource_model");
+        $this->load->model("Admin_model");
+        $this->load->model("Users_model");
+        $this->load->model("User_chat_model");
+        $this->load->model("User_chat_message_model");
+
+        if ($this->session->has_userdata('admin')) {
+            $admin_id = $this->session->userdata('admin')["admin_id"];
+
+            $where = array(
+                "admin_id" => $admin_id
+            );
+
+            $admin = $this->Admin_model->get_where($where);
+
+            if ($admin[0]['deleted'] == 1) $this->session->sess_destroy();
+        }
+
+        if ($this->session->has_userdata('user')) {
+            $user_id = $this->session->userdata('user')["user_id"];
+
+            $where = array(
+                "user.user_id" => $user_id
+            );
+
+            $user = $this->Users_model->get_where($where);
+
+            if ($user[0]['deleted'] == 1) {
+                $this->session->sess_destroy();
+            } else {
+                $unread_count = $this->User_chat_message_model->get_all_unread($user_id);
+
+                $unread_count = $unread_count[0]["count"];
+
+                $this->session->set_userdata("unread_total", $unread_count);
+            }
+
+        }
     }
 
     public function hash($password)
@@ -31,7 +68,7 @@ class BaseController extends CI_Controller
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
                 if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
                 break;
             case "PUT":
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -78,7 +115,7 @@ class BaseController extends CI_Controller
     function sort_crypto_wallet($crypto_wallet)
     {
         //if (empty($crypto_wallet)) show_404();
-        
+
         $sorted_wallet = array();
 
         if (!empty($crypto_wallet)) {
@@ -100,6 +137,13 @@ class BaseController extends CI_Controller
                     );
                 }
             }
+        } else {
+            $crypto_data = array(
+                "crypto" => "USDT",
+                "total_amount" => "0.00000000",
+                "available_amount" => "0.00000000",
+                "locked_amount" => "0.00000000"
+            );
         }
 
         array_push($sorted_wallet, $crypto_data);

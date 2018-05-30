@@ -66,9 +66,9 @@
                     ?>
                         <div class="navbar-custom-menu col-xs-6">
                             <ul class="nav navbar-nav float-right">
-                                <li class="dropdown messages-menu">
+                                <!-- <li class="dropdown messages-menu">
                                     <a href="#" class="dropdown-toggle">Balance : 5 BTC</a>
-                                </li>
+                                </li> -->
                                 <li class="dropdown notifications-menu">
                                     <a href="<?= base_url()?>trade_management/buy" class="dropdown-toggle">Offers</a>
                                 </li>

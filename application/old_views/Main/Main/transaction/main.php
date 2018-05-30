@@ -23,7 +23,7 @@
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
                                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10">Avalable : 0 BTC</div>
                                 <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0 BTC</div>
-                                <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Asseta : 0 BTC</div>
+                                <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Assets : 0 BTC</div>
                                 <div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0 BTC</div>
                             </div>
                         </div>

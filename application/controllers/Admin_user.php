@@ -9,6 +9,7 @@ class Admin_user extends BaseController {
         $this->load->model("Users_model");
         $this->load->model("Transaction_model");
         $this->load->model("User_listing_model");
+        $this->load->model("User_trade_info_model");
         $this->page_data = array();
 
         if(!$this->session->has_userdata("admin")) redirect("access/admin_login");
@@ -71,7 +72,13 @@ class Admin_user extends BaseController {
                     "verified" => 1
                 );
 
-                $this->Users_model->add($data);
+                $user_id = $this->Users_model->add($data);
+
+                $data = array(
+                    "user_id" => $user_id
+                );
+
+                $this->User_trade_info_model->insert($data);
 
                 die(json_encode(array(
                     "status" => true
@@ -117,7 +124,7 @@ class Admin_user extends BaseController {
 
             if (!$error) {
                 $where = array(
-                    "user_id" => $user_id
+                    "user.user_id" => $user_id
                 );
 
                 $data = array(
@@ -150,10 +157,10 @@ class Admin_user extends BaseController {
         }
 
         $user = $this->Users_model->get_where($where = array(
-            "user_id" => $user_id
+            "user.user_id" => $user_id
         ));
 
-        $this->page_data["user"] = $user[0];
+    $this->page_data["user"] = $user[0];
 
         $this->load->view("admin/header", $this->page_data);
         $this->load->view("admin/Users/edit");

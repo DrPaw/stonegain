@@ -182,9 +182,6 @@
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
             <div class="box box-info">
                 <div class="box-header admin-panel">
-                    <a href="<?= site_url("admin_user/edit/" . $user['user_id']); ?>" class="pull-right a-color-backend">
-                        Edit
-                    </a>
                     <h4 style="margin-left:20px;" class="pull-left">Trades</h4>
                 </div>
                 <div class="box-body">
