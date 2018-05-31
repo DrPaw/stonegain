@@ -313,7 +313,7 @@ class Ajax extends BaseController
                     $this->page_data["count"] = $message_count[0]["count"];
 
                     die(json_encode(array(
-                        "status" => true,
+                        "status" => true
                     )));
 
                 } else {

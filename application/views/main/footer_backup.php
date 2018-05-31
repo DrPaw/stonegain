@@ -230,15 +230,14 @@ if ($this->session->has_userdata("user")) {
 						// console.log("scroll top " + scroll_top);
 						// console.log("outer height " + outer_height); 
 						// console.log("scroll height - scroll top " + (scroll_height - scroll_top)); 
-						if (image_sent === 1){
-							$('#refresh-messages').animate({ scrollTop: $('#refresh-messages').prop("scrollHeight")}, 1000);
-							image_sent = 0;
-						}
 						if (((scroll_height - scroll_top - 300) < outer_height) && (new_count > chat_count)) {
 							$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
-							// $('#refresh-messages').animate({ scrollTop: $('#refresh-messages').prop("scrollHeight")}, 1000);
 							chat_count = new_count;
-						} 
+						} else if (image_sent === 1){
+							$('#refresh-messages').scrollTop($('#refresh-messages')[0].scrollHeight);
+							chat_count = new_count;
+							image_sent = 0;
+						}
 					});
 				},
 
