@@ -68,7 +68,7 @@ class BaseController extends CI_Controller
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
                 if ($data)
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
                 break;
             case "PUT":
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -182,6 +182,21 @@ class BaseController extends CI_Controller
         }
 
         return $sorted_wallet;
+    }
+
+    function generate_referral_link()
+    {
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+        $string = '';
+        $max = strlen($characters) - 1;
+        for ($i = 0; $i < 12; $i++) {
+            $string .= $characters[mt_rand(0, $max)];
+        }
+
+        $referral_link = base_url() . "user/referral/" . $string;
+
+        return $referral_link;
     }
 
 }

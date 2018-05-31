@@ -143,7 +143,7 @@ class Access extends BaseController
                     "bank_account_number" => $this->input->post("bank_account_number"),
                     "preferred_time" => $this->input->post("preferred_time"),
                     "preferred_threshold" => $this->input->post("preferred_threshold"),
-                    "referral_link" => $this->input->post("referral_link"),
+                    "referral" => $this->input->post("referral"),
                     "password" => $hash["password"],
                     "salt" => $hash["salt"],
                     "code" => $code

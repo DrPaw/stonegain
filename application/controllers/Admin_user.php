@@ -91,9 +91,25 @@ class Admin_user extends BaseController {
             }
         }
 
+        $this->page_data["referral_link"] = $this->generate_referral_link();
+
         $this->load->view("admin/header", $this->page_data);
         $this->load->view("admin/Users/add");
         $this->load->view("admin/footer");
+    }
+
+    function generate_link($user_id){
+        $where = array(
+            "user_id" => $user_id
+        );
+
+        $data = array(
+            "referral_link" => $this->generate_referral_link()
+        );
+
+        $this->Users_model->update_where($where, $data);
+
+        redirect("admin_user/details/" . $user_id, "refresh");
     }
     
     public function delete($user_id){

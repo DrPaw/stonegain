@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                                 <label>Referral Link</label>
-                                <input type="text" class="form-control" name="referral_link" placeholder="referral link">
+                                <input type="text" class="form-control" name="referral_link" placeholder="referral link" value="<?= $referral_link?>">
                             </div>
                         </div>
                         <div class="row">
