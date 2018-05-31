@@ -4,7 +4,7 @@
 		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
 			<div class="box box-info">
 				<div class="box-header admin-panel">
-					<a href="<?= site_url(" admin_user/edit/ " . $user['user_id']); ?>" class="pull-right a-color-backend">
+					<a href="<?= site_url('admin_user/edit/' . $user['user_id']); ?>" class="pull-right a-color-backend">
 						Edit
 					</a>
 					<h4 style="margin-left:20px;" class="pull-left">
