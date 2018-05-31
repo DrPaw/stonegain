@@ -7073,3 +7073,7 @@ a {
     width: 1.2vw;
     padding: 2%;
 }
+
+.message-image {
+	max-height : 450px;
+}
