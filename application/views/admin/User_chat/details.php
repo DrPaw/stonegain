@@ -7,16 +7,39 @@
 					<h4 style="margin-left:20px;" class="pull-left">Chat Log</h4>
 				</div>
 				<div class="box-body">
-                    <?php
-                    foreach($messages as $row){
-                        ?>
-                        <label><?= $row["username"]?> <small><?= $row["created_date"]?></small></label>
-                        <p class='pre-line'><?= $row['message'] ?></p>
-                        <br>
-                        <?php
-                    }
-                    ?>
-                    <?= $pagination ?>
+					<?php
+				foreach ($messages as $row) {
+					?>
+						<label>
+							<?= $row["username"] ?>
+								<small>
+									<?= $row["created_date"] ?>
+								</small>
+						</label>
+						<?php
+					if ($row['is_image'] == 1) {
+						?>
+						<br>
+							<img src="<?= base_url() . $row['message'] ?>">
+							<?php
+
+					} else {
+						?>
+								<p class='pre-line'>
+									<?= $row['message'] ?>
+								</p>
+								<?php
+
+						}
+						?>
+									</td>
+									<td>
+										<br>
+										<?php
+
+								}
+								?>
+											<?= $pagination ?>
 				</div>
 			</div>
 		</div>

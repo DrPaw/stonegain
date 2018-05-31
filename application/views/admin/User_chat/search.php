@@ -1,7 +1,7 @@
 <section class="content-header">
-    <h1>User Chat</h1>
+    <h1>User Chat Search</h1>
     <ol class="breadcrumb">
-        <li><a href="<?= base_url() ?>admin_user_chat"><i class="fa fa-comments"></i>User Chat</a></li>
+        <li><a href="<?= base_url() ?>admin_user_chat/search"><i class="fa fa-commenting"></i>User Chat Search</a></li>
     </ol>
 </section>
 <br>
@@ -18,20 +18,28 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Username</th>
-                                <th>Username</th>
-                                <th>Last Active</th>
+                                <th>Message</th>
+                                <th>Timestamp</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $i = 1;
-                            foreach ($user_chats as $row) {
+                            foreach ($messages as $row) {
                                 ?>
                                 <tr>
-                                    <td><a href="<?= base_url() ?>admin_user_chat/details/<?= $row['user_chat_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user_chat/details/<?= $row['user_chat_id'] ?>" class="a-color-backend"><?= $row["user_1_username"] ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user_chat/details/<?= $row['user_chat_id'] ?>" class="a-color-backend"><?= $row["user_2_username"] ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user_chat/details/<?= $row['user_chat_id'] ?>" class="a-color-backend"><?= $row["last_active_time"] ?></a></td>
+                                    <td><a href="<?= base_url()?>admin_user_chat/details/<?= $row["user_chat_id"]?>"><?= $i ?></a></td>
+                                    <td><a href="<?= base_url()?>admin_user_chat/details/<?= $row["user_chat_id"]?>"><?= $row["username"] ?></a></td>
+                                    <td><a href="<?= base_url()?>admin_user_chat/details/<?= $row["user_chat_id"]?>"><?php
+                                        if ($row['is_image'] == 1) {
+                                            ?>
+                                            <img src="<?= base_url() . $row["message"] ?>">
+                                        <?php
+                                    } else {
+                                        echo $row["message"];
+                                    }
+                                    ?></a></td>
+                                    <td><a href="<?= base_url()?>admin_user_chat/details/<?= $row["user_chat_id"]?>"><?= $row["created_date"] ?></a></td>
                                 </tr>
                                 <?php
                                 $i++;
@@ -42,8 +50,8 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Username</th>
-                                <th>Username</th>
-                                <th>Last Active</th>
+                                <th>Message</th>
+                                <th>Timestamp</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -52,11 +60,3 @@
         </div>
     </div>
 </section>
-<script>
-    $(document).on('click', '.delete-button', function (e) {
-        if (confirm("Are you sure you want to delete this admin?")) {
-            id = $(this).attr('data-id');
-            window.location.replace("<?= base_url() ?>admin/delete/" + id);
-        }
-    });
-</script>

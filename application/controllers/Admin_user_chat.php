@@ -30,6 +30,10 @@ class Admin_user_chat extends BaseController
 
     public function details($user_chat_id, $page = "")
     {
+        if($page == ""){
+            $page = 1;
+        }
+        
         $per_page = 20;
 
         $where = array(
@@ -39,9 +43,10 @@ class Admin_user_chat extends BaseController
         $count = $this->User_chat_message_model->get_count_where($where);
         $this->page_data["messages"] = $this->User_chat_message_model->get_paging_where($page, $per_page, $where);
 
-        $config['base_url'] = base_url() . '/admin_user_chat/details/' . $user_chat_id;
+        $config['base_url'] = base_url() . 'admin_user_chat/details/' . $user_chat_id;
         $config['total_rows'] = $count[0]['count'];
         $config['per_page'] = $per_page;
+        $config["cur_page"] = $page;
         $config['use_page_numbers'] = true;
 
         $config['full_tag_open'] = "<ul class='pagination pull-right'>";
@@ -59,12 +64,23 @@ class Admin_user_chat extends BaseController
         $config['last_tag_open'] = "<li>";
         $config['last_tagl_close'] = "</li>";
 
+        // $this->debug($config);
+
         $this->pagination->initialize($config);
 
         $this->page_data["pagination"] = $this->pagination->create_links();
 
         $this->load->view("admin/header", $this->page_data);
         $this->load->view("admin/User_chat/details");
+        $this->load->view("admin/footer");
+    }
+
+    function search(){
+
+        $this->page_data["messages"] = $this->User_chat_message_model->get_all();
+
+        $this->load->view("admin/header", $this->page_data);
+        $this->load->view("admin/User_chat/search");
         $this->load->view("admin/footer");
     }
 }

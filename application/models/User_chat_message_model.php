@@ -38,7 +38,6 @@ class User_chat_message_model extends CI_model
             $page -= 1;
         }
         $this->db->limit($per_page, $page);
-        $this->db->order_by("created_date ASC");
 
         $query = $this->db->get();
 
@@ -67,6 +66,16 @@ class User_chat_message_model extends CI_model
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+
+    function get_all(){
+        $this->db->select("*, (SELECT username FROM user WHERE user_chat_message.user_id = user.user_id) AS username");
+        $this->db->from("user_chat_message");
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+        
     }
 }
 

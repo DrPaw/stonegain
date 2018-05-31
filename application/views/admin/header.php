@@ -92,6 +92,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="<?= base_url() ?>admin_user_chat/search">
+                                <i class="fa fa-commenting"></i> <span>User Message Search</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>access/logout">
                                 <i class="fa fa-sign-out"></i> <span>Logout</span>
                             </a>

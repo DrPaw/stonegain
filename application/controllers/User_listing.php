@@ -134,6 +134,9 @@ class User_listing extends BaseController
 
     public function view_listing($page = "")
     {
+        if($page == ""){
+            $page = 1;
+        }
 
         $per_page = 10;
 
@@ -150,9 +153,10 @@ class User_listing extends BaseController
             $this->page_data["user_listing"] = $this->User_listing_model->get_paging($page, $per_page);
         }
 
-        $config['base_url'] = base_url() . '/user_listing/view_listing';
+        $config['base_url'] = base_url() . 'user_listing/view_listing';
         $config['total_rows'] = $count[0]['count'];
         $config['per_page'] = $per_page;
+        $config["cur_page"] = $page;
         $config['use_page_numbers'] = true;
 
         $config['full_tag_open'] = "<ul class='pagination pull-right'>";
@@ -169,6 +173,8 @@ class User_listing extends BaseController
         $config['first_tagl_close'] = "</li>";
         $config['last_tag_open'] = "<li>";
         $config['last_tagl_close'] = "</li>";
+
+        // $this->debug($config);
 
         $this->pagination->initialize($config);
 
