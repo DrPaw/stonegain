@@ -48,7 +48,7 @@
             </div> 
             <div class="input-group" style='margin-top : 2%; width: 100%;'>
                 <span class='input-group-addon' style='vertical-align:top; width:200px; text-align: left;'>Referral Link</span>
-                <input name='referral_link' type="text" class="form-control" placeholder='referral link'/>
+                <input name='referral' type="text" class="form-control" placeholder='referral link'/>
             </div>
             <div class ="button-container" style='margin-top : 2%; width: 100%;'>
                 <input type="submit" value='register' class="btn btn-default pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>

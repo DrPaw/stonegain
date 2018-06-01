@@ -38,9 +38,9 @@
             <header class="main-header">
                 <!-- Logo -->
                 <a class="logo">
-                    <span class="logo-mini"><b>A</b>LTE</span>
+                    <!-- <span class="logo-mini"><b>SG</b></span> -->
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Admin</b>LTE</span>
+                    <!-- <span class="logo-lg"><b>Stone</b>Gain</span> -->
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -95,6 +95,41 @@
                             <a href="<?= base_url() ?>admin_user_chat/search">
                                 <i class="fa fa-commenting"></i> <span>User Message Search</span>
                             </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-area-chart"></i> <span>Report</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="<?= base_url() ?>admin_report/top_buyer">
+                                        <i class="fa fa-user-circle"></i> <span>Top Buyer</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>admin_report/top_seller">
+                                        <i class="fa fa-user-circle-o"></i> <span>Top Seller</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>admin_report/top_transaction">
+                                        <i class="fa fa-money"></i> <span>Top Transaction</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>admin_report/most_active">
+                                        <i class="fa fa-calendar-check-o"></i> <span>Most Active / Online User</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>admin_report/top_referred">
+                                        <i class="fa fa-handshake-o"></i> <span>Most Referred User</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="<?= base_url() ?>access/logout">

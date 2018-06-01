@@ -39,6 +39,10 @@ class Access extends BaseController
                         );
                         $user_id = $result[0]['user_id'];
 
+                        $login_count = $result[0]["login_counter"] + 1;
+
+                        $this->Users_model->track_login($user_id, $login_count);
+
                         $this->session->set_userdata("user", $session_data);
 
                         redirect("", "refresh");

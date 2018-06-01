@@ -95,6 +95,24 @@ class User_trade_model extends CI_Model
 
     }
 
+    function get_top_trade()
+    {
+        $this->db->select("*, (SELECT username FROM user WHERE user_id = user_trade.buyer_id ) as buyer_name,
+        (SELECT username FROM user WHERE user_id = user_trade.seller_id ) as seller_name,
+        (SELECT user_trade_status FROM user_trade_status WHERE user_trade_status_id = user_trade.user_trade_status_id ) as user_trade_status");
+        $this->db->from("user_trade");
+        $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
+        $this->db->join("user_trade_status", "user_trade.user_trade_status_id = user_trade_status.user_trade_status_id", "left");
+        $this->db->join("user", "user_trade.buyer_id = user.user_id", "left");
+        $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
+        $this->db->where("user_trade.user_trade_status_id", 4);
+        $this->db->order_by("user_trade.myr_amount DESC, user_trade.btc_amount DESC");
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
 }
 
 ?>

@@ -66,12 +66,10 @@
                         <td>Perferred Threshold</td>
                         <td>: <?= $user["preferred_threshold"]?></td>
 					</tr>
-					<tr>
-                        <td>Referral Link</td>
-                        <td>: </td>
-					</tr>
-                </table>
-                <p><?= $user["referral_link"]?></p>
+				</table>
+				<br/>
+				<lable><b>Referral Link</b></label>
+                <p class="word-break"><?= $user["referral_link"]?></p>
 			</div>
 		</div>
 		<div class="col-ms-9 col-lg-9 col-xs-12 col-sm-12 trading-list-container">

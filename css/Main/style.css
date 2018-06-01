@@ -7077,3 +7077,7 @@ a {
 .message-image {
 	max-height : 450px;
 }
+
+.word-break{
+	word-break: break-all;
+}

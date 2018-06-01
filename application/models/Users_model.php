@@ -94,4 +94,23 @@ class Users_model extends CI_Model
         $this->db->update("user", $data);
     }
 
+    function track_login($user_id, $login_counter)
+    {
+        $sql = "UPDATE user SET last_active_time=now(), login_counter=? WHERE user_id = ?";
+
+        $query = $this->db->query($sql, array(
+            $login_counter,
+            $user_id
+        ));
+    }
+
+    function get_most_active(){
+        $this->db->select("user_id, username, last_active_time, login_counter");
+        $this->db->from("user");
+        $this->db->order_by("login_counter DESC");
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }
