@@ -23,6 +23,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 images/receipt/*
 images/message/*
 
+.DS_Store
+
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache
