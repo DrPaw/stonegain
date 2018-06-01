@@ -302,4 +302,21 @@ class User extends BaseController
         redirect("user/view_profile/" . $user_id, "refresh");
 
     }
+
+    function referral($link)
+    {
+        $link = base_url() . "user/referral/" . $link;
+
+        $where = array(
+            "referral_link" => $link
+        );
+
+        $user = $this->Users_model->get_where($where);
+
+        if (!empty($user)) {
+            redirect("user/view_profile/" . $user[0]["user_id"], "refresh");
+        } else {
+            redirect("main/no_result", "refresh");
+        }
+    }
 }
