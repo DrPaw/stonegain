@@ -259,7 +259,10 @@ body{
 }
 
 .float-right{
-    float: right;
+    float: right!important;
+}
+.float-left{
+    float: left!important;
 }
 
 .dropdown-toggle{
@@ -472,3 +475,23 @@ body{
   30% {margin-left: -1349px;}
   50% {margin-left: -1349px;}
 }
+
+.main-header .navbar-toggle {
+    margin: 0.5%;
+}
+
+.main-header .navbar-toggle .icon-bar {
+    background-color: #232d33;
+}
+.main-header .navbar-toggle:active, .navbar-toggle:hover {
+    background-color: #57707f;
+}
+.main-header .navbar-toggle:active .icon-bar, .navbar-toggle:hover .icon-bar {
+    background-color: #fff;
+}
+/* 
+@media (max-width: 767px) {
+    .navbar-collapse li.dropdown {
+        float: none;
+    }
+} */

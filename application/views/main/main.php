@@ -222,8 +222,8 @@
 		</div>
 	</div>
 	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
-	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0">
-		<img src="<?= site_url(); ?>/images/stonegain/stonegain.png" class="col-xs-12 col-padding-0" style="height:100%">
+	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 text-center">
+		<img src="<?= site_url(); ?>/images/stonegain/stonegain.png" class="col-padding-0" style="height:100%;margin:5% 0;">
 	</div>
 
 </section>
