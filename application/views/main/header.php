@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="<?=base_url()?>css/Main.css">
         <link rel="stylesheet" href="<?=base_url()?>css/Main/Main.css">
         <link rel="stylesheet" href="<?=base_url()?>css/Main/style.css">
+        <link rel="stylesheet" href="<?=base_url()?>css/Main/main-render.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?=base_url()?>css/skins/_all-skins.min.css">
