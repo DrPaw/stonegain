@@ -13,6 +13,7 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="<?=base_url()?>css/AdminLTE.min.css">
         <link rel="stylesheet" href="<?=base_url()?>css/Main.css">
+        <link rel="stylesheet" href="<?=base_url()?>css/Main/Main.css">
         <link rel="stylesheet" href="<?=base_url()?>css/Main/style.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
@@ -49,66 +50,75 @@
             <header class="main-header">
                 <nav class="navbar navbar-static-top">
                     <div class="container-fluid">
-                        <div class="navbar-custom-menu float-left">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown messages-menu">
-                                    <a href="<?= base_url()?>user_listing/view_listing?currency=BTC" class="dropdown-toggle font-size-large"><b>BTC</b></a>
-                                </li>
-                                <li class="dropdown notifications-menu">
-                                    <a href="<?= base_url()?>user_listing/view_listing?currency=ETH" class="dropdown-toggle font-size-large"><b>ETH</b></a>
-                                </li>
-                                <li class="dropdown user user-menu">
-                                    <a href="<?= base_url()?>user_listing/view_listing?currency=LTC" class="dropdown-toggle font-size-large"><b>LTC</b></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <?php
-                            if ($this->session->has_userdata("user")) {
-                        ?>
-                            <div class="navbar-custom-menu float-right">
+                        <div class="row">
+                            <div class="navbar-custom-menu col-md-4 float-left">
                                 <ul class="nav navbar-nav">
-                                    <!-- <li class="dropdown messages-menu">
-                                        <a href="#" class="dropdown-toggle">Balance : 5 BTC</a>
-                                    </li> -->
-                                    <li class="dropdown notifications-menu">
-                                        <a href="<?= base_url()?>trade_management/buy" class="dropdown-toggle">Offers</a>
+                                    <li class="messages-menu">
+                                        <a href="<?= base_url()?>user_listing/view_listing?currency=BTC" class="font-size-large"><b>BTC</b></a>
                                     </li>
-                                    <li class="dropdown notifications-menu">
-                                        <a href="<?= base_url()?>trade_management/sell" class="dropdown-toggle">Sales</a>
+                                    <li class="notifications-menu">
+                                        <a href="<?= base_url()?>user_listing/view_listing?currency=ETH" class="font-size-large"><b>ETH</b></a>
                                     </li>
-                                    <li class="dropdown tasks-menu">
-                                        <a href="<?=base_url()?>wallet" class="dropdown-toggle">Wallet</a>
-                                    </li>
-                                    <li class="dropdown tasks-menu">
-                                        <a href="<?=base_url()?>transaction" class="dropdown-toggle">Transactions</a>
-                                    </li>
-                                    <li class="dropdown user user-menu">
-                                        <a href="<?=base_url()?>user/profile" class="dropdown-toggle">Account</a>
-                                    </li>
-                                    <li class="dropdown user user-menu">
-                                        <a href="<?=base_url()?>access/logout/" class="dropdown-toggle">Logout</a>
+                                    <li class="user user-menu">
+                                        <a href="<?= base_url()?>user_listing/view_listing?currency=LTC" class="font-size-large"><b>LTC</b></a>
                                     </li>
                                 </ul>
                             </div>
-                        <?php
-                            } else {
-                        ?>
-                            <div class="navbar-custom-menu float-right">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown messages-menu">
-                                        <a href="<?=base_url()?>Access/login" class="dropdown-toggle">Login</a>
-                                    </li>
-                                    <li class="dropdown notifications-menu">
-                                        <a href="<?=base_url()?>Access/register" class="dropdown-toggle">Sign Up</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
+                                <div class="navbar-custom-menu col-md-8 float-right">
+                                    
+                                    <?php
+                                if ($this->session->has_userdata("user")) {
+                                    ?>
+                                    <ul class="nav navbar-nav float-right">
+                                        <!-- <li class="messages-menu">
+                                            <a href="#">Balance : 5 BTC</a>
+                                        </li> -->
+                                        <li class="notifications-menu">
+                                            <a href="<?= base_url()?>trade_management/buy">Offers</a>
+                                        </li>
+                                        <li class="notifications-menu">
+                                            <a href="<?= base_url()?>trade_management/sell">Sales</a>
+                                        </li>
+                                        <li class="tasks-menu">
+                                            <a href="<?=base_url()?>wallet">Wallet</a>
+                                        </li>
+                                        <li class="tasks-menu">
+                                            <a href="<?=base_url()?>transaction">Transactions</a>
+                                        </li>
+                                        <li class="user user-menu">
+                                            <a href="<?=base_url()?>user/profile">Account</a>
+                                        </li>
+                                        <li class="user user-menu">
+                                            <a href="<?=base_url()?>access/logout/">Logout</a>
+                                        </li>
+                                    </ul>
                             <?php
-                                }
-                            ?>
+                                } else {
+                                    ?>
+                                    <ul class="nav navbar-nav float-right">
+                                        <li class="messages-menu">
+                                            <a href="<?=base_url()?>Access/login">Login</a>
+                                        </li>
+                                        <li class="notifications-menu">
+                                            <a href="<?=base_url()?>Access/register">Sign Up</a>
+                                        </li>
+                                    </ul>
+                                    <?php
+                                    }
+                                    ?>
+                                <div class="dropdown lang_dropdown">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="<?= base_url()?>images/lang en.png"></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><img src="<?= base_url()?>images/lang en.png"></a></li>
+                                        <li><a href="#"><img src="<?= base_url()?>images/lang cn.png"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </nav>
-                <nav class="navbar navbar-static-top sub-header">
+                <nav class="navbar sub-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#stonegain_nav" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -124,35 +134,35 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-custom-menu float-right col-xs-12" id="stonegain_nav">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown messages-menu">
-                                <a href="<?=base_url()?>main/about" class="dropdown-toggle">AboutUs</a>
+                            <li class="messages-menu">
+                                <a href="<?=base_url()?>main/about">AboutUs</a>
                             </li>
-                            <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/terms" class="dropdown-toggle">Terms</a>
+                            <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/terms">Terms</a>
                             </li>
-                            <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/privacy" class="dropdown-toggle">Privacy</a>
+                            <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/privacy">Privacy</a>
                             </li>
-                            <!-- <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/supported_currency" class="dropdown-toggle">Supported Currencies</a>
+                            <!-- <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/supported_currency">Supported Currencies</a>
                             </li> -->
-                            <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/how" class="dropdown-toggle">How it works</a>
+                            <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/how">How it works</a>
                             </li>
-                            <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/faq" class="dropdown-toggle">FAQ</a>
+                            <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/faq">FAQ</a>
                             </li>
-                            <li class="dropdown notifications-menu">
-                                <a href="<?=base_url()?>main/contact" class="dropdown-toggle">Contact</a>
+                            <li class="notifications-menu">
+                                <a href="<?=base_url()?>main/contact">Contact</a>
                             </li>
                             <?php
                             if($this->session->has_userdata("user")){
                                 ?>
-                                    <li class="dropdown tasks-menu">
-                                        <a href="<?= base_url() ?>user_listing/view_listing" class="dropdown-toggle">Buy</a>
+                                    <li class="tasks-menu">
+                                        <a href="<?= base_url() ?>user_listing/view_listing">Buy</a>
                                     </li>
-                                    <li class="dropdown user user-menu">
-                                        <a href="<?= base_url() ?>user_listing/sell" class="dropdown-toggle">Sell</a>
+                                    <li class="user user-menu">
+                                        <a href="<?= base_url() ?>user_listing/sell">Sell</a>
                                     </li>
                                 <?php
                             }

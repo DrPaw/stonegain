@@ -7,9 +7,9 @@
 </section>
 
 <!-- Main content -->
-<section class="content-with-header col-lg-12 col-md-12 col-xs-12 col-sm-12 no-margin no-padding">
-	<div class="col-lg-2 col-md-2 col-xs-2 col-sm-2 no-margin no-padding content-with-header">
-		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding no-margin no-padding content-with-header">
+<section class="content-with-header col-md-12 col-xs-12 no-margin no-padding">
+	<div class="col-md-2 col-xs-4 no-margin no-padding content-with-header">
+		<div class="col-md-12 col-xs-12 sub-padding no-margin no-padding content-with-header">
 			<ul class="nav nav-tabs nav-stacked wallet-menu content-with-header">
 				<li class="active">
 					<a data-toggle="tab" href="#wallet">View Wallet</a>
@@ -30,66 +30,68 @@
 		</div>
 	</div>
 	<div class="tab-content">
-		<div id="wallet" class="col-lg-10 col-md-10 col-xs-10 col-sm-10 line-padding-15 content-with-header tab-pane fade in active">
-			<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0 content-with-header" style="padding-left:5vw">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-height">
-					<br>
-					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height padding-left-10 margin-bottom-10 font-size-xlarge">Total Balance</div>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<?php
-    foreach ($crypto_wallet as $row) {
-        ?>
-						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">
-							<?= $row["crypto"] ?>
-						</div>
-						<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
-							<?= $row["total_amount"] ?>
-						</div>
+		<div id="wallet" class="col-md-10 col-xs-8 line-padding-15 content-with-header tab-pane fade in active">
+			<div class="col-xs-12">
+				<div class="col-md-6 col-xs-12 col-padding-0" style="padding-left:5vw">
+					<div class="col-md-12 col-xs-12 sub-height">
+						<br>
+						<div class="col-md-12 col-xs-12 label-height padding-left-10 margin-bottom-10 font-size-xlarge">Total Balance</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
 						<?php
-
-    }
-    ?>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0" style="padding-right:10px">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height">
-					<table class="table wallet-table">
-						<thead>
-							<tr>
-								<td>Partner</td>
-								<td>Available Balance</td>
-								<td>Lock</td>
-							</tr>
-						</thead>
-						<tbody>
+		foreach ($crypto_wallet as $row) {
+			?>
+							<div class="col-md-3 col-xs-3 label-height col-padding-10">
+								<?= $row["crypto"] ?>
+							</div>
+							<div class="col-md-9 col-xs-9 label-height col-padding-5">
+								<?= $row["total_amount"] ?>
+							</div>
 							<?php
-        foreach ($crypto_wallet as $row) {
-            ?>
-								<tr>
-									<td>
-										<?= $row["crypto"] ?>
-									</td>
-									<td>
-										<?= $row["available_amount"] ?>
-									</td>
-									<td>
-										<?= $row["locked_amount"] ?>
-									</td>
-								</tr>
-								<?php
 
-    }
-    ?>
-						</tbody>
-					</table>
+		}
+		?>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12 col-padding-0" style="padding-left:5vw">
+					<div class="col-md-12 col-xs-12 margin-bottom table-height">
+						<table class="table wallet-table">
+							<thead>
+								<tr>
+									<td>Partner</td>
+									<td>Available Balance</td>
+									<td>Lock</td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+			foreach ($crypto_wallet as $row) {
+				?>
+									<tr>
+										<td>
+											<?= $row["crypto"] ?>
+										</td>
+										<td>
+											<?= $row["available_amount"] ?>
+										</td>
+										<td>
+											<?= $row["locked_amount"] ?>
+										</td>
+									</tr>
+									<?php
+
+		}
+		?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div id="transaction" class="col-lg-10 col-md-10 col-xs-10 col-sm-10 line-padding-15 content-with-header tab-pane">
+		<div id="transaction" class="col-lg-10 col-md-10 col-xs-8 col-sm-8 line-padding-15 content-with-header tab-pane">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 content-with-header" style="padding-left:5vw">
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-height">
 					<br>
@@ -133,11 +135,11 @@
 				</div>
 			</div>
 		</div>
-		<div id="send" class="col-lg-10 col-md-10 col-xs-10 col-sm-10 line-padding-15 content-with-header tab-pane">
+		<div id="send" class="col-lg-10 col-md-10 col-xs-8 col-sm-8 line-padding-15 content-with-header tab-pane">
 		</div>
-		<div id="receive" class="col-lg-10 col-md-10 col-xs-10 col-sm-10 line-padding-15 content-with-header tab-pane">
+		<div id="receive" class="col-lg-10 col-md-10 col-xs-8 col-sm-8 line-padding-15 content-with-header tab-pane">
 		</div>
-		<div id="refund" class="col-lg-10 col-md-10 col-xs-10 col-sm-10 line-padding-15 content-with-header tab-pane">
+		<div id="refund" class="col-lg-10 col-md-10 col-xs-8 col-sm-8 line-padding-15 content-with-header tab-pane">
 		</div>
 	</div>
 </section>

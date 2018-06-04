@@ -24,7 +24,7 @@
 		<div class="tab-content">
 			<div id="deposit" class="tab-pane fade in active">
 				<form method="POST" action="<?= base_url() ?>transaction/deposit">
-					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border margin-bottom" style="height:25%;">
+					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border margin-bottom" style="height:25%; padding-right:10px;">
 						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding-custom">
 							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 font-size-large">
 								<select class="form-control crypto-select" id="depositCrypto" name="crypto_id" onchange="loadDeposit()">
@@ -48,7 +48,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0" style="padding-right:10px;">
+					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 col-padding-0 address_container">
 						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-border transaction-box-height sub-padding-custom">
 							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">Address :</div>
 							<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
