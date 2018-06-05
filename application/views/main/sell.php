@@ -2,35 +2,41 @@
 <form method="POST" action="<?= base_url() ?>user_listing/sell/<?= $quick_sell ?>">
 	<section class="content col-xs-12">
 		<div class="col-xs-12 sub-padding border-bottom margin-bottom-10">
-			<div class="col-md-6 col-xs-12">
-				<div class="col-md-3 col-xs-12 sub-padding">
-					<span class="font-weight-bold">Select your crypto</span>
-				</div>
-				<div class="col-md-9 col-xs-12 sub-padding font-color-user">
-					<select id="crypto-select" class="form-control" name="crypto_id">
-						<option value="0">None</option>
-						<?php
-					foreach ($crypto_wallet as $row) {
-						?>
-							<option value="<?= $row['crypto_id'] ?>">
-								<?= $row["crypto"] ?>
-							</option>
-							<?php
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-md-3 col-xs-4 sub-padding">
+							<span class="font-weight-bold">Select your crypto</span>
+						</div>
+						<div class="col-md-9 col-xs-8 sub-padding font-color-user">
+							<select id="crypto-select" class="form-control" name="crypto_id">
+								<option value="0">None</option>
+								<?php
+							foreach ($crypto_wallet as $row) {
+								?>
+									<option value="<?= $row['crypto_id'] ?>">
+										<?= $row["crypto"] ?>
+									</option>
+									<?php
 
-					}
-					?>
-					</select>
+							}
+							?>
+							</select>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div id="crypto-details-refresh" class="col-xs-12">
-				<div class="col-xs-12 sub-padding">
-					Total Balance:
-				</div>
-				<div class="col-xs-12 sub-padding">
-					Locked Amount:
-				</div>
-				<div class="col-xs-12 sub-padding">
-					Available Balance:
+				<div id="crypto-details-refresh" class="col-sm-6">
+					<div class="row">
+						<div class="col-xs-4 sub-padding">
+							Total Balance:
+						</div>
+						<div class="col-xs-4 sub-padding">
+							Locked Amount:
+						</div>
+						<div class="col-xs-4 sub-padding">
+							Available Balance:
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,48 +47,48 @@
 					Selling Details
 				</div>
 				<div class="col-xs-12 sub-padding">
-					<div class="col-md-3 col-xs-12 label-height col-padding-10">Amount:</div>
-					<div class="col-md-9 col-xs-12 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Amount:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<input id="amount-form" type="number" class="form-control input-border" required name="amount" min="0" step="any" value="0">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Markup Percentage:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Markup Percentage:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<input id="markup-form" type="number" class="form-control input-border" required name="markup" value="0">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Threshold:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Threshold:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<input type="number" class="form-control input-border" required name="threshold">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Price:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Price:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<p id="price-before">0 MYR/BTC</p>
 						<input type="hidden" class="form-control input-border" id="price-before-form" name="price_before">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Price (after markup):</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Price (after markup):</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<p id="price-after">0 MYR/BTC</p>
 						<input type="hidden" class="form-control input-border" id="price-after-form" name="price_after">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Total:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Total:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<p id="price-total">0 MYR <small>price (after markup) * amount</small></p>
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Limit From</div>
-					<div class="col-xs-4 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Limit From</div>
+					<div class="col-xs-3 label-height col-padding-5">
 						<input id="limit-to-form" type="number" class="form-control input-border" step="any" required name="limit_from">
 					</div>
-					<div class="col-xs-1 label-height col-padding-10">to</div>
-					<div class="col-xs-4 label-height col-padding-5">
+					<div class="col-xs-2 label-height col-padding-10 text-center">to</div>
+					<div class="col-xs-3 label-height col-padding-5">
 						<input id="limit-from-form" type="number" class="form-control input-border" step="any" required name="limit_to">
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Payment Method:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Payment Method:</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<select class="form-control input-border" name="payment_method">
 							<option value="Bank Transfer">Bank Transfer</option>
 						</select>
 					</div>
-					<div class="col-xs-3 label-height col-padding-10">Payment Time (minutes):</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-xs-4 label-height col-padding-10">Payment Time (minutes):</div>
+					<div class="col-xs-8 label-height col-padding-5">
 						<input type="number" class="form-control input-border" required name="time_of_payment" step="1">
 					</div>
 					<div class="col-xs-12 label-height col-padding-10 margin-bottom-10 ">
