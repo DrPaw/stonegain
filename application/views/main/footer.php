@@ -5,13 +5,13 @@
 		<strong>&copy; 2018 Stonegain All Rights Reserved.</strong>
 	</div>
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-			<div class="border-bottom footer_title"><span>SUPPORTED CURRENCIESM</span></div>
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
+			<div class="border-bottom footer_title"><span>SUPPORTED CURRENCIES</span></div>
 			<div>MYR</div>
 			<div>USD</div>
 			<div>SGD</div>
 		</div>
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>INTRODUCTION</span></div>
 			<div>About Us</div>
 			<div>Careers</div>
@@ -21,7 +21,7 @@
 			<div>Legal & Policy</div>
 			<div>Become Our Partner</div>
 		</div>
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>SOCIAL</span></div>
 			<div>
 				<i class=""></i>Facebook</div>

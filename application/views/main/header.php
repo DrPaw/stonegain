@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="<?=base_url()?>css/jquery-jvectormap.css">
         <!-- Date Picker -->
         <link rel="stylesheet" href="<?=base_url()?>css/bootstrap-datepicker.min.css">
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>	
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>	
         <!-- Daterange picker -->
         <link rel="stylesheet" href="<?=base_url()?>css/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->

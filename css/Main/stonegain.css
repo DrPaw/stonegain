@@ -1,21 +1,59 @@
-.mobile-table>thead>tr>td, .mobile-table>tbody>tr>td{
-    font-size: 2vw;
-    white-space: nowrap;
+.mobile-table>thead>tr>td,
+.mobile-table>tbody>tr>td {
+	font-size: 2vw;
+	white-space: nowrap;
 }
 
 .mobile-table>tbody>tr {
-    background-color : transparent !important;
+	background-color: transparent !important;
 }
 
 .mobile-box {
-    border: solid 1px rgba(0,0,0,0.2);
-    margin : 2.5% 0;
-    padding : 2.5%;
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	margin: 2.5% 0;
+	padding: 2.5%;
+}
+
+.sub-border-gray, .contain-table {
+	overflow: hidden;
+	overflow-x: scroll;
+}
+
+.data-table {
+	white-space: nowrap;
+}
+
+.listing-avatar {
+	max-width: 5vw !important;
+}
+
+.slide-number {
+    font-size : 6vw;
+}
+
+@media (max-width: 768px) {
+	.sub-padding {
+		padding: 10px 5px;
+	}
+	.listing-avatar {
+		max-width: 7vw !important;
+	}
 }
 
 @media (max-width: 425px) {
-    .mobile-table>thead>tr>td, .mobile-table>tbody>tr>td{
-        font-size: 4vw;
-        white-space: nowrap;
+	.mobile-table>thead>tr>td,
+	.mobile-table>tbody>tr>td {
+		font-size: 4vw;
+		white-space: nowrap;
     }
+    
+	.listing-avatar {
+		max-width: 10vw !important;
+	}
+}
+
+@media (max-width: 320px) {
+    .listing-avatar {
+		max-width: 14vw !important;
+	}
 }
