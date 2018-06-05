@@ -159,8 +159,8 @@
 </section>
 <section class="hidden-lg hidden-md col-xs-12 col-sm-12 no-margin no-padding">
 	<div class="row no-margin no-padding">
-		<div class="col-sm-12 no-margin no-padding">
-			<ul class="nav nav-tabs">
+		<div class="col-sm-12 no-margin no-padding" style="border-bottom: solid 1px rgba(0,0,0,0.2);">
+			<ul class="nav nav-pills">
 				<li class="active">
 					<a data-toggle="tab" href="#mobile-processing">Processing</a>
 				</li>
@@ -174,12 +174,9 @@
 				<table class="table table-striped mobile-table">
 					<thead>
 						<tr>
-							<td>Partner</td>
 							<td>Trade ID</td>
-							<td>Type</td>
 							<td>Amount</td>
 							<td>Quantity</td>
-							<td>Created</td>
 							<td>Trade</td>
 							<td>Status</td>
 						</tr>
@@ -191,17 +188,7 @@
 							<tr>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row['username'] ?>
-									</a>
-								</td>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
 										<?= $row["user_listing_id"] ?>
-									</a>
-								</td>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row['type'] ?>
 									</a>
 								</td>
 								<td>
@@ -212,11 +199,6 @@
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
 										<?= $row["btc_amount"] ?> BTC</td>
 								</a>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row["created_date"] ?>
-									</a>
-								</td>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
 										<?= $row["crypto"] ?>
@@ -238,13 +220,10 @@
 			<div id="mobile-completed" class="tab-pane fade">
 				<table class="table table-striped mobile-table">
 					<thead>
-						<tr>
-							<td>Partner</td>
+					<tr>
 							<td>Trade ID</td>
-							<td>Type</td>
 							<td>Amount</td>
 							<td>Quantity</td>
-							<td>Created</td>
 							<td>Trade</td>
 							<td>Status</td>
 						</tr>
@@ -256,34 +235,17 @@
 							<tr>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row['username'] ?>
-									</a>
-								</td>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
 										<?= $row["user_listing_id"] ?>
 									</a>
 								</td>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row['type'] ?>
-									</a>
-								</td>
+										<?= $row["myr_amount"] ?> MYR</td>
+								</a>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row["myr_amount"] ?> MYR
-									</a>
-								</td>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row["btc_amount"] ?> BTC
-									</a>
-								</td>
-								<td>
-									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
-										<?= $row["created_date"] ?>
-									</a>
-								</td>
+										<?= $row["btc_amount"] ?> BTC</td>
+								</a>
 								<td>
 									<a href="<?= base_url() ?>user_listing/details/<?= $row['user_listing_id'] ?>/<?= $row['user_trade_id'] ?>">
 										<?= $row["crypto"] ?>

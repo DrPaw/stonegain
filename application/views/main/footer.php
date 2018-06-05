@@ -2,7 +2,7 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
-		<strong>&copy; 2016-2018 CoinCola All Rights Reserved.</strong>
+		<strong>&copy; 2018 Stonegain All Rights Reserved.</strong>
 	</div>
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
 		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
