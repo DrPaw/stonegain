@@ -91,6 +91,13 @@ class GDAX extends CI_Model{
 
     }
 
+    function getAddressTransactions($account_id, $address_id){
+        $path = "accounts/".$account_id."/addresses/" . $address_id . "/transactions";
+        $result = $this->get($path);
+
+        return array('status'=>'SUCCESS','data'=> $result);
+    }
+
 
     // ================ UTILITIES =======================
     //=================== DO NOT TOUCH UNLESS U KNOW WHAT YOU ARE DOING. =================
