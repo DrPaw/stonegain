@@ -1,0 +1,21 @@
+.mobile-table>thead>tr>td, .mobile-table>tbody>tr>td{
+    font-size: 2vw;
+    white-space: nowrap;
+}
+
+.mobile-table>tbody>tr {
+    background-color : transparent !important;
+}
+
+.mobile-box {
+    border: solid 1px rgba(0,0,0,0.2);
+    margin : 2.5% 0;
+    padding : 2.5%;
+}
+
+@media (max-width: 425px) {
+    .mobile-table>thead>tr>td, .mobile-table>tbody>tr>td{
+        font-size: 4vw;
+        white-space: nowrap;
+    }
+}
