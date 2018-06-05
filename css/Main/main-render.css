@@ -161,3 +161,22 @@ body, .wrapper {
         height: 55px;
     }
 }
+
+.chat-user {
+    min-height: 50px;
+}
+.chat-content-message-content {
+    overflow-y: scroll;
+}
+
+.talktext p{
+    word-break: break-word;
+}
+
+.talktext-details {
+    font-size: 0.9rem;
+}
+
+.send-button {
+    right: 20px;
+}

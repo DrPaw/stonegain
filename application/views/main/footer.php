@@ -99,7 +99,7 @@ if ($this->session->has_userdata("user")) {
 					</div>
 					<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
 						<p class="no-padding no-margin">user</p>
-						<small class="no-padding no-margin">
+						<small class="no-padding no-margin d-desktop">
 							<?= date("h:i:s a") ?>
 						</small>
 					</div>
@@ -192,7 +192,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (total_message_counter_poll_active === true) {
-						total_message_counter_poll();
+						// total_message_counter_poll();
 					}
 				}, 1000);
 
@@ -209,7 +209,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (individual_message_counter_poll_active === true) {
-						individual_message_counter_poll();
+						// individual_message_counter_poll();
 					}
 				}, 1000);
 
@@ -243,7 +243,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (message_poll_active === true) {
-						message_poll();
+						// message_poll();
 					}
 				}, 500);
 			if (total_message_counter_poll_active === true) {
@@ -253,7 +253,7 @@ if ($this->session->has_userdata("user")) {
 				individual_message_counter_poll(); // also run function on init
 			}
 			if (message_poll_active === true) {
-				message_poll(); // also run function on init
+				// message_poll(); // also run function on init
 			}
 		})();
 

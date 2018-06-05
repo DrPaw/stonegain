@@ -26,7 +26,7 @@ foreach ($user_chat_list as $row) {
 					<p class="no-padding no-margin">
 						<?= $row["target_username"] ?>
 					</p>
-					<small class="no-padding no-margin">
+					<small class="no-padding no-margin d-desktop">
 						<?= $row["last_active_time"] ?>
 					</small>
 			</div>
