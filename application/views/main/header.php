@@ -66,7 +66,7 @@
                                 </ul>
                             </div>
                             
-                                <div class="navbar-custom-menu col-md-8 float-right">
+                            <div class="navbar-custom-menu col-md-8 float-right">
                                     
                                     <?php
                                 if ($this->session->has_userdata("user")) {

@@ -1,3 +1,61 @@
+.d-xs-block {
+    display: block!important;
+}
+.d-sm-block {
+    display: none!important;
+}
+.d-md-block {
+    display: none!important;
+}
+.d-lg-block {
+    display: none!important;
+}
+
+@media (min-width: 768px) {
+    .d-xs-block {
+        display: none!important;
+    }
+    .d-sm-block {
+        display: block!important;
+    }
+    .d-md-block {
+        display: none!important;
+    }
+    .d-lg-block {
+        display: none!important;
+    }
+}
+
+@media (min-width: 992px){
+    .d-xs-block {
+        display: none!important;
+    }
+    .d-sm-block {
+        display: none!important;
+    }
+    .d-md-block {
+        display: block!important;
+    }
+    .d-lg-block {
+        display: none!important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .d-xs-block {
+        display: none!important;
+    }
+    .d-sm-block {
+        display: none!important;
+    }
+    .d-md-block {
+        display: none!important;
+    }
+    .d-lg-block {
+        display: block!important;
+    }
+}
+
 .main-header .navbar-toggle {
     margin: 0.5%;
 }
@@ -48,13 +106,6 @@
     }
 }
 
-.d_mobile {
-    display: none!important;
-}
-.d_desktop {
-    display: block!important;
-}
-
 @media (max-width: 991px) {
     .navbar-collapse {
         width: 100%;
@@ -70,13 +121,6 @@
     }
     .float-md-none {
         float: none!important;
-    }
-
-    .d_mobile {
-        display: block!important;
-    }
-    .d_desktop {
-        display: none!important;
     }
 }
 
@@ -116,4 +160,13 @@ body, .wrapper {
     .content-with-header {
         height: calc(130vh - 100px - 200px) !important;
     }
+}
+
+.message-button {
+    font-size: 2rem;
+}
+
+.trade_management_tab {
+    margin-bottom: 20px;
+    overflow: auto;
 }

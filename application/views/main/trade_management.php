@@ -8,7 +8,7 @@
 
 <!-- Main content -->
 <section class="content-with-header col-sm-12 no-margin no-padding">
-	<div class="col-md-2 col-xs-4 no-margin no-padding content-with-header">
+	<div class="col-md-2 col-sm-3 col-xs-4 no-margin no-padding content-with-header">
 		<div class="col-sm-12 no-margin no-padding content-with-header">
 			<ul class="nav nav-tabs nav-stacked transaction-menu content-with-header">
 				<li class="active">
@@ -20,9 +20,9 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col-md-10 col-xs-8">
+	<div class="col-md-10 col-sm-9 col-xs-8">
 		<div class="tab-content">
-			<div id="processing" class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height tab-pane active fade in">
+			<div id="processing" class="col-xs-12 trade_management_tab content-with-header table-height tab-pane active fade in">
 				<table class="table transaction-table">
 					<thead>
 						<tr>
@@ -87,7 +87,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div id="completed" class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-bottom table-height tab-pane">
+			<div id="completed" class="col-xs-12 margin-bottom table-height tab-pane">
 				<table class="table transaction-table">
 					<thead>
 						<tr>
