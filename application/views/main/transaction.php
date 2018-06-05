@@ -42,9 +42,9 @@
 								</select>
 							</div>
 							<div id="refresh-crypto-amount-deposit">
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Avalable : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Total : 0</div>
 							</div>
 						</div>
 					</div>
@@ -89,9 +89,9 @@
 								</select>
 							</div>
 							<div id="refresh-crypto-amount-withdraw">
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Avalable : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
-								<div class="col-lg-3col-md-3col-xs-3 col-sm-3 label-height col-padding-10 font-size-14">Total : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Avalable : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Frozen Assets : 0</div>
+								<div class="col-xs-4 label-height col-padding-10 font-size-14">Total : 0</div>
 							</div>
 						</div>
 					</div>

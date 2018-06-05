@@ -54,13 +54,13 @@
                         <div class="row">
                             <div class="navbar-custom-menu col-md-4 float-left">
                                 <ul class="nav navbar-nav">
-                                    <li class="messages-menu">
+                                    <li>
                                         <a href="<?= base_url()?>user_listing/view_listing?currency=BTC" class="font-size-large"><b>BTC</b></a>
                                     </li>
-                                    <li class="notifications-menu">
+                                    <li>
                                         <a href="<?= base_url()?>user_listing/view_listing?currency=ETH" class="font-size-large"><b>ETH</b></a>
                                     </li>
-                                    <li class="user user-menu">
+                                    <li>
                                         <a href="<?= base_url()?>user_listing/view_listing?currency=LTC" class="font-size-large"><b>LTC</b></a>
                                     </li>
                                 </ul>
@@ -71,37 +71,37 @@
                                     <?php
                                 if ($this->session->has_userdata("user")) {
                                     ?>
-                                    <ul class="nav navbar-nav float-right">
-                                        <!-- <li class="messages-menu">
+                                    <ul class="nav navbar-nav float-right d-desktop">
+                                        <!-- <li>
                                             <a href="#">Balance : 5 BTC</a>
                                         </li> -->
-                                        <li class="notifications-menu">
+                                        <li>
                                             <a href="<?= base_url()?>trade_management/buy">Offers</a>
                                         </li>
-                                        <li class="notifications-menu">
+                                        <li>
                                             <a href="<?= base_url()?>trade_management/sell">Sales</a>
                                         </li>
-                                        <li class="tasks-menu">
+                                        <li>
                                             <a href="<?=base_url()?>wallet">Wallet</a>
                                         </li>
-                                        <li class="tasks-menu">
+                                        <li>
                                             <a href="<?=base_url()?>transaction">Transactions</a>
                                         </li>
-                                        <li class="user user-menu">
+                                        <li>
                                             <a href="<?=base_url()?>user/profile">Account</a>
                                         </li>
-                                        <li class="user user-menu">
+                                        <li>
                                             <a href="<?=base_url()?>access/logout/">Logout</a>
                                         </li>
                                     </ul>
                             <?php
                                 } else {
                                     ?>
-                                    <ul class="nav navbar-nav float-right">
-                                        <li class="messages-menu">
+                                    <ul class="nav navbar-nav float-right d-desktop">
+                                        <li>
                                             <a href="<?=base_url()?>Access/login">Login</a>
                                         </li>
-                                        <li class="notifications-menu">
+                                        <li>
                                             <a href="<?=base_url()?>Access/register">Sign Up</a>
                                         </li>
                                     </ul>
@@ -120,12 +120,12 @@
                     </div>
                 </nav>
                 <nav class="navbar sub-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#stonegain_nav" aria-expanded="false">
+                    <a id="btn_stonegain_nav" class="navbar-toggle collapsed" href="#btn_stonegain_nav" data-toggle="collapse" data-target="#stonegain_nav" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+                    </a>
                     <div class="navbar-custom-menu float-left">
                         <!-- Logo -->
                         <a href="<?=base_url()?>" class="logo">
@@ -135,40 +135,82 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-custom-menu float-right col-xs-12" id="stonegain_nav">
                         <ul class="nav navbar-nav">
-                            <li class="messages-menu">
+                        <?php
+                            if ($this->session->has_userdata("user")) {
+                                ?>
+                                <li class="d-mobile user_detail_nav">
+                                    <a href="#account_nav"data-toggle="collapse" style="font-weight:bold;">User Details</a>
+                                </li>
+                                <ul id="account_nav" class="nav navbar-nav collapse">
+                                    <li>
+                                        <a href="<?= base_url()?>trade_management/buy">Offers</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url()?>trade_management/sell">Sales</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url()?>wallet">Wallet</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url()?>transaction">Transactions</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url()?>user/profile">Account</a>
+                                    </li>
+                                </ul>
+                            <?php
+                            }
+                            ?>
+                            <li>
                                 <a href="<?=base_url()?>main/about">AboutUs</a>
                             </li>
-                            <li class="notifications-menu">
+                            <li>
                                 <a href="<?=base_url()?>main/terms">Terms</a>
                             </li>
-                            <li class="notifications-menu">
+                            <li>
                                 <a href="<?=base_url()?>main/privacy">Privacy</a>
                             </li>
-                            <!-- <li class="notifications-menu">
+                            <!-- <li>
                                 <a href="<?=base_url()?>main/supported_currency">Supported Currencies</a>
                             </li> -->
-                            <li class="notifications-menu">
+                            <li>
                                 <a href="<?=base_url()?>main/how">How it works</a>
                             </li>
-                            <li class="notifications-menu">
+                            <li>
                                 <a href="<?=base_url()?>main/faq">FAQ</a>
                             </li>
-                            <li class="notifications-menu">
+                            <li>
                                 <a href="<?=base_url()?>main/contact">Contact</a>
                             </li>
                             <?php
                             if($this->session->has_userdata("user")){
                                 ?>
-                                    <li class="tasks-menu">
+                                    <li>
                                         <a href="<?= base_url() ?>user_listing/view_listing">Buy</a>
                                     </li>
-                                    <li class="user user-menu">
+                                    <li>
                                         <a href="<?= base_url() ?>user_listing/sell">Sell</a>
                                     </li>
-                                <?php
+                                    <li class="d-mobile user_detail_nav">
+                                        <a href="<?=base_url()?>access/logout/">Logout</a>
+                                    </li>
+                                
+                            <?php
+                            } else {
+                            ?>
+                                <ul class="nav navbar-nav d-mobile">
+                                    <li>
+                                        <a href="<?=base_url()?>Access/login">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url()?>Access/register">Sign Up</a>
+                                    </li>
+                                </ul>
+                            <?php
                             }
                             ?>
                         </ul>
+                       
                     </div>
                 </nav>
             </header>
