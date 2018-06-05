@@ -2,16 +2,16 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
-		<strong>&copy; 2016-2018 CoinCola All Rights Reserved.</strong>
+		<strong>&copy; 2018 Stonegain All Rights Reserved.</strong>
 	</div>
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-			<div class="border-bottom footer_title"><span>SUPPORTED CURRENCIESM</span></div>
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
+			<div class="border-bottom footer_title"><span>SUPPORTED CURRENCIES</span></div>
 			<div>MYR</div>
 			<div>USD</div>
 			<div>SGD</div>
 		</div>
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>INTRODUCTION</span></div>
 			<div>About Us</div>
 			<div>Careers</div>
@@ -21,7 +21,7 @@
 			<div>Legal & Policy</div>
 			<div>Become Our Partner</div>
 		</div>
-		<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>SOCIAL</span></div>
 			<div>
 				<i class=""></i>Facebook</div>
@@ -98,8 +98,8 @@ if ($this->session->has_userdata("user")) {
 						<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
 					</div>
 					<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
-						<p class="no-padding no-margin">user</p>
-						<small class="no-padding no-margin">
+						<p class="no-padding no-margin chat_username">user</p>
+						<small class="no-padding no-margin d-desktop">
 							<?= date("h:i:s a") ?>
 						</small>
 					</div>
@@ -127,7 +127,32 @@ if ($this->session->has_userdata("user")) {
 			</div>
 		</div>
 	</div>
-
+<!-- Modal -->
+<div id="upload-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog" id="upload-modal-content">
+			<form method="POST" id="upload-image-form" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Upload an Image</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<div class="alert alert-danger alert-dismissable hidden" id="upload-error">
+							</div>
+						</div>
+						<input type="file" required name="image" id="form-image">
+						<input type="hidden" name="user_chat_id" value="" id="form-modal-user-chat-id">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
@@ -461,6 +486,12 @@ if ($this->session->has_userdata("user")) {
 					}
 				}
 			});
+		});
+
+		$(document).on("click", ".upload-button", function(e){
+			var user_chat_id = $("#form-user-chat-id").val();
+			$("#form-modal-user-chat-id").val(user_chat_id);
+			
 		});
 
 	</script>

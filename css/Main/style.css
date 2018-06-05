@@ -6662,11 +6662,11 @@ p.error {
 }
 
 .main-title {
-	font-size: 1em;
+	font-size: 5vw;
 }
 
 .dummy-title {
-	font-size: 0.8em;
+	font-size: 4vw;
 	color: transparent;
 	text-decoration: underline white;
 	margin-top: -1.5%;

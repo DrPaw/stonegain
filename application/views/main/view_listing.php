@@ -2,7 +2,7 @@
 	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
 	<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
 		<form action="<?= base_url() ?>user_listing/view_listing" method="GET">
-			<div class="col-lg-10 col-md-10 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-12">
 				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
 					<select name="advertisement" class="form-control">
 						<option value="">Advertisement</option>
@@ -19,15 +19,11 @@
 						<?php
 					foreach ($currency_list as $row) {
 						?>
-							<option value="<?= $row['currency'] ?>"
-							<?php
-						if ($_GET AND !empty($_GET['currency']) and $_GET['currency'] == $row['currency']) {
-							?>
-							selected
-									<?php
+							<option value="<?= $row['currency'] ?>" <?php if ($_GET AND !empty($_GET['currency']) and $_GET['currency']== $row['currency']) { ?>
+								selected
+								<?php
 							}
-							?>
-							>
+							?> >
 								<?= $row['currency'] ?>
 							</option>
 							<?php
@@ -39,19 +35,16 @@
 				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
 					<select name="payment_method" class="form-control">
 						<option value="">Payment Method</option>
-						<option value="Bank Transfer"
-						<?php
-						if ($_GET AND !empty($_GET['payment_method']) and $_GET['payment_method'] == "Bank Transfer") {
-							?>
+						<option value="Bank Transfer" <?php if ($_GET AND !empty($_GET[ 'payment_method']) and $_GET[ 'payment_method']=="Bank Transfer"
+						) { ?>
 							selected
-									<?php
+							<?php
 							}
-							?>
-						>Bank Transfer</option>
+							?> >Bank Transfer</option>
 					</select>
 				</div>
 			</div>
-			<div class="col-lg-2 col-md-2 col-xs-10 col-sm-12 padding-top-12">
+			<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 padding-top-12">
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
 					<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
 				</div>
@@ -64,56 +57,61 @@
 					<thead>
 						<tr class="border-bottom-black">
 							<th colspan="2">Username</th>
-							<th>Credit</th>
-							<th>Payment Method</th>
-							<th>Limits</th>
+							<th class="hidden-sm hidden-xs">Credit</th>
+							<th class="hidden-sm hidden-xs">Payment Method</th>
+							<th class="hidden-sm hidden-xs">Limits</th>
 							<th>Prices</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-					foreach ($user_listing as $row) {
-						?>
+						foreach ($user_listing as $row) {
+							?>
 							<tr>
 								<th class="font-weight-400">
-									<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
+									<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar listing-avatar">
 								</th>
 								<th class="font-weight-400" style="padding-top:16px">
 									<div>
-										<?= $row["username"] ?>
+										<a href="<?= base_url()?>user/view_profile/<?= $row['user_id']?>">
+											<?= $row["username"] ?>
+										</a>
 									</div>
 									<?php
-								if ($row["quick_sell"] == 1) {
-									?>
+									if ($row["quick_sell"] == 1) {
+										?>
 										<div class="quick-seller col-padding-10">quick seller</div>
 										<?php
 
-								}
-								?>
+									}
+									?>
 								</th>
-								<th class="font-weight-400" style="padding-top:16px">
-									<div><?= $row["trades"]?> Trades|Rating <?= $row["rating"]?>%</div>
-									<div class="font-color-user">Average Release Time: <?= $row["average_time"]?> mins</div>
+								<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
+									<div>
+										<?= $row["trades"]?> Trades|Rating
+											<?= $row["rating"]?>%</div>
+									<div class="font-color-user">Average Release Time:
+										<?= $row["average_time"]?> mins</div>
 								</th>
-								<th class="font-weight-400" style="padding-top:16px">
+								<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 									<?= $row["payment_method"] ?>
 								</th>
-								<th class="font-weight-400" style="padding-top:16px">
+								<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th class="font-weight-400 price-color" style="padding-top:16px">
 									<?= $row["price_after"] ?> MYR/BTC</th>
 								<th style="padding-top:16px;text-align:center;">
 									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY
-										<?= $row["crypto"] ?>
+										<?= $row['crypto'] ?>
 									</a>
 								</th>
 							</tr>
 							<?php
 
-					}
-					?>
+						}
+						?>
 					</tbody>
 				</table>
 			</div>

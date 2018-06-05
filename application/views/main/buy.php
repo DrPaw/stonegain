@@ -1,59 +1,63 @@
 <!-- Main content -->
-<section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12">
+<section class="content col-xs-12">
 	<form method="POST" action="<?= base_url() ?>user_listing/buy/<?= $user_listing['user_listing_id'] ?>">
-		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding border-bottom margin-bottom-10">
-			<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					<span class="font-weight-bold">User:</span>
-					<?= $user_listing["username"] ?>
-				</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 sub-padding font-color-user">
-					Average Release Time: <?= $user_listing["average_time"]?> mins
+		<div class="col-xs-12 sub-padding border-bottom margin-bottom-10">
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-md-6 col-xs-12 sub-padding">
+						<span class="font-weight-bold">User:</span>
+						<?= $user_listing["username"] ?>
+					</div>
+					<div class="col-xs-12 sub-padding font-color-user">
+						<span class="font-weight-bold">Average Release Time:</span>
+						<?= $user_listing["average_time"]?> mins
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-				<?= $user_listing["trades"]?> Trades
+			<div class="col-md-6 col-xs-12">
+				<div class="col-xs-3 sub-padding">
+					<?= $user_listing["trades"]?> Trades
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-				<?= $user_listing["trusted"]?> Trusted
+				<div class="col-xs-3 sub-padding">
+					<?= $user_listing["trusted"]?> Trusted
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-				<?= $user_listing["rating"]?>% Rating
+				<div class="col-xs-3 sub-padding">
+					<?= $user_listing["rating"]?>% Rating
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sub-padding">
-					<?= $user_listing["amount"] ?> <?= $user_listing["crypto"]?> Volume
+				<div class="col-xs-3 sub-padding">
+					<?= $user_listing["amount"] ?>
+						<?= $user_listing["crypto"]?> Volume
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding margin-bottom-10 font-weight-bold">
+		<div class="col-md-6 col-xs-12 no-padding no-margin">
+			<div class="col-xs-12  sub-padding margin-bottom-10 font-weight-bold">
 				Purchase Details
 			</div>
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">MYR:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+			<div class="col-xs-12 sub-padding">
+				<div class="col-xs-3 label-height col-padding-10">MYR:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<input id="myr-amount-form" type="number" class="form-control input-border" required name="myr_amount" step="any" max="<?=$user_listing['limit_to']?>"
 					min="<?=$user_listing['limit_from']?>" onkeyup="calculate(this)">
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 label-height col-padding-10">BTC:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+				<div class="col-xs-3 label-height col-padding-10">BTC:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" onkeyup="calculate(this)">
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">Price:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+				<div class="col-xs-3 label-height col-padding-10">Price:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<?= $user_listing["price_after"] ?> MYR/BTC</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">Limits:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+				<div class="col-xs-3 label-height col-padding-10">Limits:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<?= $user_listing["limit_from"] ?>-
 						<?= $user_listing["limit_to"] ?> MYR</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">Payment Method:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+				<div class="col-xs-3 label-height col-padding-10">Payment Method:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<?= $user_listing["payment_method"] ?>
 				</div>
-				<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3label-height col-padding-10">Time of Payment:</div>
-				<div class="col-lg-9 col-md-9 col-xs-9 col-sm-9 label-height col-padding-5">
+				<div class="col-xs-3 label-height col-padding-10">Time of Payment:</div>
+				<div class="col-xs-9 label-height col-padding-5">
 					<?= $user_listing["time_of_payment"] ?> Minutes
 				</div>
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 margin-bottom-10 ">
@@ -65,7 +69,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+		<div class="col-md-6 col-xs-12">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding font-weight-bold">
 				Messages
 			</div>
@@ -77,8 +81,9 @@
 			</div>
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
 				Trading Currencies and other financial instruments carries risk due to the potential of increased volatility and speculation.
-				It is strongly recommended that you consider the possible risks and rewards that are associated with the investment and trade of CFDs in order to fully understand if this type of investment is right for you.
-				We highly recommend you to speak with one of our account representatives before maaking any kind of transactions.
+				It is strongly recommended that you consider the possible risks and rewards that are associated with the investment and
+				trade of CFDs in order to fully understand if this type of investment is right for you. We highly recommend you to speak
+				with one of our account representatives before maaking any kind of transactions.
 			</div>
 		</div>
 	</form>

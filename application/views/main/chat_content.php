@@ -39,13 +39,13 @@
 										<?php
 									}
 									?>
-									<div class="talktext-details">
-										<small>
-											<?= $row['created_date'] ?>
-												<?= ($row['has_read'] == 1 AND $row['user_id'] == $this->session->userdata('user')['user_id']) ? "<i class='fa fa-check'></i>" : "" ?>
-										</small>
-									</div>
 								</div>
+							</div>
+							<div class="talktext-details">
+								<small>
+									<?= $row['created_date'] ?>
+										<?= ($row['has_read'] == 1 AND $row['user_id'] == $this->session->userdata('user')['user_id']) ? "<i class='fa fa-check'></i>" : "" ?>
+								</small>
 							</div>
 						</div>
 						<?php
@@ -68,33 +68,8 @@
 					</div>
 				</div>
 	</div>
+	
 
-	<!-- Modal -->
-	<div id="upload-modal" class="modal fade" role="dialog">
-		<div class="modal-dialog" id="upload-modal-content">
-			<form method="POST" id="upload-image-form" enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Upload an Image</h4>
-					</div>
-					<div class="modal-body">
-						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-							<div class="alert alert-danger alert-dismissable hidden" id="upload-error">
-							</div>
-						</div>
-						<input type="file" required name="image" id="form-image">
-						<input type="hidden" name="user_chat_id" value="<?= $user_chat['user_chat_id'] ?>" id="form-user-chat-id">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Upload</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
 	<script>
 		var chat_count = <?= $count ?>;
 
