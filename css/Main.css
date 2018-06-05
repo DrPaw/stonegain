@@ -259,7 +259,10 @@ body{
 }
 
 .float-right{
-    float: right;
+    float: right!important;
+}
+.float-left{
+    float: left!important;
 }
 
 .dropdown-toggle{
@@ -441,7 +444,7 @@ body{
   overflow: hidden;
   height: 200px;
   width: 949px;
-  margin: 0 200px 0 200px;
+  margin: 0 10% 0 10%;
 }
 
 .slide-wrapper {
@@ -457,7 +460,7 @@ body{
 .slide-number {
   color: #000;
   text-align: left;
-  font-size: 3em;
+  font-size: 2.5rem;
   color: #fff;
   padding-top: 20px;
 }
@@ -465,6 +468,15 @@ body{
 .slide-word{
    padding-top: 25px;
    text-align: left;
+}
+
+@media (min-width: 992px) {
+    #slideshow {
+        margin: 0 200px 0 200px;
+    }
+    .slide-number {
+        font-size: 3em;
+    }
 }
 
 @-webkit-keyframes slide {
