@@ -41,8 +41,8 @@
 			</div>
 		</div>
 
-		<div class="col-sm-12">
-			<div class="col-md-6 col-xs-12">
+		<div class="col-sm-12 no-padding">
+			<div class="col-md-6 col-xs-12 no-padding">
 				<div class="col-xs-12 sub-padding margin-bottom-10 font-weight-bold">
 					Selling Details
 				</div>
