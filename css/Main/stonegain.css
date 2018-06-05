@@ -27,6 +27,10 @@
 	max-width: 5vw !important;
 }
 
+.slide-number {
+    font-size : 6vw;
+}
+
 @media (max-width: 768px) {
 	.sub-padding {
 		padding: 10px 5px;
