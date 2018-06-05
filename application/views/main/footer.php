@@ -98,7 +98,7 @@ if ($this->session->has_userdata("user")) {
 						<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
 					</div>
 					<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
-						<p class="no-padding no-margin">user</p>
+						<p class="no-padding no-margin chat_username">user</p>
 						<small class="no-padding no-margin d-desktop">
 							<?= date("h:i:s a") ?>
 						</small>
@@ -127,7 +127,32 @@ if ($this->session->has_userdata("user")) {
 			</div>
 		</div>
 	</div>
-
+<!-- Modal -->
+<div id="upload-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog" id="upload-modal-content">
+			<form method="POST" id="upload-image-form" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Upload an Image</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<div class="alert alert-danger alert-dismissable hidden" id="upload-error">
+							</div>
+						</div>
+						<input type="file" required name="image" id="form-image">
+						<input type="hidden" name="user_chat_id" value="" id="form-modal-user-chat-id">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
@@ -192,7 +217,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (total_message_counter_poll_active === true) {
-						// total_message_counter_poll();
+						total_message_counter_poll();
 					}
 				}, 1000);
 
@@ -209,7 +234,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (individual_message_counter_poll_active === true) {
-						// individual_message_counter_poll();
+						individual_message_counter_poll();
 					}
 				}, 1000);
 
@@ -243,7 +268,7 @@ if ($this->session->has_userdata("user")) {
 
 				pollInterval = setInterval(function () { // run function every 1000 ms
 					if (message_poll_active === true) {
-						// message_poll();
+						message_poll();
 					}
 				}, 500);
 			if (total_message_counter_poll_active === true) {
@@ -253,7 +278,7 @@ if ($this->session->has_userdata("user")) {
 				individual_message_counter_poll(); // also run function on init
 			}
 			if (message_poll_active === true) {
-				// message_poll(); // also run function on init
+				message_poll(); // also run function on init
 			}
 		})();
 
@@ -461,6 +486,12 @@ if ($this->session->has_userdata("user")) {
 					}
 				}
 			});
+		});
+
+		$(document).on("click", ".upload-button", function(e){
+			var user_chat_id = $("#form-user-chat-id").val();
+			$("#form-modal-user-chat-id").val(user_chat_id);
+			
 		});
 
 	</script>

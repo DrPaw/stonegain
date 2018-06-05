@@ -83,6 +83,10 @@
         /* display: block; */
         text-align: center;
     }
+    .chat-user p {
+        line-height: 50px;
+        vertical-align: middle;
+    }
 }
 
 #account_nav > li {
@@ -166,6 +170,7 @@ body, .wrapper {
     min-height: 50px;
 }
 .chat-content-message-content {
+    overflow-x: auto;
     overflow-y: scroll;
 }
 
@@ -175,8 +180,39 @@ body, .wrapper {
 
 .talktext-details {
     font-size: 0.9rem;
+    position: relative;
 }
+.sender-bubble-wrapper .talktext-details {
+    margin-right: 2%;
+}
+.receiver-bubble-wrapper .talktext-details {
+    margin-left: 2%;
+}
+
+
+/* .chat_username {
+    width: 15vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */
 
 .send-button {
     right: 20px;
+}
+
+.message-input {
+    height: 100%!important;
+    font-size: 1.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    vertical-align: middle;
+}
+.upload-button,
+.send-button {
+    font-size: 2rem;
+}
+
+.close-message-button {
+    font-size: 1.5rem;
 }

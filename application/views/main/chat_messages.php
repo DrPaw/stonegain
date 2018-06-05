@@ -27,13 +27,13 @@ if ($row['user_id'] == $this->session->userdata('user')['user_id']) {
 								<?php
 							}
 							?>
-							<div class="talktext-details">
-								<small>
-									<?= $row['created_date'] ?>
-										<?= ($row['has_read'] == 1 and $row['user_id'] == $this->session->userdata('user')['user_id']) ? "<i class='fa fa-check'></i>" : "" ?>
-								</small>
-							</div>
 						</div>
+					</div>
+					<div class="talktext-details">
+						<small>
+							<span><?= $row['created_date'] ?></span>
+								<?= ($row['has_read'] == 1 and $row['user_id'] == $this->session->userdata('user')['user_id']) ? "<i class='fa fa-check'></i>" : "" ?>
+						</small>
 					</div>
 				</div>
 				<?php
