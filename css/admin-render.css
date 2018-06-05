@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+    .content-wrapper, 
+    .main-footer {
+        margin-left: 0px;
+    }
+}
+
+.table-overflow {
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+@media only screen and (max-width: 768px){
+    .panel-body {
+        overflow-x: auto !important;
+    }
+}
+    

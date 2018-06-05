@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/css/AdminLTE.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>css/Main.css">
         <link rel="stylesheet" href="<?= base_url() ?>css/admin.css">
+        <link rel="stylesheet" href="<?= base_url() ?>css/admin-render.css">
         <link rel="stylesheet" href="<?= base_url() ?>/js/plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="<?= base_url() ?>/js/plugins/fullcalendar-3.4.0/fullcalendar.min.css">
         <link rel="stylesheet" media="print" href="<?= base_url() ?>/js/plugins/fullcalendar-3.4.0/fullcalendar.print.min.css">
@@ -38,9 +39,6 @@
             <header class="main-header">
                 <!-- Logo -->
                 <a class="logo">
-                    <!-- <span class="logo-mini"><b>SG</b></span> -->
-                    <!-- logo for regular state and mobile devices -->
-                    <!-- <span class="logo-lg"><b>Stone</b>Gain</span> -->
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">

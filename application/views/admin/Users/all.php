@@ -15,63 +15,65 @@
             </div>
             <div class='panel-body'>
                 <div id="refreshBox">
-                    <table id="data-table" class="table table-bordered table-hover data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Country</th>
-                                <th>Bank Name</th>
-                                <th>Bank Acc. No.</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($users as $row) {
-                                ?>
+                    <div class="col-sm-12 table-overflow">
+                        <table id="data-table" class="table table-bordered table-hover data-table">
+                            <thead>
                                 <tr>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['username']; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['email']; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['country']; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['bank_name']; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['bank_account_number']; ?></a></td>
-                                    <?php
-                                        if ($row['deleted'] == "0"){
-                                            ?>
-                                            <td><button class="btn btn-danger delete-button" data-id="<?= $row['user_id'] ?>"
-                                                <i class="fa fa-trash"></i>Block</button></td>
-                                    <?php
-                                        }
-                                        ?>
-                                    <?php
-                                        if ($row['deleted'] == "1") {
-                                            ?>
-                                                <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend">Blocked</a></td>
-                                    <?php
-                                        }
-                                        ?>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Country</th>
+                                    <th>Bank Name</th>
+                                    <th>Bank Acc. No.</th>
+                                    <th></th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                $i++;
-                            }
-                            ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No.</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Country</th>
-                                <th>Bank Name</th>
-                                <th>Bank Acc. No.</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                $i = 1;
+                                foreach ($users as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['username']; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['email']; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['country']; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['bank_name']; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend"><?php echo $row['bank_account_number']; ?></a></td>
+                                        <?php
+                                            if ($row['deleted'] == "0"){
+                                                ?>
+                                                <td><button class="btn btn-danger delete-button" data-id="<?= $row['user_id'] ?>"
+                                                    <i class="fa fa-trash"></i>Block</button></td>
+                                        <?php
+                                            }
+                                            ?>
+                                        <?php
+                                            if ($row['deleted'] == "1") {
+                                                ?>
+                                                    <td><a href="<?= base_url() ?>admin_user/details/<?= $row['user_id'] ?>" class="a-color-backend">Blocked</a></td>
+                                        <?php
+                                            }
+                                            ?>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Country</th>
+                                    <th>Bank Name</th>
+                                    <th>Bank Acc. No.</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

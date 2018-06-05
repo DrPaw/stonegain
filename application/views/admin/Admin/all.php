@@ -15,45 +15,47 @@
             </div>
             <div class='panel-body'>
                 <div id="refreshBox">
-                    <table id="data-table" class="table table-bordered table-hover data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Username</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($admins as $row) {
-                                ?>
+                    <div class="col-sm-12 table-overflow">
+                        <table id="data-table" class="table table-bordered table-hover data-table">
+                            <thead>
                                 <tr>
-                                    <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
-                                    <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $row['username']; ?></a></td>
-                                    <td><button class="btn btn-danger delete-button" data-id="<?= $row['admin_id'] ?>" <?php
-                                                if($this->session->userdata("admin")["admin_id"] == $row["admin_id"]){
-                                                    ?>
-                                                        disabled
-                                                    <?php
-                                                }
-                                                ?>>
-                                            <i class="fa fa-trash"></i>Delete</button></td>
-
+                                    <th>No.</th>
+                                    <th>Username</th>
+                                    <th></th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                $i++;
-                            }
-                            ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No.</th>
-                                <th>Username</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                $i = 1;
+                                foreach ($admins as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $i; ?></a></td>
+                                        <td><a href="<?= base_url() ?>admin/details/<?= $row['admin_id'] ?>" class="a-color-backend"><?php echo $row['username']; ?></a></td>
+                                        <td><button class="btn btn-danger delete-button" data-id="<?= $row['admin_id'] ?>" <?php
+                                                    if($this->session->userdata("admin")["admin_id"] == $row["admin_id"]){
+                                                        ?>
+                                                            disabled
+                                                        <?php
+                                                    }
+                                                    ?>>
+                                                <i class="fa fa-trash"></i>Delete</button></td>
+
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Username</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
