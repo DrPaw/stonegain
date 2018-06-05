@@ -2,11 +2,11 @@
 <form method="POST" action="<?= base_url() ?>user_listing/sell/<?= $quick_sell ?>">
 	<section class="content col-xs-12">
 		<div class="col-xs-12 sub-padding border-bottom margin-bottom-10">
-			<div class="col-md-6 col-xs-6">
-				<div class="col-md-3 col-xs-3 sub-padding">
+			<div class="col-md-6 col-xs-12">
+				<div class="col-md-3 col-xs-12 sub-padding">
 					<span class="font-weight-bold">Select your crypto</span>
 				</div>
-				<div class="col-md-9 col-xs-9 sub-padding font-color-user">
+				<div class="col-md-9 col-xs-12 sub-padding font-color-user">
 					<select id="crypto-select" class="form-control" name="crypto_id">
 						<option value="0">None</option>
 						<?php
@@ -22,27 +22,27 @@
 					</select>
 				</div>
 			</div>
-			<div id="crypto-details-refresh" class="col-xs-6">
-				<div class="col-xs-4 sub-padding">
+			<div id="crypto-details-refresh" class="col-xs-12">
+				<div class="col-xs-12 sub-padding">
 					Total Balance:
 				</div>
-				<div class="col-xs-4 sub-padding">
+				<div class="col-xs-12 sub-padding">
 					Locked Amount:
 				</div>
-				<div class="col-xs-4 sub-padding">
+				<div class="col-xs-12 sub-padding">
 					Available Balance:
 				</div>
 			</div>
 		</div>
 
 		<div class="col-sm-12">
-			<div class="col-md-6">
+			<div class="col-md-6 col-xs-12">
 				<div class="col-xs-12 sub-padding margin-bottom-10 font-weight-bold">
 					Selling Details
 				</div>
 				<div class="col-xs-12 sub-padding">
-					<div class="col-xs-3 label-height col-padding-10">Amount:</div>
-					<div class="col-xs-9 label-height col-padding-5">
+					<div class="col-md-3 col-xs-12 label-height col-padding-10">Amount:</div>
+					<div class="col-md-9 col-xs-12 label-height col-padding-5">
 						<input id="amount-form" type="number" class="form-control input-border" required name="amount" min="0" step="any" value="0">
 					</div>
 					<div class="col-xs-3 label-height col-padding-10">Markup Percentage:</div>

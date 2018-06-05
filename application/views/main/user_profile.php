@@ -80,14 +80,14 @@
 		</div>
 		<div class="col-ms-12 col-lg-12 col-xs-12 col-sm-12 trading-list-container">
 			<h4>Trade Listing</h4>
-			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 contain-table">
 				<table id="data-table" class="table table-bordered table-hover data-table">
 					<thead>
 						<tr class="border-bottom-black">
 							<th>Currency</th>
 							<th>Amount</th>
 							<th>Price</th>
-							<th>Limits</th>
+							<th class="hidden-sm hidden-xs">Limits</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -104,7 +104,7 @@
 								</th>
 								<th class="font-weight-400 price-color" style="padding-top:16px">
 									<?= $row["price_after"] ?> MYR/BTC</th>
-								<th class="font-weight-400" style="padding-top:16px">
+								<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th style="padding-top:16px; text-align:center;">

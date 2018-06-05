@@ -18,7 +18,7 @@
 	<section class="content col-xs-12 col-padding-0 line-padding-0">
 		<form method="GET" action="<?= base_url()?>user_listing/buy/quick_buy" id="quick-buy-form">
 			<div class="navbar-static-top col-xs-12 sub-header">
-				<div class="main-header navbar-custom-menu col-xs-6">
+				<div class="main-header navbar-custom-menu col-xs-12">
 					<!-- Logo -->
 					<a id="quick-buy-button" class="logo" style="border-right: 0px">
 						<!-- logo for regular state and mobile devices -->
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<div class="navbar-static-top col-xs-12 search-bar col-padding-10">
-				<div class="col-xs-12 col-padding-50">
+				<div class="col-xs-12">
 					<div class="col-md-4 col-xs-12 sub-padding">
 						<div class="col-xs-12">Amount</div>
 						<div class="col-xs-12">
@@ -116,9 +116,9 @@
 						<thead>
 							<tr class="border-bottom-black">
 								<th colspan="2">Username</th>
-								<th>Credit</th>
-								<th>Payment Method</th>
-								<th>Limits</th>
+								<th class="hidden-sm hidden-xs">Credit</th>
+								<th class="hidden-sm hidden-xs">Payment Method</th>
+								<th class="hidden-sm hidden-xs">Limits</th>
 								<th>Prices</th>
 								<th></th>
 							</tr>
@@ -129,7 +129,7 @@
 							?>
 								<tr>
 									<th class="font-weight-400">
-										<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar">
+										<img src="<?= site_url(); ?>/images/stonegain/avatar.png" class="avatar listing-avatar">
 									</th>
 									<th class="font-weight-400" style="padding-top:16px">
 										<div>
@@ -144,14 +144,14 @@
 									}
 									?>
 									</th>
-									<th class="font-weight-400" style="padding-top:16px">
+									<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 										<div><?= $row["trades"]?> Trades|Rating <?= $row["rating"]?>%</div>
 										<div class="font-color-user">Average Release Time: <?= $row["average_time"]?> mins</div>
 									</th>
-									<th class="font-weight-400" style="padding-top:16px">
+									<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 										<?= $row["payment_method"] ?>
 									</th>
-									<th class="font-weight-400" style="padding-top:16px">
+									<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 										<?= $row["limit_from"] ?>-
 											<?= $row["limit_to"] ?> MYR</th>
 									<th class="font-weight-400 price-color" style="padding-top:16px">
