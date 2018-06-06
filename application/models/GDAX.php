@@ -213,6 +213,59 @@ class GDAX extends CI_Model
 
             $this->db->where("resource_id", $resource_id);
             $this->db->update("user_deposit_address", $data);
+
+            $this->db->select("user_id");
+            $this->db->from("user_deposit_address");
+            $this->db->where("resource_id", $resource_id);
+
+            $query = $this->db->get();
+
+            $result = $query->result_array();
+
+            $user_id = $result[0]["user_id"];
+
+            $this->db->select("crypto_id");
+            $this->db->from("crypto");
+            $this->db->where("crypto", $transfer["amount"]["currency"]);
+
+            $query = $this->db->get();
+
+            $result = $query->result_array();
+
+            $crypto_id = $result[0]["crypto_id"];
+
+            $this->db->select("*");
+            $this->db->from("user_crypto");
+            $this->db->where("user_id", $user_id);
+            $this->db->where("crypto_id", $crypto_id);
+
+            $query = $this->db->get();
+
+            $result = $query->result_array();
+
+            if(!empty($result)){
+                if($transfer["type"] == "send"){
+                    $where = array(
+                        "user_id" => $user_id,
+                        "crypto_id" => $crypto_id
+                    );
+
+                    $data = array(
+                        "amount" => $result[0]["amount"] + $transfer["amount"]["amount"]
+                    );
+
+                    $this->db->where($where);
+                    $this->db->update("user_crypto", $data);
+                }
+            } else {
+                $data = array(
+                    "user_id" => $user_id,
+                    "crypto_id" => $crypto_id,
+                    "amount" => $transfer["amount"]["amount"]
+                );
+
+                $this->db->insert("user_crypto", $data);
+            }
         }
     }
 }
