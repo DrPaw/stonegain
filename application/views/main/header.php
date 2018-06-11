@@ -50,7 +50,7 @@
         <div class="wrapper">
 
             <header class="main-header">
-                <nav class="navbar navbar-static-top">
+                <nav class="navbar navbar-static-top black">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="navbar-custom-menu col-md-4 float-left">
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                 </nav>
-                <nav class="navbar sub-header">
+                <nav class="navbar sub-header green">
                     <a id="btn_stonegain_nav" class="navbar-toggle collapsed" href="#btn_stonegain_nav" data-toggle="collapse" data-target="#stonegain_nav" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -130,8 +130,7 @@
                     <div class="navbar-custom-menu float-left">
                         <!-- Logo -->
                         <a href="<?=base_url()?>" class="logo">
-                            <!-- logo for regular state and mobile devices -->
-                            <span class="logo-lg"><b>Stonegain</b></span>
+                            <img  class="logo-image" src="<?= base_url() ?>images/logo.png">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse navbar-custom-menu float-right col-xs-12" id="stonegain_nav">
@@ -163,7 +162,7 @@
                             }
                             ?>
                             <li>
-                                <a href="<?=base_url()?>main/about">AboutUs</a>
+                                <a href="<?=base_url()?>main/about">About Us</a>
                             </li>
                             <li>
                                 <a href="<?=base_url()?>main/terms">Terms</a>
