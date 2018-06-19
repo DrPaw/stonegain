@@ -17,27 +17,27 @@
 
 	<!-- Main content -->
 	<section class="content col-xs-12 col-padding-0 line-padding-0">
-		<form method="GET" action="<?= base_url()?>user_listing/buy/quick_buy" id="quick-buy-form">
+		<form method="POST" action="<?= base_url()?>user_listing/quick_transaction" id="quick-transaction-form">
 			<div class="navbar-static-top col-xs-12 sub-header darker-green darker-green-border-bottom">
 				<div class="main-header navbar-custom-menu col-xs-12">
 					<!-- Logo -->
-					<a id="quick-buy-button" class="logo" style="border-right: 0px">
+					<button type="submit" name="type" value="quick_buy" class="logo" style="border:none;">
 						<!-- logo for regular state and mobile devices -->
 						<span class="logo-lg">
 							Quick Buy
 						</span>
-					</a>
-					<a href="<?= base_url() ?>user_listing/sell/quick" class="logo" style="border-right: 0px">
+					</button>
+					<button type="submit" name="type" value="quick_sell" class="logo" style="border:none;">
 						<!-- logo for regular state and mobile devices -->
 						<span class="logo-lg">
 							Quick Sell
 						</span>
-					</a>
+					</button>
 				</div>
 			</div>
 			<div class="navbar-static-top col-xs-12 search-bar col-padding-10 green">
 				<div class="col-xs-12">
-					<div class="col-md-3 col-xs-12 sub-padding">
+					<div class="col-md-4 col-xs-12 sub-padding">
 						<div class="col-xs-12">
 							<p class="filter-label">Amount</p>
 						</div>
@@ -45,7 +45,7 @@
 							<input type="text" class="form-control input-border" name="amount" placeholder="Amount">
 						</div>
 					</div>
-					<div class="col-md-3 col-xs-12 sub-padding">
+					<div class="col-md-4 col-xs-12 sub-padding">
 						<div class="col-xs-12">
 							<p class="filter-label">Currency</p>
 						</div>
@@ -63,17 +63,12 @@
 							</datalist>
 						</div>
 					</div>
-					<div class="col-md-3 col-xs-12 sub-padding">
+					<div class="col-md-4 col-xs-12 sub-padding">
 						<div class="col-xs-12">
 							<p class="filter-label">Country</p>
 						</div>
 						<div class="col-xs-12">
 							<input type="text" class="form-control input-border" name="country" placeholder="Country">
-						</div>
-					</div>
-					<div class="col-md-3 col-xs-12 sub-padding">
-						<div class="col-xs-12">
-							<button class="btn btn-primary filter-button">Search</button>
 						</div>
 					</div>
 				</div>
@@ -242,7 +237,7 @@
 </section>
 <!-- /.content -->
 <script>
-	$(document).on('click', "#quick-buy-button", function (e) {
-		$("#quick-buy-form").submit();
+	$(document).on('submit', "#quick-transaction-form", function (e) {
+		
 	});
 </script>

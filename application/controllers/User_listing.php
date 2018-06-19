@@ -39,7 +39,7 @@ class User_listing extends Base_Controller
 
         $user_id = $this->session->userdata("user")["user_id"];
 
-        if($_POST){
+        if ($_POST) {
             $input = $this->input->post();
 
             $data = array(
@@ -57,11 +57,11 @@ class User_listing extends Base_Controller
                 "type" => $input["type"]
             );
 
-            if($input["type"] == "buy"){
+            if ($input["type"] == "buy") {
                 $data["payment_method"] = "";
             }
 
-            if($input["type"] == "sell"){
+            if ($input["type"] == "sell") {
                 $data["time_of_payment"] = $input["time_of_payment"];
             }
 
@@ -94,7 +94,7 @@ class User_listing extends Base_Controller
 
         $user_crypto = $this->Wallet_model->get_crypto_wallet_where($user_id, $where);
 
-        if (empty($user_crypto) OR $user_crypto[0]["available_amount"] < $user_listing[0]["amount"]) redirect("main/cannot_trade", "refresh");
+        if (empty($user_crypto) or $user_crypto[0]["available_amount"] < $user_listing[0]["amount"]) redirect("main/cannot_trade", "refresh");
 
         $this->page_data["user_listing"] = $user_listing[0];
 
@@ -472,5 +472,41 @@ class User_listing extends Base_Controller
         $this->User_trade_info_model->update_where($where, $data);
 
         redirect('user_listing/details/' . $user_listing_id . '/' . $user_trade_id, "refersh");
+    }
+
+    function quick_transaction()
+    {
+        if ($_POST) {
+            $input = $this->input->post();
+
+            if (!$this->session->userdata("user")["user_id"]) redirect("access/login", "refresh");
+
+            $user_id = $this->session->userdata("user")["user_id"];
+
+
+            $where = array(
+                "user_listing.user_id !=" => $user_id
+            );
+
+            if (!empty($input["amount"])) $where["amount >="] = $input["amount"];
+            if (!empty($input["currency"])) $where["crypto"] = $input["currency"];
+
+            if ($input["type"] == "quick_buy") {
+                $user_listing = $this->User_listing_model->get_quick_buy($where);
+            } else if ($input["type"] == "quick_sell") {
+                $user_listing = $this->User_listing_model->get_quick_sell($where);
+            }
+
+            if (empty($user_listing)) redirect("main/no_result", "refresh");
+            
+            if ($input["type"] == "quick_buy") {
+                redirect("user_listing/buy/" . $user_listing[0]["user_listing_id"], "refresh");
+            } else if ($input["type"] == "quick_sell") {
+                redirect("user_listing/sell/" . $user_listing[0]["user_listing_id"], "refresh");
+            }
+
+        } else {
+            redirect("main", "refresh");
+        }
     }
 }
