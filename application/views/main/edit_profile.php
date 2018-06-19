@@ -87,7 +87,7 @@
 									<div class="row">
 										<div class="line-padding-10 col-lg-3 col-md-3 col-xs-12 col-sm-12"></div>
 										<div class="line-padding-10 col-lg-9 col-md-9 col-xs-12 col-sm-12">
-											<input type="submit" value='save' class="btn btn-success pull-right">
+											<input type="submit" value='save' class="btn btn-primary pull-right">
 										</div>
 									</div>
 								</div>

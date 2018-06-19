@@ -61,7 +61,7 @@
 					<?= $user_listing["time_of_payment"] ?> Minutes
 				</div>
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 label-height col-padding-10 margin-bottom-10 ">
-					<input type="submit" class="btn btn-info pull-right" value="BUY" <?php if($this->session->has_userdata("user")){ if($this->session->userdata("user")["user_id"] == $user_listing["user_id"]){ ?> disabled
+					<input type="submit" class="btn btn-primary pull-right" value="BUY" <?php if($this->session->has_userdata("user")){ if($this->session->userdata("user")["user_id"] == $user_listing["user_id"]){ ?> disabled
 					<?php
 						}
 					}
@@ -102,7 +102,7 @@
 			$("#btc-amount-form").val(new_btc_amount);
 		} else if ((index).name === "btc_amount") {
 			var new_myr_amount = (btc_amount / amount) * total_price;
-			$("#myr-amount-form").val(new_myr_amount);
+			$("#myr-amount-form").val(new_myr_amount.toFixed(2));
 
 		}
 

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_listing extends BaseController
+class User_listing extends Base_Controller
 {
 
     public function __construct()
@@ -21,57 +21,100 @@ class User_listing extends BaseController
         $this->load->library("pagination");
 
         $this->page_data = array();
+
+        $this->load->model("User_trade_model");
+        if ($this->session->has_userdata("user")) {
+            $where = array(
+                "buyer_id" => $this->session->userdata("user")['user_id'],
+                "user_trade.user_trade_status_id <" => "4"
+            );
+
+            $this->page_data["buys_processing"] = $this->User_trade_model->get_offers_where($where);
+        }
     }
 
-    public function sell($quick_sell = "")
+    public function add()
+    {
+        if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
+
+        $user_id = $this->session->userdata("user")["user_id"];
+
+        if($_POST){
+            $input = $this->input->post();
+
+            $data = array(
+                "user_id" => $user_id,
+                "crypto_id" => $input["crypto_id"],
+                "amount" => $input["amount"],
+                "markup" => $input["markup"],
+                "threshold" => $input["threshold"],
+                "price_before" => $input["price_before"],
+                "price_after" => $input["price_after"],
+                "limit_from" => $input["limit_from"],
+                "limit_to" => $input["limit_to"],
+                "payment_method" => $input["payment_method"],
+                "message" => $input["message"],
+                "type" => $input["type"]
+            );
+
+            if($input["type"] == "buy"){
+                $data["payment_method"] = "";
+            }
+
+            if($input["type"] == "sell"){
+                $data["time_of_payment"] = $input["time_of_payment"];
+            }
+
+            $user_listing_id = $this->User_listing_model->add($data);
+
+            redirect("user/profile", "refresh");
+        }
+
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/add_listing");
+        $this->load->view("main/footer");
+    }
+
+    public function sell($user_listing_id)
     {
 
         if (!$this->session->has_userdata("user")) redirect("access/login", "refresh");
 
         $user_id = $this->session->userdata("user")["user_id"];
 
-        $this->page_data["crypto_wallet"] = $this->Wallet_model->get_crypto_wallet($user_id);
-        $this->page_data["quick_sell"] = $quick_sell;
+        $where = array(
+            "user_listing_id" => $user_listing_id
+        );
+
+        $user_listing = $this->User_listing_model->get_where($where);
+
+        $where = array(
+            "crypto_id" => $user_listing[0]["crypto_id"]
+        );
+
+        $user_crypto = $this->Wallet_model->get_crypto_wallet_where($user_id, $where);
+
+        if (empty($user_crypto) OR $user_crypto[0]["available_amount"] < $user_listing[0]["amount"]) redirect("main/cannot_trade", "refresh");
+
+        $this->page_data["user_listing"] = $user_listing[0];
 
         if ($_POST) {
             $input = $this->input->post();
 
             $data = array(
-                "user_id" => $user_id,
-                "crypto_id" => $input["crypto_id"],
-                "markup" => $input["markup"],
-                "threshold" => $input["threshold"],
-                "price_before" => $input["price_before"],
-                "price_after" => $input["price_after"],
-                "message" => $input["message"],
+                "seller_id" => $user_id,
+                "buyer_id" => $user_listing[0]["user_id"],
+                "user_listing_id" => $user_listing[0]["user_listing_id"],
+                "myr_amount" => $input['myr_amount'],
+                "btc_amount" => $input['btc_amount'],
+                'user_trade_status_id' => 1,
                 "payment_method" => $input["payment_method"],
-                "limit_from" => $input["limit_from"],
-                "limit_to" => $input["limit_to"],
-                "time_of_payment" => $input["time_of_payment"],
-                "amount" => $input["amount"],
-                "amount_available" => $input["amount"],
+                "time_of_payment" => $input["time_of_payment"]
             );
 
-            if ($quick_sell == "quick") {
-                $data["quick_sell"] = 1;
-            }
+            $this->User_trade_model->insert($data);
 
-            $user_listing_id = $this->User_listing_model->add($data);
-
-            $user_trade_info = $this->User_listing_model->get_trade_details($user_id);
-
-            $data = array(
-                "trades" => $user_trade_info[0]['trades'],
-                "average_time" => $user_trade_info[0]['average_time']
-            );
-
-            $where = array(
-                "user_id" => $user_id
-            );
-
-            $this->User_trade_info_model->update_where($where, $data);
-
-            redirect("user_listing/buy/" . $user_listing_id, "refresh");
+            redirect("trade_management/sell", "refresh");
         }
 
         $this->load->view("main/header", $this->page_data);
@@ -134,7 +177,7 @@ class User_listing extends BaseController
 
     public function view_listing($page = "")
     {
-        if($page == ""){
+        if ($page == "") {
             $page = 1;
         }
 
@@ -154,6 +197,120 @@ class User_listing extends BaseController
         }
 
         $config['base_url'] = base_url() . 'user_listing/view_listing';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config["cur_page"] = $page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        // $this->debug($config);
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
+        $this->page_data["currency_list"] = $this->Account_resource_model->get_all();
+
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/view_listing");
+        $this->load->view("main/footer");
+    }
+
+    public function view_buy_listing($page = "")
+    {
+        if ($page == "") {
+            $page = 1;
+        }
+
+        $per_page = 10;
+
+        $where = array(
+            "type" => "sell"
+        );
+
+        if ($_GET) {
+            $input = $this->input->get();
+            if (!empty($input["currency"])) $where["crypto"] = $input["currency"];
+            if (!empty($input["payment_method"])) $where["payment_method"] = $input["payment_method"];
+
+            $count = $this->User_listing_model->get_count_where($where);
+            $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+        } else {
+            $count = $this->User_listing_model->get_count();
+            $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+        }
+
+        $config['base_url'] = base_url() . 'user_listing/view_buy_listing';
+        $config['total_rows'] = $count[0]['count'];
+        $config['per_page'] = $per_page;
+        $config["cur_page"] = $page;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = "<ul class='pagination pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tagl_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+
+        // $this->debug($config);
+
+        $this->pagination->initialize($config);
+
+        $this->page_data["pagination"] = $this->pagination->create_links();
+        $this->page_data["currency_list"] = $this->Account_resource_model->get_all();
+
+        $this->load->view("main/header", $this->page_data);
+        $this->load->view("main/view_listing");
+        $this->load->view("main/footer");
+    }
+
+    public function view_sell_listing($page = "")
+    {
+        if ($page == "") {
+            $page = 1;
+        }
+
+        $per_page = 10;
+
+        $where = array(
+            "type" => "buy"
+        );
+
+        if ($_GET) {
+            $input = $this->input->get();
+            if (!empty($input["currency"])) $where["crypto"] = $input["currency"];
+            if (!empty($input["payment_method"])) $where["payment_method"] = $input["payment_method"];
+
+            $count = $this->User_listing_model->get_count_where($where);
+            $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+        } else {
+            $count = $this->User_listing_model->get_count();
+            $this->page_data["user_listing"] = $this->User_listing_model->get_paging_where($page, $per_page, $where);
+        }
+
+        $config['base_url'] = base_url() . 'user_listing/view_sell_listing';
         $config['total_rows'] = $count[0]['count'];
         $config['per_page'] = $per_page;
         $config["cur_page"] = $page;

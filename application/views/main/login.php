@@ -28,8 +28,8 @@
                 <input name='password' type="password" placeholder='password' class="form-control" />
             </div>
             <div class ="button-container">
-                <input type="submit" value='login' class="btn btn-default pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>
-                <a href="<?= base_url() ?>access/forget_password" class="btn btn-default pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>Forget Password</a>
+                <input type="submit" value='Login' class="btn btn-primary pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>
+                <a href="<?= base_url() ?>access/forget_password" class="btn btn-primary pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>Forget Password</a>
             </div>
         </form>
     </div>

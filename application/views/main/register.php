@@ -98,7 +98,7 @@
 				<input name='referral' type="text" class="form-control" placeholder='referral link' />
 			</div>
 			<div class="button-container" style='margin-top : 2%; width: 100%;'>
-				<input type="submit" value='register' class="btn btn-default pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>
+				<input type="submit" value='Register' class="btn btn-primary pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>
 			</div>
 		</form>
 	</div>

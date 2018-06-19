@@ -1,6 +1,6 @@
 <?php
 
-class Wallet_model extends CI_Model
+class Wallet_model extends Base_Model
 {
 
     function __construct()

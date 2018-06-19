@@ -77,10 +77,14 @@
                                             <a href="#">Balance : 5 BTC</a>
                                         </li> -->
                                         <li>
-                                            <a href="<?= base_url()?>trade_management/buy">Offers</a>
+                                            <a href="<?= base_url()?>trade_management/buy">
+                                            <?php if(count($buys_processing)){ ?>
+                                            <span class="badge badge-danger"><?= count($buys_processing); ?></span>
+                                            <?php } ?>
+                                            My Buys</a>
                                         </li>
                                         <li>
-                                            <a href="<?= base_url()?>trade_management/sell">Sales</a>
+                                            <a href="<?= base_url()?>trade_management/sell">My Sells</a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>wallet">Wallet</a>
@@ -161,35 +165,17 @@
                             <?php
                             }
                             ?>
-                            <li>
-                                <a href="<?=base_url()?>main/about">About Us</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url()?>main/terms">Terms</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url()?>main/privacy">Privacy</a>
-                            </li>
-                            <!-- <li>
-                                <a href="<?=base_url()?>main/supported_currency">Supported Currencies</a>
-                            </li> -->
-                            <li>
-                                <a href="<?=base_url()?>main/how">How it works</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url()?>main/faq">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url()?>main/contact">Contact</a>
-                            </li>
                             <?php
                             if($this->session->has_userdata("user")){
                                 ?>
                                     <li>
-                                        <a href="<?= base_url() ?>user_listing/view_listing">Buy</a>
+                                        <a href="<?= base_url() ?>user_listing/view_buy_listing">Buy</a>
                                     </li>
                                     <li>
-                                        <a href="<?= base_url() ?>user_listing/sell">Sell</a>
+                                        <a href="<?= base_url() ?>user_listing/view_sell_listing">Sell</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>user_listing/add">Create a new listing</a>
                                     </li>
                                     <li class="d-mobile user_detail_nav">
                                         <a href="<?=base_url()?>access/logout/">Logout</a>

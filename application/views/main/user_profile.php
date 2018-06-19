@@ -108,7 +108,7 @@
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th style="padding-top:16px; text-align:center;">
-									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY
+									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-primary pull-center line-padding-10 search-btn">BUY
 										<?= $row['crypto'] ?>
 									</a>
 								</th>

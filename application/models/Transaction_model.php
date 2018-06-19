@@ -1,6 +1,6 @@
 <?php
 
-class Transaction_model extends CI_Model
+class Transaction_model extends Base_Model
 {
 
     function __construct()

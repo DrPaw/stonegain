@@ -1,6 +1,6 @@
 <?php
 
-class Account_resource_model extends CI_Model{
+class Account_resource_model extends Base_Model{
 
     function get_all(){
         $this->db->select("*");

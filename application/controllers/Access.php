@@ -1,6 +1,6 @@
 <?php
 
-class Access extends BaseController
+class Access extends Base_Controller
 {
 
     public function __construct()

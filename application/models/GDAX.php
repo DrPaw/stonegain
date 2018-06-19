@@ -1,6 +1,6 @@
 <?php
 
-class GDAX extends CI_Model
+class GDAX extends Base_Model
 {
 
     function __construct()

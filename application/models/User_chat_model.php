@@ -1,6 +1,6 @@
 <?php
 
-class User_chat_model extends CI_model
+class User_chat_model extends Base_Model
 {
     function get_where($where)
     {

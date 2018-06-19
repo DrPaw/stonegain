@@ -1,6 +1,6 @@
 <?php
 
-class Email_model extends CI_Model {
+class Email_model extends Base_Model {
 
     public function __construct() {
         parent::__construct();

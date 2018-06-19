@@ -50,11 +50,11 @@
 					<?= $user_listing["limit_to"] ?> MYR</div>
 			<div class="col-xs-6 label-height col-padding-10">Payment Method:</div>
 			<div class="col-xs-6 label-height col-padding-5">
-				<?= $user_listing["payment_method"] ?>
+				<?= (!empty($user_trade["trade_payment_method"]))? $user_trade["trade_payment_method"] : $user_trade["payment_method"] ?>
 			</div>
 			<div class="col-xs-6 label-height col-padding-10">Time of Payment:</div>
 			<div class="col-xs-6 label-height col-padding-5">
-				<?= $user_listing["time_of_payment"] ?> Minutes
+				<?= (!empty($user_trade["trade_time_of_payment"]))? $user_trade["trade_time_of_payment"] : $user_trade["time_of_payment"] ?> Minutes
 			</div>
 			<div class="col-xs-6 label-height col-padding-10">Status:</div>
 			<div class="col-xs-6 label-height col-padding-5">
@@ -119,7 +119,7 @@
 							<input type="hidden" name="upload" value="receipt">
 						</div>
 						<div class="col-xs-12 sub-padding">
-							<input type="submit" class="btn btn-info pull-right" value="Reupload Receipt">
+							<input type="submit" class="btn btn-primary pull-right" value="Reupload Receipt">
 						</div>
 					</form>
 					<?php
@@ -144,7 +144,7 @@
 							<input type="hidden" name="upload" value="receipt">
 						</div>
 						<div class="col-xs-12 sub-padding">
-							<input type="submit" class="btn btn-info pull-right" value="Upload Receipt">
+							<input type="submit" class="btn btn-primary pull-right" value="Upload Receipt">
 						</div>
 						<?php
 

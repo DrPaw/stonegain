@@ -1,6 +1,6 @@
 <?php
 
-class User_trade_status_model extends CI_Model{
+class User_trade_status_model extends Base_Model{
     function get_all(){
         $this->db->select("*");
         $this->db->from("user_trade_status");

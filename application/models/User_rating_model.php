@@ -1,6 +1,6 @@
 <?php
 
-class User_rating_model extends CI_Model
+class User_rating_model extends Base_Model
 {
     function insert($data)
     {

@@ -13,13 +13,12 @@
 		</div>
 		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>INTRODUCTION</span></div>
-			<div>About Us</div>
-			<div>Careers</div>
-			<div>Escrowed Trade</div>
-			<div>Press</div>
-			<div>Team</div>
-			<div>Legal & Policy</div>
-			<div>Become Our Partner</div>
+			<div><a href="<?= base_url() ?>main/about" style="color:white;">About Us</a></div>
+			<div><a href="<?= base_url() ?>main/terms" style="color:white;">Terms</a></div>
+			<div><a href="<?= base_url() ?>main/privacy" style="color:white;">Privacy</a></div>
+			<div><a href="<?= base_url() ?>main/how" style="color:white;">How it works</a></div>
+			<div><a href="<?= base_url() ?>main/faq" style="color:white;">FAQ</a></div>
+			<div><a href="<?= base_url() ?>main/contact" style="color:white;">Contact</a></div>
 		</div>
 		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>SOCIAL</span></div>

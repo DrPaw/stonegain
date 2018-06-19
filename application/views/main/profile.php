@@ -32,7 +32,7 @@
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12" style="padding-top:1.5vw; height:100%;">
-					<a href="<?= base_url() ?>user/edit_profile" class="btn btn-default pull-right">
+					<a href="<?= base_url() ?>user/edit_profile" class="btn btn-primary pull-right">
 						<i class="fa fa-pencil"></i> edit profile</a>
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 									<?= $row["limit_from"] ?>-
 										<?= $row["limit_to"] ?> MYR</th>
 								<th style="padding-top:16px; text-align:center;">
-									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">VIEW</a>
+									<a href="<?= base_url() ?>user_listing/<?= $row['action'] ?>/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">VIEW</a>
 								</th>
 							</tr>
 							<?php

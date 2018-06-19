@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserList extends BaseController {
+class UserList extends Base_Controller {
 
     public function __construct() {
         parent::__construct();

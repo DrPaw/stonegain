@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends BaseController {
+class Main extends Base_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,6 +13,17 @@ class Main extends BaseController {
         $this->load->model("User_trade_info_model");
         $this->load->model("User_listing_model");
         $this->load->model("Account_resource_model");
+
+        $this->load->model("User_trade_model");
+        
+        if ($this->session->has_userdata("user")){
+            $where = array(
+                "buyer_id" => $this->session->userdata("user")['user_id'],
+                "user_trade.user_trade_status_id <" => "4"
+            );
+    
+            $this->page_data["buys_processing"] = $this->User_trade_model->get_offers_where($where);
+        }
     }
     
     public function index() {
@@ -26,49 +37,55 @@ class Main extends BaseController {
     }
 
     function no_result(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/no_result");
+        $this->load->view("main/footer");
+    }
+
+    function cannot_trade(){
+        $this->load->view("main/header",$this->page_data);
+        $this->load->view("main/cannot_trade");
         $this->load->view("main/footer");
     }
     
     function about(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/about");
         $this->load->view("main/footer");
     }
     
     function contact(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/contact");
         $this->load->view("main/footer");
     }
     
     function terms(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/terms");
         $this->load->view("main/footer");
     }
     
     function faq(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/faq");
         $this->load->view("main/footer");
     }
 
     function privacy(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/privacy");
         $this->load->view("main/footer");
     }
 
     function supported_currency(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/supported_currency");
         $this->load->view("main/footer");
     }
 
     function how(){
-        $this->load->view("main/header");
+        $this->load->view("main/header",$this->page_data);
         $this->load->view("main/how");
         $this->load->view("main/footer");
     }

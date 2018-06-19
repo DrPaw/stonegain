@@ -1,6 +1,6 @@
 <?php
 
-class Report_model extends CI_Model {
+class Report_model extends Base_Model {
 
     function get_top_buyer(){
         $this->db->select("*");

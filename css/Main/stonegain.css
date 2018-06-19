@@ -116,12 +116,27 @@
 }
 
 .main-header .logo {
-	width: 8vw;
+	width: 20vw;
 }
 
 .logo-image {
 	height: 100%;
     margin-top: -5%;
+}
+
+.add-listing-button {
+	font-size: 1.2vw;
+    height: 3.5vw;
+    width: 7.5vw;
+    margin: 0 0.5%;
+}
+
+.add-listing-button.btn-danger {
+	color:white;
+}
+
+.add-listing-button.btn-success {
+	color:white;
 }
 
 @media (max-width: 320px) {

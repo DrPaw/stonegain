@@ -1,7 +1,7 @@
 <section class="content col-lg-12 col-md-12 col-xs-12 col-sm-12 col-padding-0 line-padding-0">
 	<div class="col-lg-1 col-md-1 col-xs-12 col-sm-12 padding-top-10"></div>
 	<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-10">
-		<form action="<?= base_url() ?>user_listing/view_listing" method="GET">
+		<form action="<?= base_url() ?>user_listing/<?= $this->uri->segment(2) ?>" method="GET">
 			<div class="col-lg-10 col-md-10 col-xs-12 col-sm-12 padding-top-12">
 				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 sub-padding">
 					<select name="advertisement" class="form-control">
@@ -46,7 +46,7 @@
 			</div>
 			<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 padding-top-12">
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 sub-padding">
-					<input type="submit" class="btn btn-info pull-center search-btn form-control" value="Search">
+					<input type="submit" class="btn btn-primary pull-center search-btn form-control" value="Search">
 				</div>
 			</div>
 		</form>
@@ -78,14 +78,6 @@
 											<?= $row["username"] ?>
 										</a>
 									</div>
-									<?php
-									if ($row["quick_sell"] == 1) {
-										?>
-										<div class="quick-seller col-padding-10">quick seller</div>
-										<?php
-
-									}
-									?>
 								</th>
 								<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 									<div>
@@ -103,7 +95,7 @@
 								<th class="font-weight-400 price-color" style="padding-top:16px">
 									<?= $row["price_after"] ?> MYR/BTC</th>
 								<th style="padding-top:16px;text-align:center;">
-									<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY
+									<a href="<?= base_url() ?>user_listing/<?= $row["action"] ?>/<?= $row['user_listing_id'] ?>" class="btn btn-primary pull-center line-padding-10 search-btn"><?= strtoupper($row["action"]) ?>
 										<?= $row['crypto'] ?>
 									</a>
 								</th>

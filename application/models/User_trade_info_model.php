@@ -1,6 +1,6 @@
 <?php
 
-class User_trade_info_model extends CI_Model
+class User_trade_info_model extends Base_Model
 {
 
     function insert($data)

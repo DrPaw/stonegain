@@ -1,6 +1,6 @@
 <?php
 
-class Ajax extends BaseController
+class Ajax extends Base_Controller
 {
     function __construct()
     {
@@ -11,6 +11,7 @@ class Ajax extends BaseController
         $this->load->model("User_chat_model");
         $this->load->model("User_chat_message_model");
         $this->load->model("User_listing_model");
+        $this->load->model("Account_resource_model");
 
         $this->page_data[] = array();
 
@@ -27,7 +28,13 @@ class Ajax extends BaseController
 
             $crypto_wallet = $this->Wallet_model->get_crypto_wallet_where($input["user_id"], $where);
 
-            $this->page_data["crypto_wallet"] = (!empty($crypto_wallet)) ? $crypto_wallet[0] : array();
+            $this->page_data["crypto_wallet"] = (!empty($crypto_wallet)) ? $crypto_wallet[0] : array(
+                "locked_amount" => "0.00000000",
+                "available_amount" => "0.00000000",
+                "total_amount" => "0.00000000"
+            );
+
+            // $this->debug($this->page_data["crypto_wallet"]);
 
             $this->load->view("main/crypto_refresh_details", $this->page_data);
         }
@@ -323,6 +330,24 @@ class Ajax extends BaseController
                     )));
                 }
             }
+        }
+    }
+
+    function refresh_crypto_select(){
+        if($_POST){
+            $input = $this->input->post();
+
+            if($input["type"] == "sell"){
+                $user_id = $this->session->userdata("user")["user_id"];
+
+                $this->page_data["crypto"] = $this->Wallet_model->get_crypto_wallet($user_id);
+            } else if($input["type"] == "buy"){
+                $this->page_data["crypto"] = $this->Account_resource_model->get_all();
+            }
+
+            $this->page_data["type"] = $input["type"];
+
+            $this->load->view("main/crypto_select", $this->page_data);
         }
     }
 }

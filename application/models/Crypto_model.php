@@ -1,6 +1,6 @@
 <?php
 
-class Crypto_model extends CI_Model {
+class Crypto_model extends Base_Model {
 
     function __construct() {
         parent ::__construct();

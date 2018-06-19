@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_user extends BaseController {
+class Admin_user extends Base_Controller {
 
     public function __construct() {
         parent::__construct();

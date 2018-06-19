@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <div style="overflow-x: hidden;">
 	<!-- To hide slideshow overflow -->
-	<section class="content-header col-xs-12 background-color">
+	<section class="content-header col-xs-12 background-color" style="height:350px;">
 		<div id="slideshow">
 			<div class="slide-wrapper">
 				<div class="slide">
@@ -149,14 +149,6 @@
 												<?= $row["username"] ?>
 											</a>
 										</div>
-										<?php
-									if ($row["quick_sell"] == 1) {
-										?>
-											<div class="quick-seller col-padding-10">quick seller</div>
-											<?php
-
-									}
-									?>
 									</th>
 									<th class="font-weight-400 hidden-sm hidden-xs" style="padding-top:16px">
 										<div>
@@ -174,7 +166,7 @@
 									<th class="font-weight-400 price-color" style="padding-top:16px">
 										<?= $row["price_after"] ?> MYR/BTC</th>
 									<th style="padding-top:16px;text-align:center;">
-										<a href="<?= base_url() ?>user_listing/buy/<?= $row['user_listing_id'] ?>" class="btn btn-info pull-center line-padding-10 search-btn">BUY
+										<a href="<?= base_url() ?>user_listing/<?= $row['action'] ?>/<?= $row['user_listing_id'] ?>" class="btn btn-primary pull-center line-padding-10 search-btn"><?= strtoupper($row['action']) ?>
 											<?= $row['crypto'] ?>
 										</a>
 									</th>

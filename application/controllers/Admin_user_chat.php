@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_user_chat extends BaseController
+class Admin_user_chat extends Base_Controller
 {
 
     public function __construct()

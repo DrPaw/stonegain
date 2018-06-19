@@ -1,6 +1,6 @@
 <?php
 
-class GDAX_demo extends BaseController
+class GDAX_demo extends Base_Controller
 {
 
     public function __construct()
