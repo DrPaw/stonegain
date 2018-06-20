@@ -43,7 +43,7 @@
 				</div>
 				<div class="col-xs-3 label-height col-padding-10">BTC:</div>
 				<div class="col-xs-9 label-height col-padding-5">
-					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" onkeyup="calculate(this)">
+					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" min="0" onkeyup="calculate(this)">
 				</div>
 				<div class="col-xs-3 label-height col-padding-10">Price:</div>
 				<div class="col-xs-9 label-height col-padding-5">
@@ -101,6 +101,9 @@
 
 		if ((index).name === "myr_amount") {
 			var new_btc_amount = (myr_amount / total_price) * amount;
+			console.log(myr_amount);
+			console.log(total_price);
+			console.log(amount);
 			$("#btc-amount-form").val(new_btc_amount);
 		} else if ((index).name === "btc_amount") {
 			var new_myr_amount = (btc_amount / amount) * total_price;

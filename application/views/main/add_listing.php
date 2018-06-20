@@ -111,6 +111,7 @@
 <!-- /.content -->
 <script>
 	var crypto_price = 0;
+	var selling = false;
 
 	$(document).on('click', '#buy-button', function (e) {
 		$(this).addClass("btn-danger");
@@ -127,6 +128,7 @@
 		$("#add_user_listing :input").prop("disabled", false);
 		$('#sell-requirements').addClass("hidden");
 		$("#form_time_of_payment").prop("disabled", true);
+		selling = false;
 	});
 
 	$(document).on('click', '#sell-button', function (e) {
@@ -144,6 +146,7 @@
 		$("#add_user_listing :input").prop("disabled", false);
 		$('#sell-requirements').removeClass("hidden");
 		$("#form_time_of_payment").prop("disabled", false);
+		selling = true;
 	});
 
 	$(document).ready(function () {
@@ -163,9 +166,11 @@
 
 		$.post("<?= site_url('ajax/set_max_amount/') ?>", postParam, function (response) {
 			var max = response;
-			$("#amount-form").attr({
-				"max": max
-			});
+			if (selling === true) {
+				$("#amount-form").attr({
+					"max": max
+				});
+			}
 		});
 
 		$.post("<?= site_url('ajax/get_crypto_price/') ?>", postParam, function (response) {

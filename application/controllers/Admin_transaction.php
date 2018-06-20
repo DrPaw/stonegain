@@ -102,10 +102,11 @@ class Admin_transaction extends Base_Controller
 
                     if(!empty($buyer)){
                         $data = array(
-                            'amount' => $buyer[0]['amount'] - $user_trade['btc_amount']
+                            'amount' => $buyer[0]['amount'] + $user_trade['btc_amount']
                         );
-    
-                        $this->User_crypto_model->update_where($data, $where);
+
+                        $this->User_crypto_model->update_where($where, $data); 
+
                     } else{
                         $data = $where;
                         $data['amount'] = $user_trade["btc_amount"];
