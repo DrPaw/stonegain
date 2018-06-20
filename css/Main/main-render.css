@@ -204,8 +204,8 @@ body, .wrapper {
 .message-input {
     height: 100%!important;
     font-size: 1.5rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
     vertical-align: middle;
 }
 .upload-button,
