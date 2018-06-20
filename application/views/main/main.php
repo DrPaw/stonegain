@@ -21,13 +21,13 @@
 			<div class="navbar-static-top col-xs-12 sub-header darker-green darker-green-border-bottom">
 				<div class="main-header navbar-custom-menu col-xs-12">
 					<!-- Logo -->
-					<button type="submit" name="type" value="quick_buy" class="logo" style="border:none;">
+					<button type="submit" name="type" value="quick_buy" class="logo btn_quick" style="border:none;">
 						<!-- logo for regular state and mobile devices -->
 						<span class="logo-lg">
 							Quick Buy
 						</span>
 					</button>
-					<button type="submit" name="type" value="quick_sell" class="logo" style="border:none;">
+					<button type="submit" name="type" value="quick_sell" class="logo btn_quick" style="border:none;">
 						<!-- logo for regular state and mobile devices -->
 						<span class="logo-lg">
 							Quick Sell
