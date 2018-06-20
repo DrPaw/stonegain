@@ -73,9 +73,9 @@
                                 if ($this->session->has_userdata("user")) {
                                     ?>
                                     <ul class="nav navbar-nav float-right d-desktop">
-                                        <!-- <li>
-                                            <a href="#">Balance : 5 BTC</a>
-                                        </li> -->
+                                        <li>
+                                            <a href="<?=base_url()?>wallet"><?= $this->session->userdata("balance") ?> BTC</a>
+                                        </li>
                                         <li>
                                             <a href="<?= base_url()?>trade_management/buy">
                                             <?php if(count($buys_processing)){ ?>
@@ -83,7 +83,7 @@
                                             <?php } ?>
                                             My Buys</a>
                                         </li>
-                                        <li>
+                                       <li>
                                             <a href="<?= base_url()?>trade_management/sell">My Sells</a>
                                         </li>
                                         <li>
@@ -147,10 +147,10 @@
                                 </li>
                                 <ul id="account_nav" class="nav navbar-nav collapse">
                                     <li>
-                                        <a href="<?= base_url()?>trade_management/buy">Offers</a>
+                                        <a href="<?= base_url()?>trade_management/buy">My Buys</a>
                                     </li>
                                     <li>
-                                        <a href="<?= base_url()?>trade_management/sell">Sales</a>
+                                        <a href="<?= base_url()?>trade_management/sell">My Sales</a>
                                     </li>
                                     <li>
                                         <a href="<?=base_url()?>wallet">Wallet</a>

@@ -74,11 +74,11 @@
 					</div>
 					<div class="col-xs-4 label-height col-padding-10">Limit From</div>
 					<div class="col-xs-3 label-height col-padding-5">
-						<input id="limit-to-form" type="number" class="form-control input-border" step="any" required name="limit_from">
+						<input id="limit-from-form" type="number" class="form-control input-border" step="any" required name="limit_from">
 					</div>
 					<div class="col-xs-2 label-height col-padding-10 text-center">to</div>
 					<div class="col-xs-3 label-height col-padding-5">
-						<input id="limit-from-form" type="number" class="form-control input-border" step="any" required name="limit_to">
+						<input id="limit-to-form" type="number" class="form-control input-border" step="any" required name="limit_to">
 					</div>
 					<div id="sell-requirements">
 						<div class="col-xs-4 label-height col-padding-10">Payment Method:</div>
@@ -207,5 +207,12 @@
 				"max": total
 			});
 		}
+	});
+
+	$(document).on("change", "#limit-from-form", function (e) {
+		var min = $(this).val();
+		$("#limit-to-form").attr({
+			"min": min
+		});
 	});
 </script>

@@ -12,6 +12,7 @@ class Base_Controller extends CI_Controller
         $this->load->model("Users_model");
         $this->load->model("User_chat_model");
         $this->load->model("User_chat_message_model");
+        $this->load->model("User_crypto_model");
 
         if ($this->session->has_userdata('admin')) {
             $admin_id = $this->session->userdata('admin')["admin_id"];
@@ -44,6 +45,9 @@ class Base_Controller extends CI_Controller
                 $this->session->set_userdata("unread_total", $unread_count);
             }
 
+            $balance = $this->User_crypto_model->get_balance($this->session->userdata("user")["user_id"]);
+            
+            $this->session->set_userdata("balance", (double)$balance[0]["balance"]);
         }
     }
 

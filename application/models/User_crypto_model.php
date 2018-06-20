@@ -35,5 +35,16 @@ class User_crypto_model extends Base_Model {
         $this->db->where($where);
         $this->db->update("user_crypto", $data);
     }
+
+    public function get_balance($user_id){
+        $this->db->select("SUM((user_crypto.amount * crypto.btc_amount)) AS balance");
+        $this->db->from("user_crypto");
+        $this->db->join("crypto", "user_crypto.crypto_id = crypto.crypto_id", "left");
+        $this->db->where("user_id", $user_id);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
     
 }

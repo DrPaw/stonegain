@@ -113,9 +113,9 @@ class User_listing extends Base_Controller
                 "time_of_payment" => $input["time_of_payment"]
             );
 
-            $this->User_trade_model->insert($data);
+            $user_trade_id = $this->User_trade_model->insert($data);
 
-            redirect("trade_management/sell", "refresh");
+            redirect("user_listing/details/" . $user_listing[0]["user_listing_id"] . "/" . $user_trade_id, "refresh");
         }
 
         $this->load->view("main/header", $this->page_data);
@@ -165,9 +165,9 @@ class User_listing extends Base_Controller
                 'user_trade_status_id' => 1
             );
 
-            $this->User_trade_model->insert($data);
+            $user_trade_id = $this->User_trade_model->insert($data);
 
-            redirect("trade_management/buy", "refresh");
+            redirect("user_listing/details/" . $user_listing[0]["user_listing_id"] . "/" . $user_trade_id, "refresh");
         }
 
         $this->load->view("main/header", $this->page_data);
@@ -518,5 +518,28 @@ class User_listing extends Base_Controller
         } else {
             redirect("main", "refresh");
         }
+    }
+
+    function mark_as_paid($user_trade_id)
+    {
+        $where = array(
+            "user_trade_id" => $user_trade_id
+        );
+
+        $user_trade = $this->User_trade_model->get_where($where);
+
+        $this->show_404_if_empty($user_trade);
+
+        if (!$this->session->has_userdata("user")) show_404();
+
+        if ($this->session->userdata("user")["user_id"] != $user_trade[0]["seller_id"]) show_404();
+
+        $data = array(
+            "user_trade_status_id" => 3
+        );
+
+        $this->User_trade_model->update_where($where, $data);
+
+        redirect("user_listing/details/" . $user_trade[0]["user_listing_id"] . "/" . $user_trade_id, "refresh");
     }
 }

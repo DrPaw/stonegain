@@ -6,6 +6,8 @@ class User_trade_model extends Base_Model
     function insert($data)
     {
         $this->db->insert("user_trade", $data);
+
+        return $this->db->insert_id();
     }
 
     function get_offers_where($where)
@@ -75,7 +77,9 @@ class User_trade_model extends Base_Model
 
     function get_where_involved($where, $user_id)
     {
-        $this->db->select("*, 'SELL' AS type, user_trade.payment_method AS trade_payment_method, user_trade.time_of_payment AS trade_time_of_payment");
+        $this->db->select("*, 'SELL' AS type, user_trade.payment_method AS trade_payment_method, user_trade.time_of_payment AS trade_time_of_payment,
+        (SELECT username FROM user WHERE user.user_id = user_trade.buyer_id) AS buyer,
+        (SELECT username FROM user WHERE user.user_id = user_trade.seller_id) AS seller");
         $this->db->from("user_trade");
         $this->db->join("user_listing", "user_trade.user_listing_id = user_listing.user_listing_id", "left");
         $this->db->join("user_trade_status", "user_trade.user_trade_status_id = user_trade_status.user_trade_status_id", "left");

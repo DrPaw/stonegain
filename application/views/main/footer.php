@@ -185,7 +185,7 @@ if ($this->session->has_userdata("user")) {
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="<?= base_url() ?>js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
-	<script src="<?= base_url() ?>js/demo.js"></script>
+	<!-- <script src="<?= base_url() ?>js/demo.js"></script> -->
 	<!-- IonIcon -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.0.0-7/collection/icon/icon.js"></script>
 	<!-- Google map API js -->

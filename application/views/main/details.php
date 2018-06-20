@@ -4,8 +4,21 @@
 		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-md-6 col-xs-12 sub-padding">
-					<span class="font-weight-bold">User:</span>
-					<?= $user_listing["username"] ?>
+					<?php
+				if ($this->session->userdata("user")["user_id"] == $user_trade["buyer_id"]) {
+					?>
+								<span class="font-weight-bold">Seller Name:</span>
+								<?= $user_trade["seller"] ?>
+							<?php
+
+					} else if ($this->session->userdata("user")["user_id"] == $user_trade["seller_id"]) {
+						?>
+								<span class="font-weight-bold">Buyer Name:</span>
+								<?= $user_trade["buyer"] ?>
+							<?php
+
+					}
+					?>
 				</div>
 				<div class="col-xs-12 sub-padding font-color-user">
 					<span class="font-weight-bold">Average Release Time:</span>
@@ -38,9 +51,9 @@
 			<div class="col-xs-6 label-height col-padding-10">MYR Amount:</div>
 			<div class="col-xs-6 label-height col-padding-5">
 				<?= $user_trade["myr_amount"] ?> MYR</div>
-			<div class="col-xs-6 label-height col-padding-10">BTC Amount:</div>
+			<div class="col-xs-6 label-height col-padding-10"><?= $user_listing["crypto"] ?> Amount:</div>
 			<div class="col-xs-6 label-height col-padding-5">
-				<?= $user_trade["btc_amount"] ?> BTC</div>
+				<?= $user_trade["btc_amount"] ?> <?= $user_listing["crypto"] ?></div>
 			<div class="col-xs-6 label-height col-padding-10">Price:</div>
 			<div class="col-xs-6 label-height col-padding-5">
 				<?= $user_listing["price_after"] ?> MYR/BTC</div>
@@ -50,11 +63,11 @@
 					<?= $user_listing["limit_to"] ?> MYR</div>
 			<div class="col-xs-6 label-height col-padding-10">Payment Method:</div>
 			<div class="col-xs-6 label-height col-padding-5">
-				<?= (!empty($user_trade["trade_payment_method"]))? $user_trade["trade_payment_method"] : $user_trade["payment_method"] ?>
+				<?= (!empty($user_trade["trade_payment_method"])) ? $user_trade["trade_payment_method"] : $user_trade["payment_method"] ?>
 			</div>
 			<div class="col-xs-6 label-height col-padding-10">Time of Payment:</div>
 			<div class="col-xs-6 label-height col-padding-5">
-				<?= (!empty($user_trade["trade_time_of_payment"]))? $user_trade["trade_time_of_payment"] : $user_trade["time_of_payment"] ?> Minutes
+				<?= (!empty($user_trade["trade_time_of_payment"])) ? $user_trade["trade_time_of_payment"] : $user_trade["time_of_payment"] ?> Minutes
 			</div>
 			<div class="col-xs-6 label-height col-padding-10">Status:</div>
 			<div class="col-xs-6 label-height col-padding-5">
@@ -110,7 +123,7 @@
 					<img class="receipt" src="<?= base_url() . $user_trade['receipt'] ?>">
 				</a>
 				<?php
-			if ($user_trade["user_trade_status_id"] == 2) {
+			if ($user_trade["user_trade_status_id"] == 2 and $this->session->userdata("user")["user_id"] == $user_trade["buyer_id"]) {
 				?>
 					<form method="POST" action="<?= base_url() ?>user_listing/details/<?= $user_listing['user_listing_id'] ?>/<?= $user_trade['user_trade_id'] ?>"
 					enctype="multipart/form-data">
@@ -124,8 +137,15 @@
 					</form>
 					<?php
 
-			}
-			?>
+			} else if ($user_trade["user_trade_status_id"] == 2 and $this->session->userdata("user")["user_id"] == $user_trade["seller_id"]) {
+				?>
+					<div class="col-xs-12 sub-padding">
+						<a href="<?= base_url() ?>user_listing/mark_as_paid/<?= $user_trade['user_trade_id'] ?>" class="btn btn-primary pull-right">Mark as Payment Received</a>
+					</div>
+				<?php
+
+		}
+		?>
 			</div>
 			<?php
 
@@ -134,7 +154,19 @@
 				<form method="POST" action="<?= base_url() ?>user_listing/details/<?= $user_listing['user_listing_id'] ?>/<?= $user_trade['user_trade_id'] ?>"
 				enctype="multipart/form-data">
 					<div class="col-xs-12 font-weight-bold">
-						<h3>Receipt Required</h3>
+						<?php
+					if ($this->session->userdata("user")["user_id"] == $user_trade["buyer_id"]) {
+						?>
+									<h3>Step 2 - Upload Receipt</h3>
+								<?php
+
+						} else if ($this->session->userdata("user")["user_id"] == $user_trade["seller_id"]) {
+							?>
+									<h3>Awaiting Buyer to Upload Receipt</h3>
+								<?php
+
+						}
+						?>
 					</div>
 					<?php
 				if ($this->session->userdata("user")["user_id"] == $user_trade["buyer_id"]) {
@@ -166,6 +198,12 @@
 
 			}
 		}
+	} else if ($user_trade["user_trade_status_id"] == 3){
+		?>
+		<div class="col-xs-12 font-weight-bold">
+			<h3>Payment Completed, Processing Trade</h3>
+		</div>
+		<?php
 	}
 	?>
 	</div>

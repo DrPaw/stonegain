@@ -5,7 +5,7 @@
 			<div class="col-sm-6">
 				<div class="row">
 					<div class="col-md-6 col-xs-12 sub-padding">
-						<span class="font-weight-bold">User:</span>
+						<span class="font-weight-bold">Seller Name:</span>
 						<?= $user_listing["username"] ?>
 					</div>
 					<div class="col-xs-12 sub-padding font-color-user">
@@ -41,7 +41,7 @@
 					<input id="myr-amount-form" type="number" class="form-control input-border" required name="myr_amount" step="any" max="<?= $user_listing['limit_to'] ?>"
 					min="<?=$user_listing['limit_from']?>" onkeyup="calculate(this)">
 				</div>
-				<div class="col-xs-3 label-height col-padding-10">BTC:</div>
+				<div class="col-xs-3 label-height col-padding-10"><?= $user_listing["crypto"]?>:</div>
 				<div class="col-xs-9 label-height col-padding-5">
 					<input id="btc-amount-form" type="number" class="form-control input-border" required name="btc_amount" step="any" min="0" onkeyup="calculate(this)">
 				</div>

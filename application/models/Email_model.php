@@ -16,7 +16,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>STONEGAIN</title>
+        <title>BITTORY</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -69,7 +69,7 @@ and open the template in the editor.
         $this->email->to($email);
         $this->email->reply_to('noreply.stonegain@gmail.com', "Stonegain");
 
-        $this->email->subject('Stonegain account verification');
+        $this->email->subject('Bittory account verification');
 
         $this->email->message($body);
 
@@ -90,7 +90,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>STONEGAIN</title>
+        <title>BITTORY</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -143,7 +143,7 @@ and open the template in the editor.
         $this->email->to($email);
         $this->email->reply_to('noreply.stonegain@gmail.com', "Stonegain");
 
-        $this->email->subject('Stonegain reset password');
+        $this->email->subject('Bittory reset password');
 
         $this->email->message($body);
 
