@@ -133,7 +133,7 @@
                     </a>
                     <div class="navbar-custom-menu float-left">
                         <!-- Logo -->
-                        <a href="<?=base_url()?>" class="logo">
+                        <a href="<?=base_url()?>" class="logo nav_logo">
                             <img  class="logo-image" src="<?= base_url() ?>images/logo.png">
                         </a>
                     </div>

@@ -41,10 +41,26 @@
     padding: 0;
 }
 
+.nav_logo {
+    width: 15vw!important;
+}
+
+.btn_quick {
+    width: 230px!important;
+}
+
 @media (max-width: 788px) {
-    .main-header .navbar-custom-menu  .logo {
-        width: 100%;
+    .main-header .navbar-custom-menu  .nav_logo {
+        width: 100%!important;
         float: none;
+    }
+    .btn_quick {
+        width: 50%!important;
+        float: left!important;
+    }
+    .btn_quick span {
+        text-align: center!important;
+        padding-left: 0 !important;
     }
 }
 
@@ -152,7 +168,7 @@ body, .wrapper {
 }
 
 .message-button {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .trade_management_tab {
@@ -172,6 +188,7 @@ body, .wrapper {
 .chat-content-message-content {
     overflow-x: auto;
     overflow-y: scroll;
+    height: calc(100% - 4rem - 4rem);
 }
 
 .talktext p{
@@ -202,7 +219,6 @@ body, .wrapper {
 }
 
 .message-input {
-    height: 100%!important;
     font-size: 1.5rem;
     padding-left: 3.5rem;
     padding-right: 3.5rem;
@@ -210,9 +226,44 @@ body, .wrapper {
 }
 .upload-button,
 .send-button {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .close-message-button {
     font-size: 1.5rem;
+}
+
+.chat-content-input {
+    border-top: none;
+    height: 4rem;
+}
+
+.chat-content-username {
+    font-size: 1.5rem;
+}
+
+.user-chat-list-container {
+    height: 100%;
+}
+
+.user-chat-thumbnail-container {
+    height: 100%;
+}
+
+.user-chat-list-thumbnail {
+    max-width: none;
+    height: 70%;
+}
+
+.chat-content-thumbnail {
+    width: 3.3rem;
+    margin: 0.25vw auto; 
+}
+
+.chat-content-header {
+    height:4rem;
+}
+
+.chat-content-username {
+    transform: translateY(30%);
 }

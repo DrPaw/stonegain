@@ -9,8 +9,8 @@ foreach ($user_chat_list as $row) {
 			<?php
 	}
 	?>" data-chat="<?= $row['user_chat_id'] ?>">
-			<div class="row">
-				<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2 d-desktop">
+			<div class="row user-chat-list-container">
+				<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2 d-desktop user-chat-thumbnail-container">
 					<img src="<?= base_url() ?>images/profile.jpg" class="user-chat-list-thumbnail">
 				</div>
 				<div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">
