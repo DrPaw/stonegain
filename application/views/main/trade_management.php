@@ -12,10 +12,10 @@
 		<div class="col-sm-12 no-margin no-padding content-with-header">
 			<ul class="nav nav-tabs nav-stacked transaction-menu content-with-header">
 				<li class="active">
-					<a data-toggle="tab" href="#processing">Processing</a>
+					<a data-toggle="tab" href="#processing" class="flex-center">Processing</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#completed">Completed</a>
+					<a data-toggle="tab" href="#completed" class="flex-center">Completed</a>
 				</li>
 			</ul>
 		</div>
@@ -162,10 +162,10 @@
 		<div class="col-sm-12 no-margin no-padding" style="border-bottom: solid 1px rgba(0,0,0,0.2);">
 			<ul class="nav nav-pills">
 				<li class="active">
-					<a data-toggle="tab" href="#mobile-processing">Processing</a>
+					<a data-toggle="tab" href="#mobile-processing" class="flex-center">Processing</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#mobile-completed">Completed</a>
+					<a data-toggle="tab" href="#mobile-completed" class="flex-center">Completed</a>
 				</li>
 			</ul>
 		</div>

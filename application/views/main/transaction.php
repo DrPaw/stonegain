@@ -12,10 +12,10 @@
 		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-margin no-padding content-with-header">
 			<ul class="nav nav-tabs nav-stacked transaction-menu content-with-header">
 				<li class="active">
-					<a data-toggle="tab" href="#deposit">Deposit</a>
+					<a data-toggle="tab" href="#deposit" class="flex-center">Deposit</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#withdraw">Withdraw</a>
+					<a data-toggle="tab" href="#withdraw" class="flex-center">Withdraw</a>
 				</li>
 			</ul>
 		</div>

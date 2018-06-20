@@ -139,8 +139,33 @@
 	color:white;
 }
 
+.flex-center {
+	display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+	.main-title {
+		font-size: 7.5vw;
+	}
+
+	.dummy-title {
+		font-size: 5vw;
+		margin-top: -4.5%;
+	}
+	
+	.skin-black .content-header {
+		height: 175px;
+	}
+}
+
 @media (max-width: 320px) {
 	.listing-avatar {
 		max-width: 14vw !important;
+	}
+	
+	.skin-black .content-header {
+		height: 150px;
 	}
 }

@@ -10,22 +10,22 @@
 <section class="content-with-header col-md-12 hidden-xs hidden-sm no-margin no-padding">
 	<div class="col-md-2 col-xs-4 no-margin no-padding content-with-header">
 		<div class="col-md-12 col-xs-12 sub-padding no-margin no-padding content-with-header">
-			<ul class="nav nav-tabs nav-stacked wallet-menu content-with-header">
+			<ul class="nav nav-tabs nav-stacked transaction-menu content-with-header">
 				<li class="active">
-					<a data-toggle="tab" href="#wallet">View Wallet</a>
+					<a data-toggle="tab" href="#wallet" class="flex-center">View Wallet</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#transaction">Transaction Log</a>
+					<a data-toggle="tab" href="#transaction" class="flex-center">Transaction Log</a>
+				</li>
+				<!-- <li>
+					<a data-toggle="tab" href="#send" class="flex-center">Send Coin</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#send">Send Coin</a>
+					<a data-toggle="tab" href="#receive" class="flex-center">Receive Coin</a>
 				</li>
 				<li>
-					<a data-toggle="tab" href="#receive">Receive Coin</a>
-				</li>
-				<li>
-					<a data-toggle="tab" href="#refund">Refund</a>
-				</li>
+					<a data-toggle="tab" href="#refund" class="flex-center">Refund</a>
+				</li> -->
 			</ul>
 		</div>
 	</div>
@@ -154,7 +154,7 @@
 				<li>
 					<a data-toggle="tab" href="#mobile-transaction">Transaction Log</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a data-toggle="tab" href="#mobile-send">Send Coin</a>
 				</li>
 				<li>
@@ -162,7 +162,7 @@
 				</li>
 				<li>
 					<a data-toggle="tab" href="#mobile-refund">Refund</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		<div class="tab-content col-sm-12" style="overflow-y:scroll;">
