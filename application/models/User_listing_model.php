@@ -15,8 +15,9 @@ class User_listing_model extends Base_Model
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
-        $this->db->order_by("created_date DESC");
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
+        $this->db->order_by("created_date DESC");
+        $this->db->where("user_listing.amount_available > 0");
         $this->db->limit("10");
 
         $query = $this->db->get();
@@ -43,6 +44,7 @@ class User_listing_model extends Base_Model
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
         if (empty($page)) {
             $page = 0;
         } else {
@@ -63,6 +65,7 @@ class User_listing_model extends Base_Model
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
         if (!empty($where)) {
             $this->db->where($where);
         }
@@ -84,6 +87,7 @@ class User_listing_model extends Base_Model
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
 
         $query = $this->db->get();
 
@@ -96,6 +100,7 @@ class User_listing_model extends Base_Model
         $this->db->from("user_listing");
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
         $this->db->where($where);
 
         $query = $this->db->get();
@@ -125,6 +130,7 @@ class User_listing_model extends Base_Model
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
         $this->db->where("user_listing.type", "sell");
         if (!empty($where)) {
             $this->db->where($where);
@@ -143,6 +149,7 @@ class User_listing_model extends Base_Model
         $this->db->join("crypto", "user_listing.crypto_id = crypto.crypto_id", "left");
         $this->db->join("user", "user_listing.user_id = user.user_id", "left");
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
+        $this->db->where("user_listing.amount_available > 0");
         $this->db->where("user_listing.type", "buy");
         if (!empty($where)) {
             $this->db->where($where);

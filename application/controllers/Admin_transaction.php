@@ -66,6 +66,8 @@ class Admin_transaction extends Base_Controller
                 
                 $user_trade = $user_trade[0];
 
+                // $this->debug($user_trade);
+
                 if($user_trade['deducted'] == 0){
                     $where = array(
                         "user_listing_id" => $user_trade["user_listing_id"]

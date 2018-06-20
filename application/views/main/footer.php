@@ -7,9 +7,9 @@
 	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding15">
 		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>SUPPORTED CURRENCIES</span></div>
-			<div>MYR</div>
-			<div>USD</div>
-			<div>SGD</div>
+			<div><p>MYR</p></div>
+			<div><p>USD</p></div>
+			<div><p>SGD</p></div>
 		</div>
 		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>INTRODUCTION</span></div>
@@ -23,17 +23,17 @@
 		<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
 			<div class="border-bottom footer_title"><span>SOCIAL</span></div>
 			<div>
-				<i class=""></i>Facebook</div>
+				<i class=""></i><p>Facebook</p></div>
 			<div>
-				<i class=""></i>Twitter</div>
+				<i class=""></i><p>Twitter</p></div>
 			<div>
-				<i class=""></i>Reddit</div>
+				<i class=""></i><p>Reddit</p></div>
 			<div>
-				<i class=""></i>LinkedIn</div>
+				<i class=""></i><p>LinkedIn</p></div>
 			<div>
-				<i class=""></i>Youtube</div>
+				<i class=""></i><p>Youtube</p></div>
 			<div>
-				<i class=""></i>Weibo</div>
+				<i class=""></i><p>Weibo</p></div>
 		</div>
 	</div>
 </footer>

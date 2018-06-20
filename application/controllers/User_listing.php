@@ -46,6 +46,7 @@ class User_listing extends Base_Controller
                 "user_id" => $user_id,
                 "crypto_id" => $input["crypto_id"],
                 "amount" => $input["amount"],
+                "amount_available" => $input["amount"],
                 "markup" => $input["markup"],
                 "threshold" => $input["threshold"],
                 "price_before" => $input["price_before"],
@@ -433,12 +434,21 @@ class User_listing extends Base_Controller
 
         if (empty($user_trade)) show_404();
 
-        $data = array(
-            "user_id" => $this->session->userdata('user')['user_id'],
-            "target_id" => $user_trade[0]["seller_id"],
-            "user_trade_id" => $user_trade_id,
-            "rating" => $rating,
-        );
+        if ($this->session->userdata("user")["user_id"] == $user_trade[0]["buyer_id"]) {
+            $data = array(
+                "user_id" => $this->session->userdata('user')['user_id'],
+                "target_id" => $user_trade[0]["seller_id"],
+                "user_trade_id" => $user_trade_id,
+                "rating" => $rating,
+            );
+        } else if ($this->session->userdata("user")["user_id"] == $user_trade[0]["seller_id"]) {
+            $data = array(
+                "user_id" => $this->session->userdata('user')['user_id'],
+                "target_id" => $user_trade[0]["buyer_id"],
+                "user_trade_id" => $user_trade_id,
+                "rating" => $rating,
+            );
+        }
 
         $this->User_rating_model->insert($data);
 
@@ -498,7 +508,7 @@ class User_listing extends Base_Controller
             }
 
             if (empty($user_listing)) redirect("main/no_result", "refresh");
-            
+
             if ($input["type"] == "quick_buy") {
                 redirect("user_listing/buy/" . $user_listing[0]["user_listing_id"], "refresh");
             } else if ($input["type"] == "quick_sell") {
