@@ -20,12 +20,12 @@ class User extends Base_Controller
         $this->page_data = array();
 
         $this->load->model("User_trade_model");
-        if ($this->session->has_userdata("user")){
+        if ($this->session->has_userdata("user")) {
             $where = array(
                 "buyer_id" => $this->session->userdata("user")['user_id'],
                 "user_trade.user_trade_status_id <" => "4"
             );
-    
+
             $this->page_data["buys_processing"] = $this->User_trade_model->get_offers_where($where);
         }
     }
@@ -139,11 +139,19 @@ class User extends Base_Controller
             );
 
             $user_trust = $this->User_trust_model->get_where($where);
+
+            $where = array(
+                "target_id" => $this->session->userdata("user")["user_id"],
+                "user_id" => $user_id
+            );
+
+            $trusted = $this->User_trust_model->get_where($where);
         } else {
             $user_trust = array();
         }
 
         if (!empty($user_trust)) $this->page_data["user_trust"] = $user_trust;
+        if (!empty($user_trust) and !empty($trusted)) $this->page_data["allow_chat"] = true;
 
         $this->load->view("main/header", $this->page_data);
         $this->load->view("main/user_profile");
@@ -324,7 +332,11 @@ class User extends Base_Controller
         $user = $this->Users_model->get_where($where);
 
         if (!empty($user)) {
-            redirect("user/view_profile/" . $user[0]["user_id"], "refresh");
+            $this->session->sess_destroy();
+            
+            $this->session->set_userdata("referral_link", $link);
+
+            redirect("access/register/", "refresh");
         } else {
             redirect("main/no_result", "refresh");
         }

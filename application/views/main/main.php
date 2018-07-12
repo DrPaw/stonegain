@@ -68,7 +68,12 @@
 							<p class="filter-label">Country</p>
 						</div>
 						<div class="col-xs-12">
-							<input type="text" class="form-control input-border" name="country" placeholder="Country">
+						<select name='bank_name' type="text" class="form-control input-border" placeholder="country"/>
+							<option = "">Country</option>
+							<option = "MayBank">MayBank</option>
+							<option = "CIMB Bank">CIMB Bank</option>
+							<option = "Public Bank">Public Bank</option>
+						</select>
 						</div>
 					</div>
 				</div>

@@ -126,8 +126,8 @@ if ($this->session->has_userdata("user")) {
 			</div>
 		</div>
 	</div>
-<!-- Modal -->
-<div id="upload-modal" class="modal fade" role="dialog">
+	<!-- Modal -->
+	<div id="upload-modal" class="modal fade" role="dialog">
 		<div class="modal-dialog" id="upload-modal-content">
 			<form method="POST" id="upload-image-form" enctype="multipart/form-data">
 				<!-- Modal content-->

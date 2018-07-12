@@ -152,6 +152,15 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+.cannot-trade-btn {
+	font-size: 2.5rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 15vw;
+    height: 5vw;
+    padding: 1.5%;
+}
+
 @media (max-width: 768px) {
 	.main-title {
 		font-size: 7.5vw;

@@ -42,7 +42,10 @@ class Main extends Base_Controller {
         $this->load->view("main/footer");
     }
 
-    function cannot_trade(){
+    function cannot_trade($crypto){
+
+        $this->page_data["crypto"] = $crypto;
+
         $this->load->view("main/header",$this->page_data);
         $this->load->view("main/cannot_trade");
         $this->load->view("main/footer");

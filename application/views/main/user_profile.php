@@ -46,7 +46,7 @@
 				if ($this->session->has_userdata("user")) {
 					?>
 						<?php
-					if ($this->session->userdata("user")["user_id"] != $user['user_id']) {
+					if ($this->session->userdata("user")["user_id"] != $user['user_id'] AND !empty($allow_chat)) {
 						?>
 							<a class="btn btn-primary pull-right chat-with-user" data-user="<?= $user['user_id'] ?>">
 								<i class="fa fa-comment"></i> chat

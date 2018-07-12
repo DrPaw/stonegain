@@ -6659,7 +6659,19 @@ p.error {
 }
 
 .transaction-log-table>tbody>tr>td {
-	border: none;
+	border-top: none;
+}
+
+.transaction-table>tbody>tr>td {
+	border-top: solid 1px black !important;
+}
+
+.transaction-table>tbody>tr>td>a {
+	color: black;
+}
+
+.transaction-table>tbody>tr:hover {
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .main-title {
@@ -7056,8 +7068,8 @@ a {
 	right: -2px;
 	border: solid 1px #337ab7;
 	border-radius: 50%;
-	height: 1.2vw;
-	width: 1.2vw;
+	height: 20px;
+	width: 20px;
 	padding: 0;
 	padding-top: 9%;
 	text-align: center;

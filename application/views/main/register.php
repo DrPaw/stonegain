@@ -53,7 +53,11 @@
 				<span class='input-group-addon hidden-sm hidden-xs' style='vertical-align:top; width:200px; text-align: left;'>Country
 					<small>*</small>
 				</span>
-				<input name='country' type="text" class="form-control" placeholder='country' required />
+				<select name='country' type="text" class="form-control" required/>
+					<option = "Malaysia">Malaysia</option>
+					<option = "Singapore">Singapore</option>
+					<option = "China">China</option>
+				</select>
 			</div>
 			<label class="hidden-md hidden-lg">Bank Name
 				<small>*</small>
@@ -62,7 +66,11 @@
 				<span class='input-group-addon hidden-sm hidden-xs' style='vertical-align:top; width:200px; text-align: left;'>Bank Name
 					<small>*</small>
 				</span>
-				<input name='bank_name' type="text" class="form-control" placeholder='bank name' required />
+				<select name='bank_name' type="text" class="form-control" required/>
+					<option = "MayBank">MayBank</option>
+					<option = "CIMB Bank">CIMB Bank</option>
+					<option = "Public Bank">Public Bank</option>
+				</select>
 			</div>
 			<label class="hidden-md hidden-lg">Bank Account Number
 				<small>*</small>
@@ -89,13 +97,7 @@
 				<span class='input-group-addon hidden-sm hidden-xs' style='vertical-align:top; width:200px; text-align: left;'>Preferred threshold
 					<small>*</small>
 				</span>
-				<input name='preferred_threshold' type="text" class="form-control" placeholder='preferred threshold' />
-			</div>
-			<label class="hidden-md hidden-lg">Referral Link
-			</label>
-			<div class="input-group" style='margin-top : 2%; width: 100%;'>
-				<span class='input-group-addon hidden-sm hidden-xs' style='vertical-align:top; width:200px; text-align: left;'>Referral Link</span>
-				<input name='referral' type="text" class="form-control" placeholder='referral link' />
+				<input name='preferred_threshold' type="number" class="form-control" placeholder='preferred threshold' />
 			</div>
 			<div class="button-container" style='margin-top : 2%; width: 100%;'>
 				<input type="submit" value='Register' class="btn btn-primary pull-right" style='margin-top : 3%;margin-left: 5%;margin-bottom : 5%;'>

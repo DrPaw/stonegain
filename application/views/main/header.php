@@ -93,7 +93,7 @@
                                             <a href="<?=base_url()?>transaction">Transactions</a>
                                         </li>
                                         <li>
-                                            <a href="<?=base_url()?>user/profile">Account</a>
+                                            <a href="<?=base_url()?>user/profile"><?= $this->session->userdata("user")["username"]?></a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>access/logout/">Logout</a>

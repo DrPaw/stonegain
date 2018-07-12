@@ -95,7 +95,7 @@ class User_listing extends Base_Controller
 
         $user_crypto = $this->Wallet_model->get_crypto_wallet_where($user_id, $where);
 
-        if (empty($user_crypto) or $user_crypto[0]["available_amount"] < $user_listing[0]["amount"]) redirect("main/cannot_trade", "refresh");
+        if (empty($user_crypto) or $user_crypto[0]["available_amount"] < $user_listing[0]["amount"]) redirect("main/cannot_trade/" . $user_listing[0]["crypto"], "refresh");
 
         $this->page_data["user_listing"] = $user_listing[0];
 
@@ -381,45 +381,65 @@ class User_listing extends Base_Controller
         $this->page_data["user_trade"] = $user_trade[0];
 
         if ($_POST) {
-            if ($_FILES) {
-                $error = "";
-                if (!empty($_FILES['receipt']['name'])) {
-                    $config = array(
-                        "allowed_types" => "gif|png|jpg|jpeg",
-                        "upload_path" => "./images/receipt/",
-                        "path" => "images/receipt/"
-                    );
+            $input = $this->input->post();
 
-                    $this->load->library("upload", $config);
-                    if ($this->upload->do_upload("receipt")) {
-                        $receipt = $config['path'] . $this->upload->data()['file_name'];
-                    } else {
-                        die($this->upload->display_errors());
-                    }
+            if (!empty($_FILES['receipt']['name'])) {
+                $config = array(
+                    "allowed_types" => "gif|png|jpg|jpeg",
+                    "upload_path" => "./images/receipt/",
+                    "path" => "images/receipt/"
+                );
+
+                $this->load->library("upload", $config);
+                if ($this->upload->do_upload("receipt")) {
+                    $receipt = $config['path'] . $this->upload->data()['file_name'];
                 } else {
-                    die("Please upload a receipt.");
+                    die($this->upload->display_errors());
                 }
-                if ($error == "") {
-                    $where = array(
-                        "user_trade_id" => $user_trade_id
-                    );
-
-                    $data = array(
-                        "receipt" => $receipt,
-                        "user_trade_status_id" => 2
-                    );
-
-                    $this->User_trade_model->update_where($where, $data);
-
-                    redirect("user_listing/details/" . $user_listing_id . "/" . $user_trade_id, "refresh");
-                }
+            } else {
+                $receipt = "";
             }
+            $where = array(
+                "user_trade_id" => $user_trade_id
+            );
+
+            $data = array(
+                "receipt" => $receipt,
+                "receipt_no" => $input["receipt_no"],
+                "user_trade_status_id" => 2
+            );
+
+            $this->User_trade_model->update_where($where, $data);
+
+            redirect("user_listing/details/" . $user_listing_id . "/" . $user_trade_id, "refresh");
+
         }
 
         $this->load->view("main/header", $this->page_data);
         $this->load->view("main/details");
         $this->load->view("main/footer");
 
+    }
+
+    function add_remarks($user_listing_id, $user_trade_id)
+    {
+        if($_POST){
+            $input = $this->input->post();
+
+            $where = array(
+                "user_trade_id" => $user_trade_id
+            );
+
+            $data = array(
+                "remarks" => $input["remarks"],
+            );
+
+            $this->User_trade_model->update_where($where, $data);
+
+            redirect("user_listing/details/" . $user_listing_id . "/" . $user_trade_id, "refresh");
+        } else {
+            show_404();
+        }
     }
 
     function rate_trade($user_listing_id, $user_trade_id, $rating)

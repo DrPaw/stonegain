@@ -159,11 +159,14 @@ class Access extends Base_Controller
                     "preferred_time" => $this->input->post("preferred_time"),
                     "preferred_threshold" => $this->input->post("preferred_threshold"),
                     "referral_link" => $this->generate_referral_link(),
-                    "referral" => $this->input->post("referral"),
                     "password" => $hash["password"],
                     "salt" => $hash["salt"],
                     "code" => $code
                 );
+
+                if($this->session->has_userdata("referral_link")){
+                    $data["referral"] = $this->session->userdata("referral_link");
+                }
 
                 $this->db->insert("user", $data);
 

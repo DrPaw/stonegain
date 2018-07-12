@@ -72,7 +72,7 @@
                 <p class="word-break"><?= $user["referral_link"]?></p>
 			</div>
 		</div>
-		<div class="col-ms-9 col-lg-9 col-xs-12 col-sm-12 trading-list-container" style="margin-top:2.5%;">
+		<div class="col-ms-9 col-lg-9 col-xs-12 col-sm-12 trading-list-container">
             <h4>Trade Listing</h4>
             <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 contain-table">
             <table id="data-table" class="table table-bordered table-hover data-table">

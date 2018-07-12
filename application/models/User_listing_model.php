@@ -18,6 +18,7 @@ class User_listing_model extends Base_Model
         $this->db->join("user_trade_info", "user.user_id = user_trade_info.user_id", "left");
         $this->db->order_by("created_date DESC");
         $this->db->where("user_listing.amount_available > 0");
+        $this->db->where("user_listing.type", "SELL");
         $this->db->limit("10");
 
         $query = $this->db->get();

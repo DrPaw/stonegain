@@ -22,21 +22,21 @@
 	</div>
 	<div class="col-md-10 col-sm-9 col-xs-8">
 		<div class="tab-content">
-			<div id="processing" class="col-xs-12 trade_management_tab content-with-header table-height tab-pane active fade in">
+			<div id="processing" class="col-xs-12 margin-bottom table-height tab-pane active fade in">
 				<table class="table transaction-table">
 					<thead>
-						<tr>
-							<td>Partner</td>
-							<td>Trade ID</td>
-							<td>Type</td>
-							<td>Amount</td>
-							<td>Quantity</td>
-							<td>Created</td>
-							<td>Trade</td>
-							<td>Status</td>
+						<tr style="background-color:#379796;">
+							<td style="color:white;">Partner</td>
+							<td style="color:white;">Trade ID</td>
+							<td style="color:white;">Type</td>
+							<td style="color:white;">Amount</td>
+							<td style="color:white;">Quantity</td>
+							<td style="color:white;">Created</td>
+							<td style="color:white;">Trade</td>
+							<td style="color:white;">Status</td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody style="background-color:white;">
 						<?php
 					foreach ($user_trades_processing as $row) {
 						?>
@@ -90,18 +90,18 @@
 			<div id="completed" class="col-xs-12 margin-bottom table-height tab-pane">
 				<table class="table transaction-table">
 					<thead>
-						<tr>
-							<td>Partner</td>
-							<td>Trade ID</td>
-							<td>Type</td>
-							<td>Amount</td>
-							<td>Quantity</td>
-							<td>Created</td>
-							<td>Trade</td>
-							<td>Status</td>
+						<tr style="background-color:#379796;">
+							<td style="color:white;">Partner</td>
+							<td style="color:white;">Trade ID</td>
+							<td style="color:white;">Type</td>
+							<td style="color:white;">Amount</td>
+							<td style="color:white;">Quantity</td>
+							<td style="color:white;">Created</td>
+							<td style="color:white;">Trade</td>
+							<td style="color:white;">Status</td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody style="background-color:white;">
 						<?php
 					foreach ($user_trades_completed as $row) {
 						?>
